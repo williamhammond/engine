@@ -1,12 +1,9 @@
 name: CMake Build Matrix
 
-# Controls when the action will run. Triggers the workflow on push
 on:
   push:
   pull_request:
   release:
-  # tags:
-  # - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -78,31 +75,25 @@ jobs:
       - name: Install dependencies on windows
         if: startsWith(matrix.config.os, 'windows')
         run: |
-          choco install ninja cmake
-          ninja --version
-          cmake --version
+          ./scripts/install-windows-deps.ps1
 
       - name: Install dependencies on ubuntu
         if: startsWith(matrix.config.name, 'Ubuntu_Latest_GCC')
         run: |
-          sudo apt-get update
-          sudo apt-get install ninja-build cmake
-          ninja --version
-          cmake --version
-          gcc --version
+          chmod +x scripts/install-ubuntu-latest-gcc-deps.sh
+          ./scripts/install-ubuntu-latest-gcc-deps.sh
+
       - name: Install dependencies on ubuntu9
         if: startsWith(matrix.config.name, 'Ubuntu_GCC_9')
         run: |
-          pwd
-          ls
-          chmod +x scripts/install-ubuntu.sh
-          ./scripts/install-ubuntu.sh
+          chmod +x scripts/install-ubuntu-gcc-9-deps.sh
+          ./scripts/install-ubuntu-gcc-9-deps.sh
+
       - name: Install dependencies on macos
         if: startsWith(matrix.config.os, 'macos')
         run: |
-          brew install p7zip cmake ninja
-          ninja --version
-          cmake --version
+          chmod +x ./scripts/install-macos-deps.sh
+          ./scripts/install-macos-deps.sh
 
       - name: Configure
         shell: bash
