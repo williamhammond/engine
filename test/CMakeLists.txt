@@ -19,7 +19,7 @@ target_link_libraries(math_tests PUBLIC Math gtest_main fmt)
 
 include(GoogleTest)
 gtest_discover_tests(
-       math_tests
+        math_tests
         PROPERTIES LABELS "unit" DISCOVERY_TIMEOUT # how long to wait (in seconds)
         # before crashing
         240)
