@@ -14,6 +14,26 @@ class Vector3 {
   float& operator[](int i);
   const float& operator[](int i) const;
 
+  Vector3 operator+(const Vector3& v) const {
+    return {x + v.x, y + v.y, z + v.z};
+  }
+  Vector3& operator+=(const Vector3& v) {
+    x += v.x;
+    y += v.y;
+    z += v.z;
+    return (*this);
+  }
+
+  Vector3 operator-(const Vector3& v) const {
+    return {x - v.x, y - v.y, z - v.z};
+  }
+  Vector3& operator-=(const Vector3& v) {
+    x -= v.x;
+    y -= v.y;
+    z -= v.z;
+    return (*this);
+  }
+
   inline Vector3& operator*=(float a) {
     x *= a;
     y *= a;

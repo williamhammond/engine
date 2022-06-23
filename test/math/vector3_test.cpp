@@ -13,22 +13,69 @@ TEST(Vector3, it_indexes) {
   EXPECT_EQ(2, vector[2]);
 }
 
-struct MagnitudeTest {
-  Vector3 vector{};
-  float expected;
-  float tolerance;
+struct AdditionTest {
+  Vector3 a{};
+  Vector3 b{};
+  Vector3 expected{};
   std::string message;
 };
-TEST(Vector3, it_calculates_magitude) {
-  std::vector<MagnitudeTest> tests = {
-      MagnitudeTest{Vector3{0, 0, 0}, 0, 0.01f, "it handles 0 vector"},
-      MagnitudeTest{Vector3{1, 1, 1}, 1.73, 0.01f, "it handles unit vector"},
-      MagnitudeTest{Vector3{-1, -1, -1}, 1.73, 0.01f,
-                    "it handles negative unit vector"},
+TEST(Vector3, it_calculates_addition) {
+  std::vector<AdditionTest> tests = {
+      AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
   };
   for (const auto& test : tests) {
-    EXPECT_NEAR(test.expected, test.vector.Magnitude(), test.tolerance)
-        << test.message;
+    auto actual = test.a + test.b;
+    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+  }
+}
+TEST(Vector3, it_calculates_addition_with_assignment) {
+  std::vector<AdditionTest> tests = {
+      AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
+  };
+  for (auto test : tests) {
+    test.a += test.b;
+    EXPECT_NEAR(test.expected.x, test.a.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z, 0.001f) << test.message;
+  }
+}
+
+struct SubtractionTest {
+  Vector3 a{};
+  Vector3 b{};
+  Vector3 expected{};
+  std::string message;
+};
+TEST(Vector3, it_calculates_subtraction) {
+  std::vector<SubtractionTest> tests = {
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
+  };
+  for (auto test : tests) {
+    test.a -= test.b;
+    EXPECT_NEAR(test.expected.x, test.a.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z, 0.001f) << test.message;
+  }
+}
+TEST(Vector3, it_calculates_subtraction_with_assignment) {
+  std::vector<SubtractionTest> tests = {
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.a - test.b;
+    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
   }
 }
 
@@ -45,7 +92,7 @@ TEST(Vector3, it_calculates_multiplication) {
       MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
       MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
   };
-  for (auto test : tests) {
+  for (const auto& test : tests) {
     auto actual = test.input * test.scalar;
     EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
     EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
@@ -113,6 +160,25 @@ TEST(Vector3, it_handles_negation) {
     EXPECT_NEAR(-expected.x, actual.x, 0.001f);
     EXPECT_NEAR(-expected.y, actual.y, 0.001f);
     EXPECT_NEAR(-expected.z, actual.z, 0.001f);
+  }
+}
+
+struct MagnitudeTest {
+  Vector3 vector{};
+  float expected;
+  float tolerance;
+  std::string message;
+};
+TEST(Vector3, it_calculates_magitude) {
+  std::vector<MagnitudeTest> tests = {
+      MagnitudeTest{Vector3{0, 0, 0}, 0, 0.01f, "it handles 0 vector"},
+      MagnitudeTest{Vector3{1, 1, 1}, 1.73, 0.01f, "it handles unit vector"},
+      MagnitudeTest{Vector3{-1, -1, -1}, 1.73, 0.01f,
+                    "it handles negative unit vector"},
+  };
+  for (const auto& test : tests) {
+    EXPECT_NEAR(test.expected, test.vector.Magnitude(), test.tolerance)
+        << test.message;
   }
 }
 
