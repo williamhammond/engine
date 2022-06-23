@@ -13,6 +13,156 @@ TEST(Vector3, it_indexes) {
   EXPECT_EQ(2, vector[2]);
 }
 
+struct AdditionTest {
+  Vector3 a{};
+  Vector3 b{};
+  Vector3 expected{};
+  std::string message;
+};
+TEST(Vector3, it_calculates_addition) {
+  std::vector<AdditionTest> tests = {
+      AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.a + test.b;
+    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+  }
+}
+TEST(Vector3, it_calculates_addition_with_assignment) {
+  std::vector<AdditionTest> tests = {
+      AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
+  };
+  for (auto test : tests) {
+    test.a += test.b;
+    EXPECT_NEAR(test.expected.x, test.a.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z, 0.001f) << test.message;
+  }
+}
+
+struct SubtractionTest {
+  Vector3 a{};
+  Vector3 b{};
+  Vector3 expected{};
+  std::string message;
+};
+TEST(Vector3, it_calculates_subtraction) {
+  std::vector<SubtractionTest> tests = {
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
+  };
+  for (auto test : tests) {
+    test.a -= test.b;
+    EXPECT_NEAR(test.expected.x, test.a.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z, 0.001f) << test.message;
+  }
+}
+TEST(Vector3, it_calculates_subtraction_with_assignment) {
+  std::vector<SubtractionTest> tests = {
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.a - test.b;
+    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+  }
+}
+
+struct MultiplicationTest {
+  Vector3 input{};
+  Vector3 expected{};
+  float scalar;
+  std::string message;
+};
+TEST(Vector3, it_calculates_multiplication) {
+  std::vector<MultiplicationTest> tests = {
+      MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.input * test.scalar;
+    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+  }
+}
+TEST(Vector3, it_calculates_multiplication_with_assignment) {
+  std::vector<MultiplicationTest> tests = {
+      MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+  };
+  for (auto test : tests) {
+    test.input *= test.scalar;
+    EXPECT_NEAR(test.input.x, test.expected.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.input.y, test.expected.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.input.z, test.expected.z, 0.001f) << test.message;
+  }
+}
+
+struct DivisionTest {
+  Vector3 input{};
+  Vector3 expected{};
+  float scalar;
+  std::string message;
+};
+TEST(Vector3, it_calculates_division) {
+  std::vector<DivisionTest> tests = {
+      DivisionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      DivisionTest{Vector3{2, 2, 2}, Vector3{1, 1, 1}, 2, ""},
+      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+  };
+  for (const auto& test : tests) {
+    Vector3 actual = test.input / test.scalar;
+    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+  }
+}
+TEST(Vector3, it_calculates_division_with_assignment) {
+  std::vector<DivisionTest> tests = {
+      DivisionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      DivisionTest{Vector3{2, 2, 2}, Vector3{1, 1, 1}, 2, ""},
+      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+  };
+  for (auto test : tests) {
+    test.input /= test.scalar;
+    EXPECT_NEAR(test.input.x, test.expected.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.input.y, test.expected.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.input.z, test.expected.z, 0.001f) << test.message;
+  }
+}
+
+TEST(Vector3, it_handles_negation) {
+  std::vector<Vector3> vectors = {
+      Vector3{0, 0, 0},
+      Vector3{1, 1, 1},
+      Vector3{-1, -1, -1},
+  };
+  for (auto expected : vectors) {
+    Vector3 actual = -expected;
+    EXPECT_NEAR(-expected.x, actual.x, 0.001f);
+    EXPECT_NEAR(-expected.y, actual.y, 0.001f);
+    EXPECT_NEAR(-expected.z, actual.z, 0.001f);
+  }
+}
+
 struct MagnitudeTest {
   Vector3 vector{};
   float expected;
@@ -26,8 +176,24 @@ TEST(Vector3, it_calculates_magitude) {
       MagnitudeTest{Vector3{-1, -1, -1}, 1.73, 0.01f,
                     "it handles negative unit vector"},
   };
-  for (auto test : tests) {
-    EXPECT_NEAR(test.expected, test.vector.magnitude(), test.tolerance)
+  for (const auto& test : tests) {
+    EXPECT_NEAR(test.expected, test.vector.Magnitude(), test.tolerance)
         << test.message;
   }
+}
+
+TEST(Vector3, it_handles_normalization) {
+  std::vector<Vector3> vectors = {
+      Vector3{1, 1, 1},
+      Vector3{5, 5, 5},
+      Vector3{-1, -1, -1},
+      Vector3{-5, -5, -5},
+  };
+  for (auto vector : vectors) {
+    Vector3 expected = vector.Normalize();
+    EXPECT_NEAR(1.0f, expected.Magnitude(), 0.001f);
+  }
+  Vector3 vector = Vector3{0, 0, 0};
+  Vector3 expected = vector.Normalize();
+  EXPECT_NEAR(0.0f, expected.Magnitude(), 0.001f);
 }
