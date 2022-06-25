@@ -26,21 +26,22 @@ target_link_libraries(Engine PUBLIC Math)
 
 enable_testing()
 add_subdirectory(test)
+add_subdirectory(benchmark)
 
 set(CMAKE_INSTALL_PREFIX "./build/install")
-if(UNIX)
+if (UNIX)
     include(GNUInstallDirs)
-else()
+else ()
     if (WIN32)
         set(CMAKE_INSTALL_LIBDIR "lib")
         set(CMAKE_INSTALL_DATADIR "share")
         set(CMAKE_INSTALL_INCLUDEDIR "include")
         set(CMAKE_INSTALL_BINDIR "bin")
         message(STATUS "Setting installation destination on Windows to: ${CMAKE_INSTALL_PREFIX}")
-    else()
+    else ()
         message(FATAL_ERROR "System not UNIX nor WIN32 - not implemented yet")
-    endif()
-endif()
+    endif ()
+endif ()
 install(TARGETS Engine Math
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
