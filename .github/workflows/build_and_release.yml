@@ -18,7 +18,7 @@ jobs:
             name: "Windows Latest MSVC",
             os: windows-latest,
             artifact: "windows_msvc.7z",
-            build_type: "Release",
+            build_type: "Debug",
             cc: "cl",
             cxx: "cl",
             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
@@ -91,11 +91,11 @@ jobs:
       - name: Test
         working-directory: build
         run: |
-          ctest -C Debug --output-on-failure --verbose
+          ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose
 
-      - name: Install Strip
+      - name: Install
         shell: bash
-        run: cmake --install build --strip
+        run: cmake --install build --strip --config ${{ matrix.config.build_type }}
 
       - name: Pack
         shell: bash
