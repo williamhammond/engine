@@ -90,7 +90,7 @@ TEST(Vector3, it_calculates_multiplication) {
       MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
       MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
       MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.input * test.scalar;
@@ -104,7 +104,7 @@ TEST(Vector3, it_calculates_multiplication_with_assignment) {
       MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
       MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
       MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (auto test : tests) {
     test.input *= test.scalar;
@@ -125,7 +125,7 @@ TEST(Vector3, it_calculates_division) {
       DivisionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
       DivisionTest{Vector3{2, 2, 2}, Vector3{1, 1, 1}, 2, ""},
       DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (const auto& test : tests) {
     Vector3 actual = test.input / test.scalar;
@@ -139,7 +139,7 @@ TEST(Vector3, it_calculates_division_with_assignment) {
       DivisionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
       DivisionTest{Vector3{2, 2, 2}, Vector3{1, 1, 1}, 2, ""},
       DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001, ""},
+      DivisionTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (auto test : tests) {
     test.input /= test.scalar;
@@ -172,8 +172,8 @@ struct MagnitudeTest {
 TEST(Vector3, it_calculates_magitude) {
   std::vector<MagnitudeTest> tests = {
       MagnitudeTest{Vector3{0, 0, 0}, 0, 0.01f, "it handles 0 vector"},
-      MagnitudeTest{Vector3{1, 1, 1}, 1.73, 0.01f, "it handles unit vector"},
-      MagnitudeTest{Vector3{-1, -1, -1}, 1.73, 0.01f,
+      MagnitudeTest{Vector3{1, 1, 1}, 1.73f, 0.01f, "it handles unit vector"},
+      MagnitudeTest{Vector3{-1, -1, -1}, 1.73f, 0.01f,
                     "it handles negative unit vector"},
   };
   for (const auto& test : tests) {
