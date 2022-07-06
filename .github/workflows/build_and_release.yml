@@ -91,11 +91,11 @@ jobs:
       - name: Test
         working-directory: build
         run: |
-          ctest -C Debug --output-on-failure --verbose
+          ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose
 
-      - name: Install Strip
+      - name: Install
         shell: bash
-        run: cmake --install build --strip
+        run: cmake --install build --strip --config ${{ matrix.config.build_type }}
 
       - name: Pack
         shell: bash
