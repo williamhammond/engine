@@ -3,7 +3,7 @@
 float Utils::sqrt(float x) {
   float n = x;
   float y = 1;
-  float e = 0.000001;
+  float e = 0.000001f;
   while (n - y > e) {
     n = (n + y) / 2;
     y = x / n;
