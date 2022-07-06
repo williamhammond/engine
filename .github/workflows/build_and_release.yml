@@ -18,7 +18,7 @@ jobs:
             name: "Windows Latest MSVC",
             os: windows-latest,
             artifact: "windows_msvc.7z",
-            build_type: "Debug",
+            build_type: "Release",
             cc: "cl",
             cxx: "cl",
             environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
