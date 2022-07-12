@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657659349632,
+  "lastUpdate": 1657659508305,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -128,6 +128,38 @@ window.BENCHMARK_DATA = {
             "value": 0.4248496000000159,
             "unit": "ns/iter",
             "extra": "iterations: 1000000000\ncpu: 0.4375 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "id": "88f839aa0998672fe5fb0cb0a8a1513a0e40654d",
+          "message": "Adds benchmark action",
+          "timestamp": "2022-06-22T18:26:59Z",
+          "url": "https://github.com/williamhammond/engine/pull/10/commits/88f839aa0998672fe5fb0cb0a8a1513a0e40654d"
+        },
+        "date": 1657659501123,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "BM_StringCreation",
+            "value": 0.29665320000003703,
+            "unit": "ns/iter",
+            "extra": "iterations: 1000000000\ncpu: 0.296875 ns\nthreads: 1"
+          },
+          {
+            "name": "BM_StringCopy",
+            "value": 0.29798920000007456,
+            "unit": "ns/iter",
+            "extra": "iterations: 1000000000\ncpu: 0.296875 ns\nthreads: 1"
           }
         ]
       }
