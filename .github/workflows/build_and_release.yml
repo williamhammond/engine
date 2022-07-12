@@ -6,6 +6,11 @@ on:
       - "main"
   pull_request:
 
+permissions:
+  deployments: write
+  contents: write
+
+
 jobs:
   build:
     name: ${{ matrix.config.name }}
@@ -68,6 +73,10 @@ jobs:
           echo github.event.action: ${{ github.event.action }}
           echo github.event_name: ${{ github.event_name }}
 
+      # Need this to avoid git diff breaking upload to benchmark page
+      - name: Git config
+        run: git config core.filemode false
+
       - name: Install dependencies
         run: |
           chmod +x scripts/${{ matrix.config.install_script }}
@@ -88,10 +97,28 @@ jobs:
         run: |
           cmake --build build --config ${{ matrix.config.build_type }}
 
-      - name: Test
+      - name: Unit tests
         working-directory: build
         run: |
-          ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose
+          ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose -L unit
+
+      - name: Benchmarks
+        working-directory: build
+        run: |
+          ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose -L benchmark
+
+      - name: git diff
+        run: git diff
+
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'googlecpp'
+          name: ${{matrix.config.name}}-${{ matrix.config.build_type }}
+          output-file-path: ./build/benchmark/benchmark_result.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Push and deploy GitHub pages branch automatically
+          auto-push: true
 
       - name: Install
         shell: bash
