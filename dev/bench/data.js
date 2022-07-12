@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657666262162,
+  "lastUpdate": 1657667031986,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -390,6 +390,42 @@ window.BENCHMARK_DATA = {
             "value": 6.196757254199266,
             "unit": "ns/iter",
             "extra": "iterations: 122570693\ncpu: 6.196125528963111 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d19a61b997aab3a1c49a2a9ce98e14924abb5d69",
+          "message": "Merge pull request #10 from williamhammond/persist-benchmark-results\n\nAdds benchmark action",
+          "timestamp": "2022-07-12T19:02:32-04:00",
+          "tree_id": "25bb152b2b6ebb3baa4a368842e8d55e3c2eacb5",
+          "url": "https://github.com/williamhammond/engine/commit/d19a61b997aab3a1c49a2a9ce98e14924abb5d69"
+        },
+        "date": 1657667031616,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "BM_StringCreation",
+            "value": 7.000000010748408e-7,
+            "unit": "ns/iter",
+            "extra": "iterations: 1000000000\ncpu: 7.000000000001796e-7 ns\nthreads: 1"
+          },
+          {
+            "name": "BM_StringCopy",
+            "value": 7.177290755941498,
+            "unit": "ns/iter",
+            "extra": "iterations: 97340924\ncpu: 7.173794651877354 ns\nthreads: 1"
           }
         ]
       }
