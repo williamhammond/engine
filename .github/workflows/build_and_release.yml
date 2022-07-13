@@ -107,8 +107,11 @@ jobs:
         run: |
           ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose -L benchmark
 
-      - name: git diff
-        run: git diff
+      - name: Download previous benchmark data
+        uses: actions/cache@v1
+        with:
+          path: ./cache
+          key: ${{ matrix.config.name }}-benchmark
 
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
@@ -116,9 +119,19 @@ jobs:
           tool: 'googlecpp'
           name: ${{matrix.config.name}}-${{ matrix.config.build_type }}
           output-file-path: ./build/benchmark/benchmark_result.json
+          external-data-json-path: ./cache/benchmark-data.json
+          fail-on-alert: true
+          alert-comment-cc-users: '@WilliamHammond'
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # Push and deploy GitHub pages branch automatically
           auto-push: true
+
+      - name: Cache Primes
+        id: cache-primes
+        uses: actions/cache@v3
+        with:
+          path: prime-numbers
+          key: ${{matrix.config.name}}-benchmark
 
       - name: Install
         shell: bash
