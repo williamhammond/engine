@@ -1,18 +1,27 @@
 #include <benchmark/benchmark.h>
+#include <float.h>
 
-static void BM_StringCreation(benchmark::State& state) {
+#include "math/utils.h"
+
+static void benchmark_square(benchmark::State& state) {
   for (auto _ : state) {
-    std::string empty_string;
+    Utils::square(2.0f);
   }
 }
-// Register the function as a benchmark
-BENCHMARK(BM_StringCreation);
+BENCHMARK(benchmark_square);
 
-// Define another benchmark
-static void BM_StringCopy(benchmark::State& state) {
-  std::string x = "hello";
-  for (auto _ : state) std::string copy(x);
+static void benchmark_sqrt_100(benchmark::State& state) {
+  for (auto _ : state) {
+    Utils::sqrt(100.0f);
+  }
 }
-BENCHMARK(BM_StringCopy);
+BENCHMARK(benchmark_sqrt_100);
+
+static void benchmark_sqrt_max(benchmark::State& state) {
+  for (auto _ : state) {
+    Utils::sqrt(FLT_MAX);
+  }
+}
+BENCHMARK(benchmark_sqrt_max);
 
 BENCHMARK_MAIN();

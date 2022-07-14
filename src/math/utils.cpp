@@ -1,18 +1,33 @@
 #include "utils.h"
 
+#include <stdexcept>
+
 /**
  * Implemented using Newton's Method
  * https://en.wikipedia.org/wiki/Newton's_method
  */
 float Utils::sqrt(float x) {
-  float r = x;
-  float precision = pow(x, -10);
-
-  while (abs(x - r * r) > precision) {
-    r = (r + x / r) / 2;
+  if (x == 0) {
+    return 0;
   }
 
-  return r;
+  if (x < 0) {
+    throw std::invalid_argument("sqrt only accepts positive numbers");
+  }
+
+  float precision = 0.001f;
+  float r = x;
+  float root;
+
+  int count = 0;
+  while (true) {
+    count++;
+    root = 0.5f * (r + (x / r));
+    if (abs(root - r) < precision) break;
+    r = root;
+  }
+
+  return root;
 }
 
 float Utils::square(float x) { return x * x; }
