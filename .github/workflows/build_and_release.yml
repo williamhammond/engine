@@ -113,7 +113,7 @@ jobs:
           path: ./cache
           key: ${{ matrix.config.name }}-benchmark
 
-      - name: Store benchmark result
+      - name: Check for benchmark regression
         uses: benchmark-action/github-action-benchmark@v1
         with:
           tool: 'googlecpp'
@@ -121,6 +121,15 @@ jobs:
           output-file-path: ./build/benchmark/benchmark_result.json
           external-data-json-path: ./cache/benchmark-data.json
           fail-on-alert: true
+          alert-comment-cc-users: '@WilliamHammond'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push benchmark results
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'googlecpp'
+          name: ${{matrix.config.name}}-${{ matrix.config.build_type }}
+          output-file-path: ./build/benchmark/benchmark_result.json
           alert-comment-cc-users: '@WilliamHammond'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
