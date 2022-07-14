@@ -124,11 +124,11 @@ jobs:
           alert-comment-cc-users: '@WilliamHammond'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Cache Primes
-        id: cache-primes
+      - name: Cache benchmark
+        id: cache-benchmark
         uses: actions/cache@v3
         with:
-          path: prime-numbers
+          path: ./build/benchmark/benchmark_result.json
           key: ${{matrix.config.name}}-benchmark
 
       - name: Install
