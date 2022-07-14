@@ -61,3 +61,34 @@ TEST(Utils, it_calculates_sqrt) {
     EXPECT_NEAR(test.expected, Utils::sqrt(test.x), test.tolerance);
   }
 }
+struct PowerTest {
+  float expected;
+  float x;
+  int e;
+  float tolerance;
+};
+TEST(Utils, it_calculates_power) {
+  std::vector<PowerTest> tests = {
+      PowerTest{-1, -1, 1, 0.01f},
+      PowerTest{1, -1, 2, 0.01f},
+
+      PowerTest{1, 1, 1, 0.01f},
+      PowerTest{1, 1, 1, 0.01f},
+      PowerTest{1, 1, 2, 0.01f},
+      PowerTest{4, 2, 2, 0.01f},
+      PowerTest{8, 2, 3, 0.01f},
+
+      PowerTest{4294967296.0f, 2, 32, 0.01f},
+      PowerTest{9, 3, 2, 0.01f},
+      PowerTest{9.8596f, 3.14f, 2, 0.01f},
+
+      PowerTest{1, 1, -1, 0.01f},
+      PowerTest{1, 1, -2, 0.01f},
+      PowerTest{0.5f, 2, -1, 0.01f},
+      PowerTest{0.25f, 2, -2, 0.01f},
+  };
+
+  for (auto test : tests) {
+    EXPECT_NEAR(test.expected, Utils::pow(test.x, test.e), test.tolerance);
+  }
+}
