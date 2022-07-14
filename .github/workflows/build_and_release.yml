@@ -123,6 +123,7 @@ jobs:
           fail-on-alert: true
           alert-comment-cc-users: '@WilliamHammond'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-deploy: true
 
       - name: Cache benchmark
         id: cache-benchmark
