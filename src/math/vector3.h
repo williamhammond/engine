@@ -55,8 +55,10 @@ class Vector3 {
   }
 
   inline Vector3 Normalize() {
-    // TODO handle 0 division properly
-    return ((*this) / (Magnitude() + 0.000000001f));
+    if (Magnitude() == 0) {
+      return (*this);
+    }
+    return ((*this) / Magnitude());
   }
 };
 
