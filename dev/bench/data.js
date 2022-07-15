@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657897723474,
+  "lastUpdate": 1657897727321,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -1188,6 +1188,60 @@ window.BENCHMARK_DATA = {
             "value": 3912158934.0000186,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3031203000.0000005 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6a9d29cd6e8b4cbe940e61592cf6761d628cae0f",
+          "message": "Merge pull request #17 from williamhammond/fix-normalization\n\nProperly handle 0-vector normalization",
+          "timestamp": "2022-07-15T11:06:53-04:00",
+          "tree_id": "9981ddba6cde20b39aa32fda8328a396a44991d3",
+          "url": "https://github.com/williamhammond/engine/commit/6a9d29cd6e8b4cbe940e61592cf6761d628cae0f"
+        },
+        "date": 1657897726035,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.9962458755691554,
+            "unit": "ns/iter",
+            "extra": "iterations: 352943549\ncpu: 1.9890687958147097 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 53.044800650475295,
+            "unit": "ns/iter",
+            "extra": "iterations: 22769781\ncpu: 31.414882734269597 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 517.9499268963531,
+            "unit": "ns/iter",
+            "extra": "iterations: 1387072\ncpu: 440.3823305495316 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 8.233681130467344,
+            "unit": "ns/iter",
+            "extra": "iterations: 89690695\ncpu: 7.700587000691654 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3498616554.999984,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3212210000.0000005 ns\nthreads: 1"
           }
         ]
       }
