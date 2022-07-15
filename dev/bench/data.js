@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657886794108,
+  "lastUpdate": 1657886797512,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -330,6 +330,44 @@ window.BENCHMARK_DATA = {
             "value": 6.918449193070281,
             "unit": "ns/iter",
             "extra": "iterations: 102136402\ncpu: 6.898325045755969 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "id": "f039650411ef16d77057b1d1baeda16b52e0115d",
+          "message": "Auto-push benchmark results",
+          "timestamp": "2022-06-22T18:26:59Z",
+          "url": "https://github.com/williamhammond/engine/pull/15/commits/f039650411ef16d77057b1d1baeda16b52e0115d"
+        },
+        "date": 1657886796794,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.6187084180407922,
+            "unit": "ns/iter",
+            "extra": "iterations: 421039715\ncpu: 1.6167104331238682 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 28.90204643696285,
+            "unit": "ns/iter",
+            "extra": "iterations: 24207440\ncpu: 28.89505044730051 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 498.73743831514435,
+            "unit": "ns/iter",
+            "extra": "iterations: 1402897\ncpu: 498.7319097553133 ns\nthreads: 1"
           }
         ]
       }
