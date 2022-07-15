@@ -10,7 +10,6 @@ permissions:
   deployments: write
   contents: write
 
-
 jobs:
   build:
     name: ${{ matrix.config.name }}
@@ -132,6 +131,7 @@ jobs:
           output-file-path: ./build/benchmark/benchmark_result.json
           alert-comment-cc-users: '@WilliamHammond'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
 
       - name: Cache benchmark
         id: cache-benchmark
