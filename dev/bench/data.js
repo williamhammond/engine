@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657888490211,
+  "lastUpdate": 1657888493651,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -490,6 +490,56 @@ window.BENCHMARK_DATA = {
             "value": 411.63419791948456,
             "unit": "ns/iter",
             "extra": "iterations: 1698115\ncpu: 411.6099910783428 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "id": "bc0673ad4af1de0cfcd78e9f7fc8f8f35c521831",
+          "message": "Adds basic pow benchmarks",
+          "timestamp": "2022-06-22T18:26:59Z",
+          "url": "https://github.com/williamhammond/engine/pull/16/commits/bc0673ad4af1de0cfcd78e9f7fc8f8f35c521831"
+        },
+        "date": 1657888492866,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.5334703244769443,
+            "unit": "ns/iter",
+            "extra": "iterations: 465686552\ncpu: 1.5203934856164798 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 27.243791859478748,
+            "unit": "ns/iter",
+            "extra": "iterations: 26084743\ncpu: 27.20667786529466 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 473.63532984410784,
+            "unit": "ns/iter",
+            "extra": "iterations: 1491068\ncpu: 473.610727344427 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.6695056507443615,
+            "unit": "ns/iter",
+            "extra": "iterations: 124149575\ncpu: 5.6690198093710755 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3266097985.000016,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3263692300 ns\nthreads: 1"
           }
         ]
       }
