@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657888720549,
+  "lastUpdate": 1657888721744,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -1058,6 +1058,60 @@ window.BENCHMARK_DATA = {
             "value": 2875057521.0000024,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2874799800 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "09a52672ac3528d1290f8449c7a352599f4201f0",
+          "message": "Merge pull request #16 from williamhammond/add-pow-benchmark\n\nAdds basic pow benchmarks",
+          "timestamp": "2022-07-15T08:37:05-04:00",
+          "tree_id": "ef9fd962a56b12bf22ae2ef7b04eb43c2c18a842",
+          "url": "https://github.com/williamhammond/engine/commit/09a52672ac3528d1290f8449c7a352599f4201f0"
+        },
+        "date": 1657888720643,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.2054289796545365,
+            "unit": "ns/iter",
+            "extra": "iterations: 580708531\ncpu: 1.2053874924045158 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 25.382785523335958,
+            "unit": "ns/iter",
+            "extra": "iterations: 27579392\ncpu: 25.381781440287007 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 489.56410475038405,
+            "unit": "ns/iter",
+            "extra": "iterations: 1430830\ncpu: 489.2685364438822 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.863079778923351,
+            "unit": "ns/iter",
+            "extra": "iterations: 117669011\ncpu: 5.862813787055623 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3450476496.999983,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3449922200 ns\nthreads: 1"
           }
         ]
       }
