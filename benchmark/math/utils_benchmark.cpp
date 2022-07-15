@@ -24,4 +24,18 @@ static void benchmark_sqrt_max(benchmark::State& state) {
 }
 BENCHMARK(benchmark_sqrt_max);
 
+static void benchmark_pow(benchmark::State& state) {
+  for (auto _ : state) {
+    Utils::pow(2.5f, 10);
+  }
+}
+BENCHMARK(benchmark_pow);
+
+static void benchmark_pow_max(benchmark::State& state) {
+  for (auto _ : state) {
+    Utils::pow(2.5f, INT32_MAX);
+  }
+}
+BENCHMARK(benchmark_pow_max);
+
 BENCHMARK_MAIN();
