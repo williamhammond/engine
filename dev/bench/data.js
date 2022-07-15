@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1657887228007,
+  "lastUpdate": 1657887315355,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -266,6 +266,48 @@ window.BENCHMARK_DATA = {
             "value": 503.45950000007633,
             "unit": "ns/iter",
             "extra": "iterations: 1000000\ncpu: 500 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4680387a72cb4a313eda17859695cda81d7b7a14",
+          "message": "Merge pull request #15 from williamhammond/reenable-auto-push\n\nAuto-push benchmark results",
+          "timestamp": "2022-07-15T08:11:01-04:00",
+          "tree_id": "d43aca7e7c83116c8d315c37c3269d71a7468422",
+          "url": "https://github.com/williamhammond/engine/commit/4680387a72cb4a313eda17859695cda81d7b7a14"
+        },
+        "date": 1657887308990,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.3486720976124065,
+            "unit": "ns/iter",
+            "extra": "iterations: 497777778\ncpu: 1.349748883326005 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 23.12322499999908,
+            "unit": "ns/iter",
+            "extra": "iterations: 32000000\ncpu: 23.4375 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 418.9162179055268,
+            "unit": "ns/iter",
+            "extra": "iterations: 1723077\ncpu: 426.19975775893937 ns\nthreads: 1"
           }
         ]
       }
