@@ -23,7 +23,8 @@ TEST(Vector3, it_calculates_addition) {
   std::vector<AdditionTest> tests = {
       AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
       AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
-      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1},
+                   ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a + test.b;
@@ -36,7 +37,8 @@ TEST(Vector3, it_calculates_addition_with_assignment) {
   std::vector<AdditionTest> tests = {
       AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
       AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
-      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1},
+                   ""},
   };
   for (auto test : tests) {
     test.a += test.b;
@@ -55,8 +57,10 @@ struct SubtractionTest {
 TEST(Vector3, it_calculates_subtraction) {
   std::vector<SubtractionTest> tests = {
       SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1},
+                      ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1},
+                      ""},
   };
   for (auto test : tests) {
     test.a -= test.b;
@@ -68,8 +72,10 @@ TEST(Vector3, it_calculates_subtraction) {
 TEST(Vector3, it_calculates_subtraction_with_assignment) {
   std::vector<SubtractionTest> tests = {
       SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1},
+                      ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1},
+                      ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a - test.b;
@@ -196,4 +202,67 @@ TEST(Vector3, it_handles_normalization) {
   Vector3 vector = Vector3{0, 0, 0};
   Vector3 expected = vector.Normalize();
   EXPECT_NEAR(0.0f, expected.Magnitude(), 0.001f);
+}
+
+struct DotTest {
+  Vector3 a;
+  Vector3 b;
+  float expected;
+  std::string message;
+};
+TEST(Vector3, it_handles_dot_product) {
+  std::vector<DotTest> tests = {
+      {{1, 1, 1}, {1, 1, 1}, 3, ""},     {{0, 0, 0}, {1, 1, 1}, 0, ""},
+      {{1, 1, 1}, {-1, -1, -1}, -3, ""}, {{1, 1, 1}, {1, -1, 1}, 1, ""},
+      {{1, 1, 1}, {-1, 1, 1}, 1, ""},    {{1, 1, 1}, {1, 1, -1}, 1, ""},
+      {{1, 1, 1}, {-1, -1, 1}, -1, ""},  {{1, 1, 1}, {-1, 1, -1}, -1, ""},
+      {{1, 1, 1}, {1, -1, -1}, -1, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.a.Dot(test.b);
+    EXPECT_NEAR(test.expected, actual, 0.001f) << test.message;
+  }
+}
+
+struct CrossTest {
+  Vector3 a;
+  Vector3 b;
+  Vector3 expected;
+  std::string message;
+};
+TEST(Vector3, it_handles_cross_product) {
+  std::vector<CrossTest> tests = {
+      {{1, 1, 1}, {1, 1, 1}, {0, 0, 0}, ""},
+      {{-1, -1, -1}, {1, 1, 1}, {0, 0, 0}, ""},
+      {{1, 1, 1}, {-1, -1, -1}, {0, 0, 0}, ""},
+
+      {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, ""},
+      {{0, 1, 0}, {1, 0, 0}, {0, 0, -1}, ""},
+
+      {{0, 0, 1}, {0, 1, 0}, {-1, 0, 0}, ""},
+      {{0, 1, 0}, {0, 0, 1}, {1, 0, 0}, ""},
+
+      {{1, 0, 0}, {0, 0, 1}, {0, -1, 0}, ""},
+      {{0, 0, 1}, {1, 0, 0}, {0, 1, 0}, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.a.Cross(test.b);
+    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+  }
+
+  // Anti-communative
+  for (const auto& test : tests) {
+    auto lhs = test.a.Cross(test.b);
+    auto rhs = -(test.b.Cross(test.a));
+
+    EXPECT_NEAR(test.expected.x, lhs.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, lhs.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, lhs.z, 0.001f) << test.message;
+
+    EXPECT_NEAR(test.expected.x, rhs.x, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.y, rhs.y, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.z, rhs.z, 0.001f) << test.message;
+  }
 }
