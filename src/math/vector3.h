@@ -60,6 +60,12 @@ class Vector3 {
     }
     return ((*this) / Magnitude());
   }
+
+  inline float Dot(Vector3 b) const { return x * b.x + y * b.y + z * b.z; }
+
+  inline Vector3 Cross(Vector3 b) const {
+    return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x};
+  }
 };
 
 #endif  // ENGINE_VECTOR3_H
