@@ -31,64 +31,65 @@ TEST(Utils, it_calculates_abs) {
 struct SquareTest {
   float expected;
   float x;
-  float tolerance;
 };
 TEST(Utils, it_calculates_square) {
   std::vector<SquareTest> tests = {
-      SquareTest{9, -3, 0.01f}, SquareTest{4, -2, 0.01f},
-      SquareTest{1, -1, 0.01f}, SquareTest{0, 0, 0.01f},
-      SquareTest{1, 1, 0.01f},  SquareTest{4, 2, 0.01f},
-      SquareTest{9, 3, 0.01f},
+      SquareTest{9, -3}, SquareTest{4, -2}, SquareTest{1, -1}, SquareTest{0, 0},
+      SquareTest{1, 1},  SquareTest{4, 2},  SquareTest{9, 3},
   };
 
   for (auto test : tests) {
-    EXPECT_NEAR(test.expected, Utils::square(test.x), test.tolerance);
+    auto actual = Utils::square(test.x);
+    EXPECT_NEAR(test.expected, actual,
+                Utils::relative_epsilon(test.expected, actual));
   }
 }
 
 struct SqrtTest {
   float expected;
   float x;
-  float tolerance;
 };
 TEST(Utils, it_calculates_sqrt) {
   std::vector<SqrtTest> tests = {
-      SqrtTest{0, 0, 0.01f},
-      SqrtTest{1, 1, 0.01f},
+      SqrtTest{0, 0},
+      SqrtTest{1, 1},
   };
 
   for (auto test : tests) {
-    EXPECT_NEAR(test.expected, Utils::sqrt(test.x), test.tolerance);
+    auto actual = Utils::sqrt(test.x);
+    EXPECT_NEAR(test.expected, actual,
+                Utils::relative_epsilon(test.expected, actual));
   }
 }
 struct PowerTest {
   float expected;
   float x;
   int e;
-  float tolerance;
 };
 TEST(Utils, it_calculates_power) {
   std::vector<PowerTest> tests = {
-      PowerTest{-1, -1, 1, 0.01f},
-      PowerTest{1, -1, 2, 0.01f},
+      PowerTest{-1, -1, 1},
+      PowerTest{1, -1, 2},
 
-      PowerTest{1, 1, 1, 0.01f},
-      PowerTest{1, 1, 1, 0.01f},
-      PowerTest{1, 1, 2, 0.01f},
-      PowerTest{4, 2, 2, 0.01f},
-      PowerTest{8, 2, 3, 0.01f},
+      PowerTest{1, 1, 1},
+      PowerTest{1, 1, 1},
+      PowerTest{1, 1, 2},
+      PowerTest{4, 2, 2},
+      PowerTest{8, 2, 3},
 
-      PowerTest{4294967296.0f, 2, 32, 0.01f},
-      PowerTest{9, 3, 2, 0.01f},
-      PowerTest{9.8596f, 3.14f, 2, 0.01f},
+      PowerTest{4294967296.0f, 2, 32},
+      PowerTest{9, 3, 2},
+      PowerTest{9.8596f, 3.14f, 2},
 
-      PowerTest{1, 1, -1, 0.01f},
-      PowerTest{1, 1, -2, 0.01f},
-      PowerTest{0.5f, 2, -1, 0.01f},
-      PowerTest{0.25f, 2, -2, 0.01f},
+      PowerTest{1, 1, -1},
+      PowerTest{1, 1, -2},
+      PowerTest{0.5f, 2, -1},
+      PowerTest{0.25f, 2, -2},
   };
 
   for (auto test : tests) {
-    EXPECT_NEAR(test.expected, Utils::pow(test.x, test.e), test.tolerance);
+    auto actual = Utils::pow(test.x, test.e);
+    EXPECT_NEAR(test.expected, actual,
+                Utils::relative_epsilon(test.expected, actual, 1e-4f));
   }
 }
