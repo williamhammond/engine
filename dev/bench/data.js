@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658167260463,
+  "lastUpdate": 1658179636968,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -2102,6 +2102,56 @@ window.BENCHMARK_DATA = {
             "value": 2876334044.000004,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2875461200 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "id": "d7a5fed1f284c17f7076d36630ec0853f7fdc661",
+          "message": "Use relative float comparison",
+          "timestamp": "2022-06-22T18:26:59Z",
+          "url": "https://github.com/williamhammond/engine/pull/19/commits/d7a5fed1f284c17f7076d36630ec0853f7fdc661"
+        },
+        "date": 1658179636024,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.205518706758037,
+            "unit": "ns/iter",
+            "extra": "iterations: 580686371\ncpu: 1.2052657595437177 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 25.362518843703207,
+            "unit": "ns/iter",
+            "extra": "iterations: 27600728\ncpu: 25.356950729705396 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 489.02618970436964,
+            "unit": "ns/iter",
+            "extra": "iterations: 1431364\ncpu: 489.00733845478857 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.933422785363224,
+            "unit": "ns/iter",
+            "extra": "iterations: 115207373\ncpu: 5.933251338002476 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3452362250.000078,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3449277599.9999995 ns\nthreads: 1"
           }
         ]
       }
