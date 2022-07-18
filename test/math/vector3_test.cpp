@@ -28,9 +28,15 @@ TEST(Vector3, it_calculates_addition) {
   };
   for (const auto& test : tests) {
     auto actual = test.a + test.b;
-    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x,
+                Utils::relative_epsilon(test.expected.x, actual.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y,
+                Utils::relative_epsilon(test.expected.y, actual.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z,
+                Utils::relative_epsilon(test.expected.z, actual.z))
+        << test.message;
   }
 }
 TEST(Vector3, it_calculates_addition_with_assignment) {
@@ -42,9 +48,15 @@ TEST(Vector3, it_calculates_addition_with_assignment) {
   };
   for (auto test : tests) {
     test.a += test.b;
-    EXPECT_NEAR(test.expected.x, test.a.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, test.a.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, test.a.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, test.a.x,
+                Utils::relative_epsilon(test.expected.x, test.a.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y,
+                Utils::relative_epsilon(test.expected.y, test.a.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z,
+                Utils::relative_epsilon(test.expected.z, test.a.z))
+        << test.message;
   }
 }
 
@@ -64,9 +76,15 @@ TEST(Vector3, it_calculates_subtraction) {
   };
   for (auto test : tests) {
     test.a -= test.b;
-    EXPECT_NEAR(test.expected.x, test.a.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, test.a.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, test.a.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, test.a.x,
+                Utils::relative_epsilon(test.expected.x, test.a.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y,
+                Utils::relative_epsilon(test.expected.y, test.a.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z,
+                Utils::relative_epsilon(test.expected.z, test.a.z))
+        << test.message;
   }
 }
 TEST(Vector3, it_calculates_subtraction_with_assignment) {
@@ -79,9 +97,15 @@ TEST(Vector3, it_calculates_subtraction_with_assignment) {
   };
   for (const auto& test : tests) {
     auto actual = test.a - test.b;
-    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x,
+                Utils::relative_epsilon(test.expected.x, actual.x, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y,
+                Utils::relative_epsilon(test.expected.y, actual.y, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z,
+                Utils::relative_epsilon(test.expected.z, actual.z, 1e-4f))
+        << test.message;
   }
 }
 
@@ -100,9 +124,15 @@ TEST(Vector3, it_calculates_multiplication) {
   };
   for (const auto& test : tests) {
     auto actual = test.input * test.scalar;
-    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x,
+                Utils::relative_epsilon(test.expected.x, actual.x, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y,
+                Utils::relative_epsilon(test.expected.y, actual.y, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z,
+                Utils::relative_epsilon(test.expected.z, actual.z, 1e-4f))
+        << test.message;
   }
 }
 TEST(Vector3, it_calculates_multiplication_with_assignment) {
@@ -114,9 +144,15 @@ TEST(Vector3, it_calculates_multiplication_with_assignment) {
   };
   for (auto test : tests) {
     test.input *= test.scalar;
-    EXPECT_NEAR(test.input.x, test.expected.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.input.y, test.expected.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.input.z, test.expected.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.input.x, test.expected.x,
+                Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.input.y, test.expected.y,
+                Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.input.z, test.expected.z,
+                Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
+        << test.message;
   }
 }
 
@@ -135,9 +171,15 @@ TEST(Vector3, it_calculates_division) {
   };
   for (const auto& test : tests) {
     Vector3 actual = test.input / test.scalar;
-    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x,
+                Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y,
+                Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z,
+                Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
+        << test.message;
   }
 }
 TEST(Vector3, it_calculates_division_with_assignment) {
@@ -149,9 +191,15 @@ TEST(Vector3, it_calculates_division_with_assignment) {
   };
   for (auto test : tests) {
     test.input /= test.scalar;
-    EXPECT_NEAR(test.input.x, test.expected.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.input.y, test.expected.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.input.z, test.expected.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.input.x, test.expected.x,
+                Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.input.y, test.expected.y,
+                Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
+        << test.message;
+    EXPECT_NEAR(test.input.z, test.expected.z,
+                Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
+        << test.message;
   }
 }
 
@@ -163,27 +211,31 @@ TEST(Vector3, it_handles_negation) {
   };
   for (auto expected : vectors) {
     Vector3 actual = -expected;
-    EXPECT_NEAR(-expected.x, actual.x, 0.001f);
-    EXPECT_NEAR(-expected.y, actual.y, 0.001f);
-    EXPECT_NEAR(-expected.z, actual.z, 0.001f);
+    EXPECT_NEAR(-expected.x, actual.x,
+                Utils::relative_epsilon(-expected.x, actual.x));
+    EXPECT_NEAR(-expected.y, actual.y,
+                Utils::relative_epsilon(-expected.y, actual.y));
+    EXPECT_NEAR(-expected.z, actual.z,
+                Utils::relative_epsilon(-expected.z, actual.z));
   }
 }
 
 struct MagnitudeTest {
   Vector3 vector{};
   float expected;
-  float tolerance;
   std::string message;
 };
 TEST(Vector3, it_calculates_magitude) {
   std::vector<MagnitudeTest> tests = {
-      MagnitudeTest{Vector3{0, 0, 0}, 0, 0.01f, "it handles 0 vector"},
-      MagnitudeTest{Vector3{1, 1, 1}, 1.73f, 0.01f, "it handles unit vector"},
-      MagnitudeTest{Vector3{-1, -1, -1}, 1.73f, 0.01f,
+      MagnitudeTest{Vector3{0, 0, 0}, 0, "it handles 0 vector"},
+      MagnitudeTest{Vector3{1, 1, 1}, 1.73205080757f, "it handles unit vector"},
+      MagnitudeTest{Vector3{-1, -1, -1}, 1.73205080757f,
                     "it handles negative unit vector"},
   };
   for (const auto& test : tests) {
-    EXPECT_NEAR(test.expected, test.vector.Magnitude(), test.tolerance)
+    EXPECT_NEAR(
+        test.expected, test.vector.Magnitude(),
+        Utils::relative_epsilon(test.expected, test.vector.Magnitude(), 1e-5f))
         << test.message;
   }
 }
@@ -197,11 +249,13 @@ TEST(Vector3, it_handles_normalization) {
   };
   for (auto vector : vectors) {
     Vector3 expected = vector.Normalize();
-    EXPECT_NEAR(1.0f, expected.Magnitude(), 0.001f);
+    EXPECT_NEAR(1.0f, expected.Magnitude(),
+                std::numeric_limits<float>::epsilon());
   }
   Vector3 vector = Vector3{0, 0, 0};
   Vector3 expected = vector.Normalize();
-  EXPECT_NEAR(0.0f, expected.Magnitude(), 0.001f);
+  EXPECT_NEAR(0.0f, expected.Magnitude(),
+              std::numeric_limits<float>::epsilon());
 }
 
 struct DotTest {
@@ -220,7 +274,9 @@ TEST(Vector3, it_handles_dot_product) {
   };
   for (const auto& test : tests) {
     auto actual = test.a.Dot(test.b);
-    EXPECT_NEAR(test.expected, actual, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected, actual,
+                Utils::relative_epsilon(test.expected, actual))
+        << test.message;
   }
 }
 
@@ -247,9 +303,15 @@ TEST(Vector3, it_handles_cross_product) {
   };
   for (const auto& test : tests) {
     auto actual = test.a.Cross(test.b);
-    EXPECT_NEAR(test.expected.x, actual.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x,
+                Utils::relative_epsilon(test.expected.x, actual.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y,
+                Utils::relative_epsilon(test.expected.y, actual.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z,
+                Utils::relative_epsilon(test.expected.y, actual.y))
+        << test.message;
   }
 
   // Anti-communative
@@ -257,12 +319,24 @@ TEST(Vector3, it_handles_cross_product) {
     auto lhs = test.a.Cross(test.b);
     auto rhs = -(test.b.Cross(test.a));
 
-    EXPECT_NEAR(test.expected.x, lhs.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, lhs.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, lhs.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, lhs.x,
+                Utils::relative_epsilon(test.expected.x, lhs.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, lhs.y,
+                Utils::relative_epsilon(test.expected.y, lhs.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, lhs.z,
+                Utils::relative_epsilon(test.expected.z, lhs.z))
+        << test.message;
 
-    EXPECT_NEAR(test.expected.x, rhs.x, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.y, rhs.y, 0.001f) << test.message;
-    EXPECT_NEAR(test.expected.z, rhs.z, 0.001f) << test.message;
+    EXPECT_NEAR(test.expected.x, rhs.x,
+                Utils::relative_epsilon(test.expected.x, rhs.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, rhs.y,
+                Utils::relative_epsilon(test.expected.y, rhs.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, rhs.z,
+                Utils::relative_epsilon(test.expected.z, rhs.z))
+        << test.message;
   }
 }

@@ -59,3 +59,26 @@ float Utils::pow(float x, int exponent) {
   }
   return answer;
 }
+float Utils::min(float x, float y) {
+  if (x > y) {
+    return y;
+  }
+  return x;
+}
+
+float Utils::max(float x, float y) {
+  if (x > y) {
+    return x;
+  }
+  return y;
+}
+
+/**
+ *  https://www.gamedeveloper.com/programming/in-depth-comparing-floating-point-numbers-2012-edition
+ *  https://stackoverflow.com/questions/17333/what-is-the-most-effective-way-for-float-and-double-comparison
+ *  https://randomascii.wordpress.com/2012/01/11/tricks-with-the-floating-point-format/
+ *  https://github.com/google/googletest/blob/main/googletest/include/gtest/internal/gtest-internal.h#L339
+ */
+float Utils::relative_epsilon(float x, float y, float rel_diff) {
+  return max(abs(x), abs(y)) * rel_diff;
+}

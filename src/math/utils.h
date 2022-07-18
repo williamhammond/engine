@@ -10,6 +10,9 @@ class Utils {
   static float abs(float x);
   static int abs(int x);
   static float pow(float x, int exponent);
+  static float min(float x, float y);
+  static float max(float x, float y);
+  static float relative_epsilon(float x, float y, float rel_diff = 1e-9f);
 };
 
 #endif  // ENGINE_UTILS_H
