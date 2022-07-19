@@ -1,7 +1,7 @@
 #include "math/vector3.h"
 
 #include <gtest/gtest.h>
-#include <math.h>
+#include <cmath>
 
 #include <string>
 #include <vector>
