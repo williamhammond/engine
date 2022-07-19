@@ -1,8 +1,8 @@
 #include "math/vector3.h"
 
 #include <gtest/gtest.h>
-#include <cmath>
 
+#include <cmath>
 #include <string>
 #include <vector>
 
@@ -218,6 +218,60 @@ TEST(Vector3, it_handles_negation) {
                 Utils::relative_epsilon(-expected.y, actual.y));
     EXPECT_NEAR(-expected.z, actual.z,
                 Utils::relative_epsilon(-expected.z, actual.z));
+  }
+}
+
+struct EqualityTest {
+  Vector3 a;
+  Vector3 b;
+  Vector3 c;
+  float epsilon;
+};
+TEST(Vector3, it_computes_equality) {
+  std::vector<EqualityTest> tests = {
+      {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, 1e-9f},
+      {{0, 0, 0}, {-0, -0, -0}, {0, 0, 0}, 1e-9f},
+
+      {{1, 1, 1},
+       {1.000000001f, 1.000000001f, 1.00000001f},
+       {1.001f, 1.001f, 1.001f},
+       0.01f},
+
+      {{-1, -1, -1},
+       {-1.000000001f, -1.000000001f, -1.00000001f},
+       {-1, -1, -1},
+       1e-9f},
+  };
+  for (auto test : tests) {
+    EXPECT_TRUE(test.a.Equals(test.a, test.epsilon));
+    EXPECT_TRUE(test.a.Equals(test.b, test.epsilon));
+    EXPECT_TRUE(test.a.Equals(test.c, test.epsilon));
+
+    EXPECT_TRUE(test.b.Equals(test.a, test.epsilon));
+    EXPECT_TRUE(test.b.Equals(test.b, test.epsilon));
+    EXPECT_TRUE(test.b.Equals(test.c, test.epsilon));
+
+    EXPECT_TRUE(test.c.Equals(test.a, test.epsilon));
+    EXPECT_TRUE(test.c.Equals(test.b, test.epsilon));
+    EXPECT_TRUE(test.c.Equals(test.c, test.epsilon));
+  }
+}
+
+struct InequalityTest {
+  Vector3 a;
+  Vector3 b;
+  float epsilon;
+};
+TEST(Vector3, it_computes_inequality) {
+  std::vector<InequalityTest> tests = {
+      {{1, 1, 1}, {2, 2, 2}, 1e-9f},
+      {{1, 1, 1}, {1.1f, 1.1f, 1.1f}, 1e-9f},
+      {{0.00001f, 0.00001f, 0.00001f }, {0, 0, 0}, 1e-9f},
+  };
+
+  for (const auto& test : tests) {
+    EXPECT_FALSE(test.a.Equals(test.b, test.epsilon));
+    EXPECT_FALSE(test.b.Equals(test.a, test.epsilon));
   }
 }
 
