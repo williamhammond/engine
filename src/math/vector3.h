@@ -66,6 +66,13 @@ class Vector3 {
   inline Vector3 Cross(Vector3 b) const {
     return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x};
   }
+
+  // TODO: figure out 0 projection
+  inline Vector3 Project(Vector3 b) const {
+    return b * (this->Dot(b) / b.Dot(b));
+  }
+
+  inline Vector3 Reject(const Vector3& b) const { return *this - Project(b); }
 };
 
 #endif  // ENGINE_VECTOR3_H
