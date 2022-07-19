@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658233208932,
+  "lastUpdate": 1658233495501,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -2968,6 +2968,60 @@ window.BENCHMARK_DATA = {
             "value": 2882001642.0000057,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2880300499.9999995 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "72f29d02633f120bc0ec4057b3255d46d81ff7e5",
+          "message": "Merge pull request #20 from williamhammond/add-vector-projection\n\nAdds vector projection and rejection",
+          "timestamp": "2022-07-19T08:23:17-04:00",
+          "tree_id": "ea0d11a3703cfaa04f6d464bd41475f18197bd88",
+          "url": "https://github.com/williamhammond/engine/commit/72f29d02633f120bc0ec4057b3255d46d81ff7e5"
+        },
+        "date": 1658233494690,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.5863182414656483,
+            "unit": "ns/iter",
+            "extra": "iterations: 438606659\ncpu: 1.5849057138915896 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 28.03280950004278,
+            "unit": "ns/iter",
+            "extra": "iterations: 24798793\ncpu: 28.025351879020885 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 494.4404847590507,
+            "unit": "ns/iter",
+            "extra": "iterations: 1436590\ncpu: 492.8621248929757 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.855196604333426,
+            "unit": "ns/iter",
+            "extra": "iterations: 121007404\ncpu: 5.8547524910128645 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3315996552.0000014,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3315634700.0000005 ns\nthreads: 1"
           }
         ]
       }
