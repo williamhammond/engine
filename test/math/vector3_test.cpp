@@ -1,6 +1,7 @@
 #include "math/vector3.h"
 
 #include <gtest/gtest.h>
+#include <cmath>
 
 #include <string>
 #include <vector>
@@ -337,6 +338,88 @@ TEST(Vector3, it_handles_cross_product) {
         << test.message;
     EXPECT_NEAR(test.expected.z, rhs.z,
                 Utils::relative_epsilon(test.expected.z, rhs.z))
+        << test.message;
+  }
+}
+
+struct ProjectTest {
+  Vector3 a;
+  Vector3 b;
+  Vector3 expected;
+  std::string message;
+};
+TEST(Vector3, it_handles_projection) {
+  std::vector<ProjectTest> tests = {
+      {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, ""},
+      {{-1, -1, -1}, {1, 1, 1}, {-1, -1, -1}, ""},
+      {{1, 1, 1}, {-1, -1, -1}, {1, 1, 1}, ""},
+
+      {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, ""},
+
+      {{1, 0, 0}, {0, 1, 0}, {0, 0, 0}, ""},
+      {{0, 1, 0}, {1, 0, 0}, {0, 0, 0}, ""},
+      {{0, 0, 1}, {0, 1, 0}, {0, 0, 0}, ""},
+      {{0, 1, 0}, {0, 0, 1}, {0, 0, 0}, ""},
+      {{1, 0, 0}, {0, 0, 1}, {0, 0, 0}, ""},
+      {{0, 0, 1}, {1, 0, 0}, {0, 0, 0}, ""},
+
+      {{1, 1, 0}, {0, 1, 1}, {0, 0.5f, 0.5f}, ""},
+      {{0, 1, 1}, {1, 1, 0}, {0.5f, 0.5f, 0}, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.a.Project(test.b);
+    EXPECT_NEAR(test.expected.x, actual.x,
+                Utils::relative_epsilon(test.expected.x, actual.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y,
+                Utils::relative_epsilon(test.expected.y, actual.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z,
+                Utils::relative_epsilon(test.expected.y, actual.y))
+        << test.message;
+  }
+
+  auto a = Vector3{1, 1, 1};
+  auto b = Vector3{0, 0, 0};
+  auto expected = a.Project(b);
+  EXPECT_TRUE(std::isnan(expected.x) && std::isnan(expected.y) &&
+              std::isnan(expected.z));
+}
+
+struct RejectTest {
+  Vector3 a;
+  Vector3 b;
+  Vector3 expected;
+  std::string message;
+};
+TEST(Vector3, it_handles_rejection) {
+  std::vector<RejectTest> tests = {
+      {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, ""},
+
+      {{1, 1, 1}, {1, 1, 1}, {0, 0, 0}, ""},
+      {{-1, -1, -1}, {1, 1, 1}, {0, 0, 0}, ""},
+      {{1, 1, 1}, {-1, -1, -1}, {0, 0, 0}, ""},
+
+      {{1, 0, 0}, {0, 1, 0}, {1, 0, 0}, ""},
+      {{0, 1, 0}, {1, 0, 0}, {0, 1, 0}, ""},
+      {{0, 0, 1}, {0, 1, 0}, {0, 0, 1}, ""},
+      {{0, 1, 0}, {0, 0, 1}, {0, 1, 0}, ""},
+      {{1, 0, 0}, {0, 0, 1}, {1, 0, 0}, ""},
+      {{0, 0, 1}, {1, 0, 0}, {0, 0, 1}, ""},
+
+      {{1, 1, 0}, {0, 1, 1}, {1, 0.5f, -0.5f}, ""},
+      {{0, 1, 1}, {1, 1, 0}, {-0.5f, 0.5f, 1}, ""},
+  };
+  for (const auto& test : tests) {
+    auto actual = test.a.Reject(test.b);
+    EXPECT_NEAR(test.expected.x, actual.x,
+                Utils::relative_epsilon(test.expected.x, actual.x))
+        << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y,
+                Utils::relative_epsilon(test.expected.y, actual.y))
+        << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z,
+                Utils::relative_epsilon(test.expected.y, actual.y))
         << test.message;
   }
 }
