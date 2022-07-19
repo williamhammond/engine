@@ -50,6 +50,12 @@ class Vector3 {
   inline Vector3 operator/(float a) const { return {x / a, y / a, z / a}; }
   inline Vector3 operator-() const { return {-x, -y, -z}; }
 
+  [[nodiscard]] inline bool Equals(const Vector3& b,
+                                   float epsilon = 0.0f) const {
+    return Utils::abs(b.x - x) <= epsilon && Utils::abs(b.y - y) <= epsilon &&
+           Utils::abs(b.z - z) <= epsilon;
+  }
+
   [[nodiscard]] inline float Magnitude() const {
     return Utils::sqrt(Utils::square(x) + Utils::square(y) + Utils::square(z));
   }
@@ -61,7 +67,9 @@ class Vector3 {
     return ((*this) / Magnitude());
   }
 
-  inline float Dot(Vector3 b) const { return x * b.x + y * b.y + z * b.z; }
+  [[nodiscard]] inline float Dot(Vector3 b) const {
+    return x * b.x + y * b.y + z * b.z;
+  }
 
   inline Vector3 Cross(Vector3 b) const {
     return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x};
