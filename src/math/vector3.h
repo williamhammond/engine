@@ -14,9 +14,7 @@ class Vector3 {
   float& operator[](int i);
   const float& operator[](int i) const;
 
-  Vector3 operator+(const Vector3& v) const {
-    return {x + v.x, y + v.y, z + v.z};
-  }
+  Vector3 operator+(const Vector3& v) const { return {x + v.x, y + v.y, z + v.z}; }
   Vector3& operator+=(const Vector3& v) {
     x += v.x;
     y += v.y;
@@ -24,9 +22,7 @@ class Vector3 {
     return (*this);
   }
 
-  Vector3 operator-(const Vector3& v) const {
-    return {x - v.x, y - v.y, z - v.z};
-  }
+  Vector3 operator-(const Vector3& v) const { return {x - v.x, y - v.y, z - v.z}; }
   Vector3& operator-=(const Vector3& v) {
     x -= v.x;
     y -= v.y;
@@ -50,10 +46,8 @@ class Vector3 {
   inline Vector3 operator/(float a) const { return {x / a, y / a, z / a}; }
   inline Vector3 operator-() const { return {-x, -y, -z}; }
 
-  [[nodiscard]] inline bool Equals(const Vector3& b,
-                                   float epsilon = 0.0f) const {
-    return Utils::abs(b.x - x) <= epsilon && Utils::abs(b.y - y) <= epsilon &&
-           Utils::abs(b.z - z) <= epsilon;
+  [[nodiscard]] inline bool Equals(const Vector3& b, float epsilon = 0.0f) const {
+    return Utils::abs(b.x - x) <= epsilon && Utils::abs(b.y - y) <= epsilon && Utils::abs(b.z - z) <= epsilon;
   }
 
   [[nodiscard]] inline float Magnitude() const {
@@ -67,18 +61,12 @@ class Vector3 {
     return ((*this) / Magnitude());
   }
 
-  [[nodiscard]] inline float Dot(Vector3 b) const {
-    return x * b.x + y * b.y + z * b.z;
-  }
+  [[nodiscard]] inline float Dot(Vector3 b) const { return x * b.x + y * b.y + z * b.z; }
 
-  inline Vector3 Cross(Vector3 b) const {
-    return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x};
-  }
+  inline Vector3 Cross(Vector3 b) const { return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x}; }
 
   // TODO: figure out 0 projection
-  inline Vector3 Project(Vector3 b) const {
-    return b * (this->Dot(b) / b.Dot(b));
-  }
+  inline Vector3 Project(Vector3 b) const { return b * (this->Dot(b) / b.Dot(b)); }
 
   inline Vector3 Reject(const Vector3& b) const { return *this - Project(b); }
 };

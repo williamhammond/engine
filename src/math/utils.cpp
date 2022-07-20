@@ -79,6 +79,4 @@ float Utils::max(float x, float y) {
  *  https://randomascii.wordpress.com/2012/01/11/tricks-with-the-floating-point-format/
  *  https://github.com/google/googletest/blob/main/googletest/include/gtest/internal/gtest-internal.h#L339
  */
-float Utils::relative_epsilon(float x, float y, float rel_diff) {
-  return max(abs(x), abs(y)) * rel_diff;
-}
+float Utils::relative_epsilon(float x, float y, float rel_diff) { return max(abs(x), abs(y)) * rel_diff; }
