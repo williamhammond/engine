@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658287589935,
+  "lastUpdate": 1658287634064,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -4158,6 +4158,60 @@ window.BENCHMARK_DATA = {
             "value": 3452492674.999974,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3450695600.0000005 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "4160f53e3ab8d23c7b65822566d0351a02f22cde",
+          "message": "Merge pull request #22 from williamhammond/add-matrix\n\nAdds initial Matrix3 class",
+          "timestamp": "2022-07-19T23:24:14-04:00",
+          "tree_id": "523fb00e9b9c8b6734f70b5b8619ad1b5dd1edbb",
+          "url": "https://github.com/williamhammond/engine/commit/4160f53e3ab8d23c7b65822566d0351a02f22cde"
+        },
+        "date": 1658287633635,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.3390193200264953,
+            "unit": "ns/iter",
+            "extra": "iterations: 522241520\ncpu: 1.3388043141418555 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 24.107745659611776,
+            "unit": "ns/iter",
+            "extra": "iterations: 29038534\ncpu: 24.090482666928025 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 415.45971410855657,
+            "unit": "ns/iter",
+            "extra": "iterations: 1683716\ncpu: 415.4304526416569 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.033829682888031,
+            "unit": "ns/iter",
+            "extra": "iterations: 138875112\ncpu: 5.032375419434407 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 2877140354.9999948,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 2874346500 ns\nthreads: 1"
           }
         ]
       }
