@@ -14,7 +14,12 @@ class Matrix3 {
   static Matrix3 RotationX(float theta);
   static Matrix3 RotationY(float theta);
   static Matrix3 RotationZ(float theta);
-
+  static Matrix3 Rotation(float theta, Vector3 axis);
+  static Matrix3 Reflection(const Vector3& a);
+  static Matrix3 Involution(const Vector3& a);
+  static Matrix3 Scale(float x_scalar, float y_scalar, float z_scalar);
+  static Matrix3 Scale(float s, const Vector3& a);
+  static Matrix3 Skew(float t, const Vector3& a, const Vector3 b);
 
   Matrix3(float n00, float n01, float n02, float n10, float n11, float n12, float n20, float n21, float n22) {
     n[0][0] = n00;
