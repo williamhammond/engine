@@ -11,6 +11,10 @@ class Matrix3 {
 
  public:
   Matrix3() = default;
+  static Matrix3 RotationX(float theta);
+  static Matrix3 RotationY(float theta);
+  static Matrix3 RotationZ(float theta);
+
 
   Matrix3(float n00, float n01, float n02, float n10, float n11, float n12, float n20, float n21, float n22) {
     n[0][0] = n00;
