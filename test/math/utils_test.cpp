@@ -40,8 +40,7 @@ TEST(Utils, it_calculates_square) {
 
   for (auto test : tests) {
     auto actual = Utils::square(test.x);
-    EXPECT_NEAR(test.expected, actual,
-                Utils::relative_epsilon(test.expected, actual));
+    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual));
   }
 }
 
@@ -57,8 +56,7 @@ TEST(Utils, it_calculates_sqrt) {
 
   for (auto test : tests) {
     auto actual = Utils::sqrt(test.x);
-    EXPECT_NEAR(test.expected, actual,
-                Utils::relative_epsilon(test.expected, actual));
+    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual));
   }
 }
 struct PowerTest {
@@ -89,7 +87,24 @@ TEST(Utils, it_calculates_power) {
 
   for (auto test : tests) {
     auto actual = Utils::pow(test.x, test.e);
-    EXPECT_NEAR(test.expected, actual,
-                Utils::relative_epsilon(test.expected, actual, 1e-4f));
+    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual, 1e-4f));
+  }
+}
+
+struct Degree2RadTest {
+  float degrees;
+  float rads;
+  float epsilon;
+};
+
+TEST(Utils, it_calculates_degree_2_rad) {
+  std::vector<Degree2RadTest> tests = {
+      {57.2958f, 1, 1e-3f},     {90, 1.570796f, 1e-3f},   {180, 3.14169f, 1e-3f},   {360, 6.28319f, 1e-3f},
+      {-90, -1.570796f, 1e-3f}, {-180, -3.14169f, 1e-3f}, {-360, -6.28319f, 1e-3f},
+  };
+
+  for (auto test : tests) {
+    auto actual = Utils::Degree2Radian(test.degrees);
+    EXPECT_NEAR(test.rads, actual, test.epsilon);
   }
 }

@@ -1,5 +1,6 @@
 #include "utils.h"
 
+#include <numbers>
 #include <stdexcept>
 
 /**
@@ -80,3 +81,6 @@ float Utils::max(float x, float y) {
  *  https://github.com/google/googletest/blob/main/googletest/include/gtest/internal/gtest-internal.h#L339
  */
 float Utils::relative_epsilon(float x, float y, float rel_diff) { return max(abs(x), abs(y)) * rel_diff; }
+
+// TODO: look into if this type of cast is correct
+float Utils::Degree2Radian(float degree) { return ((float)std::numbers::pi / 180) * degree; }

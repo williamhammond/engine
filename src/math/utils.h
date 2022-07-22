@@ -13,6 +13,7 @@ class Utils {
   static float min(float x, float y);
   static float max(float x, float y);
   static float relative_epsilon(float x, float y, float rel_diff = 1e-9f);
+  static float Degree2Radian(float degree);
 };
 
 #endif  // ENGINE_UTILS_H
