@@ -1,5 +1,3 @@
-
-
 #ifndef ENGINE_UTILS_H
 #define ENGINE_UTILS_H
 

@@ -2,6 +2,15 @@
 
 #include <cmath>
 
+Matrix3 Matrix3::Identity() {
+  // clang-format off
+  return { 1.0f, 0.0f, 0.0f,
+           0.0f, 1.0f, 0.0f,
+           0.0f, 0.0f, 1.0f
+  };
+  // clang-format on
+}
+
 Matrix3 Matrix3::RotationX(float theta) {
   auto c = std::cos(Utils::Degree2Radian(theta));
   auto s = std::sin(Utils::Degree2Radian(theta));

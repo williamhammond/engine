@@ -11,6 +11,7 @@ class Matrix3 {
 
  public:
   Matrix3() = default;
+  static Matrix3 Identity();
   static Matrix3 RotationX(float theta);
   static Matrix3 RotationY(float theta);
   static Matrix3 RotationZ(float theta);
@@ -103,8 +104,9 @@ class Matrix3 {
     return {r0.x * invDet, r0.y * invDet, r0.z * invDet, r1.x * invDet, r1.y * invDet,
             r1.z * invDet, r2.x * invDet, r2.y * invDet, r2.z * invDet};
   }
+
   // TODO make this not fking stupid
-  friend std::ostream& operator<<(std::ostream& os, const Matrix3& A);
+  friend inline std::ostream& operator<<(std::ostream& os, const Matrix3& A);
 };
 
 std::ostream& operator<<(std::ostream& strm, const Matrix3& A) {
