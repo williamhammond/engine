@@ -84,3 +84,5 @@ float Utils::relative_epsilon(float x, float y, float rel_diff) { return max(abs
 
 // TODO: look into if this type of cast is correct
 float Utils::Degree2Radian(float degree) { return ((float)std::numbers::pi / 180) * degree; }
+
+float Utils::Radian2Degree(float rad) { return rad / (float)(std::numbers::pi / 180); }
