@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include <vector>
+#include <numbers>
 
 TEST(Matrix3, it_indexes) {
   Matrix3 matrix3{1, 0, 0, 0, 1, 0, 0, 0, 1};
