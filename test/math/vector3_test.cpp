@@ -24,40 +24,26 @@ TEST(Vector3, it_calculates_addition) {
   std::vector<AdditionTest> tests = {
       AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
       AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
-      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1},
-                   ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a + test.b;
-    EXPECT_NEAR(test.expected.x, actual.x,
-                Utils::relative_epsilon(test.expected.x, actual.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y,
-                Utils::relative_epsilon(test.expected.y, actual.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z,
-                Utils::relative_epsilon(test.expected.z, actual.z))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x, Utils::relative_epsilon(test.expected.x, actual.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.z, actual.z)) << test.message;
   }
 }
 TEST(Vector3, it_calculates_addition_with_assignment) {
   std::vector<AdditionTest> tests = {
       AdditionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
       AdditionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{1, 1, 1}, ""},
-      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1},
-                   ""},
+      AdditionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{-1, -1, -1}, ""},
   };
   for (auto test : tests) {
     test.a += test.b;
-    EXPECT_NEAR(test.expected.x, test.a.x,
-                Utils::relative_epsilon(test.expected.x, test.a.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, test.a.y,
-                Utils::relative_epsilon(test.expected.y, test.a.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, test.a.z,
-                Utils::relative_epsilon(test.expected.z, test.a.z))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, test.a.x, Utils::relative_epsilon(test.expected.x, test.a.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y, Utils::relative_epsilon(test.expected.y, test.a.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z, Utils::relative_epsilon(test.expected.z, test.a.z)) << test.message;
   }
 }
 
@@ -70,43 +56,27 @@ struct SubtractionTest {
 TEST(Vector3, it_calculates_subtraction) {
   std::vector<SubtractionTest> tests = {
       SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1},
-                      ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1},
-                      ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
   };
   for (auto test : tests) {
     test.a -= test.b;
-    EXPECT_NEAR(test.expected.x, test.a.x,
-                Utils::relative_epsilon(test.expected.x, test.a.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, test.a.y,
-                Utils::relative_epsilon(test.expected.y, test.a.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, test.a.z,
-                Utils::relative_epsilon(test.expected.z, test.a.z))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, test.a.x, Utils::relative_epsilon(test.expected.x, test.a.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, test.a.y, Utils::relative_epsilon(test.expected.y, test.a.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, test.a.z, Utils::relative_epsilon(test.expected.z, test.a.z)) << test.message;
   }
 }
 TEST(Vector3, it_calculates_subtraction_with_assignment) {
   std::vector<SubtractionTest> tests = {
       SubtractionTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, Vector3{0, 0, 0}, ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1},
-                      ""},
-      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1},
-                      ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{1, 1, 1}, Vector3{-1, -1, -1}, ""},
+      SubtractionTest{Vector3{0, 0, 0}, Vector3{-1, -1, -1}, Vector3{1, 1, 1}, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a - test.b;
-    EXPECT_NEAR(test.expected.x, actual.x,
-                Utils::relative_epsilon(test.expected.x, actual.x, 1e-4f))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y,
-                Utils::relative_epsilon(test.expected.y, actual.y, 1e-4f))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z,
-                Utils::relative_epsilon(test.expected.z, actual.z, 1e-4f))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x, Utils::relative_epsilon(test.expected.x, actual.x, 1e-4f)) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, Utils::relative_epsilon(test.expected.y, actual.y, 1e-4f)) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.z, actual.z, 1e-4f)) << test.message;
   }
 }
 
@@ -125,15 +95,9 @@ TEST(Vector3, it_calculates_multiplication) {
   };
   for (const auto& test : tests) {
     auto actual = test.input * test.scalar;
-    EXPECT_NEAR(test.expected.x, actual.x,
-                Utils::relative_epsilon(test.expected.x, actual.x, 1e-4f))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y,
-                Utils::relative_epsilon(test.expected.y, actual.y, 1e-4f))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z,
-                Utils::relative_epsilon(test.expected.z, actual.z, 1e-4f))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x, Utils::relative_epsilon(test.expected.x, actual.x, 1e-4f)) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, Utils::relative_epsilon(test.expected.y, actual.y, 1e-4f)) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.z, actual.z, 1e-4f)) << test.message;
   }
 }
 TEST(Vector3, it_calculates_multiplication_with_assignment) {
@@ -145,14 +109,11 @@ TEST(Vector3, it_calculates_multiplication_with_assignment) {
   };
   for (auto test : tests) {
     test.input *= test.scalar;
-    EXPECT_NEAR(test.input.x, test.expected.x,
-                Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
+    EXPECT_NEAR(test.input.x, test.expected.x, Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
         << test.message;
-    EXPECT_NEAR(test.input.y, test.expected.y,
-                Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
+    EXPECT_NEAR(test.input.y, test.expected.y, Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
         << test.message;
-    EXPECT_NEAR(test.input.z, test.expected.z,
-                Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
+    EXPECT_NEAR(test.input.z, test.expected.z, Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
         << test.message;
   }
 }
@@ -172,14 +133,11 @@ TEST(Vector3, it_calculates_division) {
   };
   for (const auto& test : tests) {
     Vector3 actual = test.input / test.scalar;
-    EXPECT_NEAR(test.expected.x, actual.x,
-                Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
+    EXPECT_NEAR(test.expected.x, actual.x, Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
         << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y,
-                Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
+    EXPECT_NEAR(test.expected.y, actual.y, Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
         << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z,
-                Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
+    EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
         << test.message;
   }
 }
@@ -192,14 +150,11 @@ TEST(Vector3, it_calculates_division_with_assignment) {
   };
   for (auto test : tests) {
     test.input /= test.scalar;
-    EXPECT_NEAR(test.input.x, test.expected.x,
-                Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
+    EXPECT_NEAR(test.input.x, test.expected.x, Utils::relative_epsilon(test.input.x, test.expected.x, 1e-4f))
         << test.message;
-    EXPECT_NEAR(test.input.y, test.expected.y,
-                Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
+    EXPECT_NEAR(test.input.y, test.expected.y, Utils::relative_epsilon(test.input.y, test.expected.y, 1e-4f))
         << test.message;
-    EXPECT_NEAR(test.input.z, test.expected.z,
-                Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
+    EXPECT_NEAR(test.input.z, test.expected.z, Utils::relative_epsilon(test.input.z, test.expected.z, 1e-4f))
         << test.message;
   }
 }
@@ -212,12 +167,9 @@ TEST(Vector3, it_handles_negation) {
   };
   for (auto expected : vectors) {
     Vector3 actual = -expected;
-    EXPECT_NEAR(-expected.x, actual.x,
-                Utils::relative_epsilon(-expected.x, actual.x));
-    EXPECT_NEAR(-expected.y, actual.y,
-                Utils::relative_epsilon(-expected.y, actual.y));
-    EXPECT_NEAR(-expected.z, actual.z,
-                Utils::relative_epsilon(-expected.z, actual.z));
+    EXPECT_NEAR(-expected.x, actual.x, Utils::relative_epsilon(-expected.x, actual.x));
+    EXPECT_NEAR(-expected.y, actual.y, Utils::relative_epsilon(-expected.y, actual.y));
+    EXPECT_NEAR(-expected.z, actual.z, Utils::relative_epsilon(-expected.z, actual.z));
   }
 }
 
@@ -232,15 +184,9 @@ TEST(Vector3, it_computes_equality) {
       {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, 1e-9f},
       {{0, 0, 0}, {-0, -0, -0}, {0, 0, 0}, 1e-9f},
 
-      {{1, 1, 1},
-       {1.000000001f, 1.000000001f, 1.00000001f},
-       {1.001f, 1.001f, 1.001f},
-       0.01f},
+      {{1, 1, 1}, {1.000000001f, 1.000000001f, 1.00000001f}, {1.001f, 1.001f, 1.001f}, 0.01f},
 
-      {{-1, -1, -1},
-       {-1.000000001f, -1.000000001f, -1.00000001f},
-       {-1, -1, -1},
-       1e-9f},
+      {{-1, -1, -1}, {-1.000000001f, -1.000000001f, -1.00000001f}, {-1, -1, -1}, 1e-9f},
   };
   for (auto test : tests) {
     EXPECT_TRUE(test.a.Equals(test.a, test.epsilon));
@@ -266,7 +212,7 @@ TEST(Vector3, it_computes_inequality) {
   std::vector<InequalityTest> tests = {
       {{1, 1, 1}, {2, 2, 2}, 1e-9f},
       {{1, 1, 1}, {1.1f, 1.1f, 1.1f}, 1e-9f},
-      {{0.00001f, 0.00001f, 0.00001f }, {0, 0, 0}, 1e-9f},
+      {{0.00001f, 0.00001f, 0.00001f}, {0, 0, 0}, 1e-9f},
   };
 
   for (const auto& test : tests) {
@@ -284,13 +230,11 @@ TEST(Vector3, it_calculates_magitude) {
   std::vector<MagnitudeTest> tests = {
       MagnitudeTest{Vector3{0, 0, 0}, 0, "it handles 0 vector"},
       MagnitudeTest{Vector3{1, 1, 1}, 1.73205080757f, "it handles unit vector"},
-      MagnitudeTest{Vector3{-1, -1, -1}, 1.73205080757f,
-                    "it handles negative unit vector"},
+      MagnitudeTest{Vector3{-1, -1, -1}, 1.73205080757f, "it handles negative unit vector"},
   };
   for (const auto& test : tests) {
-    EXPECT_NEAR(
-        test.expected, test.vector.Magnitude(),
-        Utils::relative_epsilon(test.expected, test.vector.Magnitude(), 1e-5f))
+    EXPECT_NEAR(test.expected, test.vector.Magnitude(),
+                Utils::relative_epsilon(test.expected, test.vector.Magnitude(), 1e-5f))
         << test.message;
   }
 }
@@ -304,13 +248,11 @@ TEST(Vector3, it_handles_normalization) {
   };
   for (auto vector : vectors) {
     Vector3 expected = vector.Normalize();
-    EXPECT_NEAR(1.0f, expected.Magnitude(),
-                std::numeric_limits<float>::epsilon());
+    EXPECT_NEAR(1.0f, expected.Magnitude(), std::numeric_limits<float>::epsilon());
   }
   Vector3 vector = Vector3{0, 0, 0};
   Vector3 expected = vector.Normalize();
-  EXPECT_NEAR(0.0f, expected.Magnitude(),
-              std::numeric_limits<float>::epsilon());
+  EXPECT_NEAR(0.0f, expected.Magnitude(), std::numeric_limits<float>::epsilon());
 }
 
 struct DotTest {
@@ -321,17 +263,13 @@ struct DotTest {
 };
 TEST(Vector3, it_handles_dot_product) {
   std::vector<DotTest> tests = {
-      {{1, 1, 1}, {1, 1, 1}, 3, ""},     {{0, 0, 0}, {1, 1, 1}, 0, ""},
-      {{1, 1, 1}, {-1, -1, -1}, -3, ""}, {{1, 1, 1}, {1, -1, 1}, 1, ""},
-      {{1, 1, 1}, {-1, 1, 1}, 1, ""},    {{1, 1, 1}, {1, 1, -1}, 1, ""},
-      {{1, 1, 1}, {-1, -1, 1}, -1, ""},  {{1, 1, 1}, {-1, 1, -1}, -1, ""},
-      {{1, 1, 1}, {1, -1, -1}, -1, ""},
+      {{1, 1, 1}, {1, 1, 1}, 3, ""},    {{0, 0, 0}, {1, 1, 1}, 0, ""},    {{1, 1, 1}, {-1, -1, -1}, -3, ""},
+      {{1, 1, 1}, {1, -1, 1}, 1, ""},   {{1, 1, 1}, {-1, 1, 1}, 1, ""},   {{1, 1, 1}, {1, 1, -1}, 1, ""},
+      {{1, 1, 1}, {-1, -1, 1}, -1, ""}, {{1, 1, 1}, {-1, 1, -1}, -1, ""}, {{1, 1, 1}, {1, -1, -1}, -1, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a.Dot(test.b);
-    EXPECT_NEAR(test.expected, actual,
-                Utils::relative_epsilon(test.expected, actual))
-        << test.message;
+    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual)) << test.message;
   }
 }
 
@@ -343,30 +281,17 @@ struct CrossTest {
 };
 TEST(Vector3, it_handles_cross_product) {
   std::vector<CrossTest> tests = {
-      {{1, 1, 1}, {1, 1, 1}, {0, 0, 0}, ""},
-      {{-1, -1, -1}, {1, 1, 1}, {0, 0, 0}, ""},
-      {{1, 1, 1}, {-1, -1, -1}, {0, 0, 0}, ""},
-
-      {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, ""},
-      {{0, 1, 0}, {1, 0, 0}, {0, 0, -1}, ""},
-
-      {{0, 0, 1}, {0, 1, 0}, {-1, 0, 0}, ""},
-      {{0, 1, 0}, {0, 0, 1}, {1, 0, 0}, ""},
-
-      {{1, 0, 0}, {0, 0, 1}, {0, -1, 0}, ""},
+      {{1, 1, 1}, {1, 1, 1}, {0, 0, 0}, ""},    {{-1, -1, -1}, {1, 1, 1}, {0, 0, 0}, ""},
+      {{1, 1, 1}, {-1, -1, -1}, {0, 0, 0}, ""}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, ""},
+      {{0, 1, 0}, {1, 0, 0}, {0, 0, -1}, ""},   {{0, 0, 1}, {0, 1, 0}, {-1, 0, 0}, ""},
+      {{0, 1, 0}, {0, 0, 1}, {1, 0, 0}, ""},    {{1, 0, 0}, {0, 0, 1}, {0, -1, 0}, ""},
       {{0, 0, 1}, {1, 0, 0}, {0, 1, 0}, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a.Cross(test.b);
-    EXPECT_NEAR(test.expected.x, actual.x,
-                Utils::relative_epsilon(test.expected.x, actual.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y,
-                Utils::relative_epsilon(test.expected.y, actual.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z,
-                Utils::relative_epsilon(test.expected.y, actual.y))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x, Utils::relative_epsilon(test.expected.x, actual.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
   }
 
   // Anti-communative
@@ -374,25 +299,98 @@ TEST(Vector3, it_handles_cross_product) {
     auto lhs = test.a.Cross(test.b);
     auto rhs = -(test.b.Cross(test.a));
 
-    EXPECT_NEAR(test.expected.x, lhs.x,
-                Utils::relative_epsilon(test.expected.x, lhs.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, lhs.y,
-                Utils::relative_epsilon(test.expected.y, lhs.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, lhs.z,
-                Utils::relative_epsilon(test.expected.z, lhs.z))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, lhs.x, Utils::relative_epsilon(test.expected.x, lhs.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, lhs.y, Utils::relative_epsilon(test.expected.y, lhs.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, lhs.z, Utils::relative_epsilon(test.expected.z, lhs.z)) << test.message;
 
-    EXPECT_NEAR(test.expected.x, rhs.x,
-                Utils::relative_epsilon(test.expected.x, rhs.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, rhs.y,
-                Utils::relative_epsilon(test.expected.y, rhs.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, rhs.z,
-                Utils::relative_epsilon(test.expected.z, rhs.z))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, rhs.x, Utils::relative_epsilon(test.expected.x, rhs.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, rhs.y, Utils::relative_epsilon(test.expected.y, rhs.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, rhs.z, Utils::relative_epsilon(test.expected.z, rhs.z)) << test.message;
+  }
+}
+
+struct VectorTripleTest {
+  Vector3 a;
+  Vector3 b;
+  Vector3 c;
+  float epsilon;
+};
+TEST(Vector3, it_enforces_vector_triple) {
+  std::vector<VectorTripleTest> tests = {
+      {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, 1e-9f}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, 1e-9f},
+      {{1, 1, 1}, {0, 0, 0}, {0, 0, 0}, 1e-9f}, {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, 1e-9f},
+      {{0, 0, 0}, {0, 0, 0}, {1, 1, 1}, 1e-9f}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, 1e-9f},
+  };
+
+  for (auto test : tests) {
+    auto lhs = test.a.Cross(test.b.Cross(test.c));
+    auto rhs = test.b * (test.a.Dot(test.c)) - test.c * (test.a.Dot(test.b));
+    EXPECT_TRUE(lhs.Equals(rhs, test.epsilon));
+  }
+}
+
+struct LarangeIdentityTest {
+  Vector3 a;
+  Vector3 b;
+  float epsilon;
+};
+
+TEST(Vector3, it_enforces_larange_identity) {
+  std::vector<LarangeIdentityTest> tests = {
+      {{1, 0, 0}, {0, 1, 0}, 1e-5f},
+      {{1, 0, 0}, {0, 0, 1}, 1e-5f},
+      {{1, 1, 1}, {1, 1, 1}, 1e-5f},
+      {{0, 0, 0}, {0, 0, 0}, 1e-5f},
+      {{10, 23, 18}, {-1, 30, 5.123123f}, 0.1f},
+
+  };
+  for (auto test : tests) {
+    auto lhs = Utils::square(test.a.Cross(test.b).Magnitude());
+    auto rhs =
+        Utils::square(test.a.Magnitude()) * Utils::square(test.b.Magnitude()) - Utils::square(test.a.Dot(test.b));
+    EXPECT_NEAR(lhs, rhs, test.epsilon);
+  }
+}
+
+struct ScalarFactorizationTest {
+  Vector3 a;
+  Vector3 b;
+  float t;
+  float epsilon;
+};
+
+TEST(Vector3, it_handles_scalar_factorization) {
+  std::vector<ScalarFactorizationTest> tests = {
+      {{1, 1, 1}, {1, 1, 1}, 10, 1e-9f},     {{0, 0, 0}, {1, 1, 1}, 10, 1e-9f}, {{1, 1, 1}, {0, 0, 0}, 10, 1e-9f},
+      {{-1, -1, -1}, {1, 1, 1}, 10, 1e-9f},  {{1, 0, 0}, {0, 1, 0}, 10, 1e-9f}, {{1, 0, 0}, {0, 0, 1}, 10, 1e-9f},
+      {{24, -9, 7}, {2, 4, 8}, 0.5f, 1e-9f},
+  };
+  for (auto test : tests) {
+    auto left_term = (test.a * test.t).Cross(test.b);
+    auto middle_term = (test.a * test.t).Cross(test.b);
+    auto right_term = (test.a * test.t).Cross(test.b);
+    EXPECT_TRUE(left_term.Equals(middle_term, test.epsilon));
+    EXPECT_TRUE(middle_term.Equals(right_term, test.epsilon));
+    EXPECT_TRUE(left_term.Equals(right_term, test.epsilon));
+  }
+}
+
+struct CrossProductDistributiveTest {
+  Vector3 a;
+  Vector3 b;
+  Vector3 c;
+  float epislon;
+};
+TEST(Vector3, it_handles_cross_product_distributive) {
+  std::vector<CrossProductDistributiveTest> tests = {
+      {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, 1e-9f}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, 1e-9f},
+      {{1, 1, 1}, {0, 0, 0}, {0, 0, 0}, 1e-9f}, {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, 1e-9f},
+      {{0, 0, 0}, {0, 0, 0}, {1, 1, 1}, 1e-9f}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, 1e-9f},
+  };
+  for (auto test : tests) {
+    auto lhs = test.a.Cross(test.b + test.c);
+    auto rhs = test.a.Cross(test.b) + test.a.Cross(test.c);
+    EXPECT_TRUE(lhs.Equals(rhs, test.epislon));
   }
 }
 
@@ -404,40 +402,24 @@ struct ProjectTest {
 };
 TEST(Vector3, it_handles_projection) {
   std::vector<ProjectTest> tests = {
-      {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, ""},
-      {{-1, -1, -1}, {1, 1, 1}, {-1, -1, -1}, ""},
-      {{1, 1, 1}, {-1, -1, -1}, {1, 1, 1}, ""},
-
-      {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, ""},
-
-      {{1, 0, 0}, {0, 1, 0}, {0, 0, 0}, ""},
-      {{0, 1, 0}, {1, 0, 0}, {0, 0, 0}, ""},
-      {{0, 0, 1}, {0, 1, 0}, {0, 0, 0}, ""},
-      {{0, 1, 0}, {0, 0, 1}, {0, 0, 0}, ""},
-      {{1, 0, 0}, {0, 0, 1}, {0, 0, 0}, ""},
-      {{0, 0, 1}, {1, 0, 0}, {0, 0, 0}, ""},
-
-      {{1, 1, 0}, {0, 1, 1}, {0, 0.5f, 0.5f}, ""},
-      {{0, 1, 1}, {1, 1, 0}, {0.5f, 0.5f, 0}, ""},
+      {{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, ""},       {{-1, -1, -1}, {1, 1, 1}, {-1, -1, -1}, ""},
+      {{1, 1, 1}, {-1, -1, -1}, {1, 1, 1}, ""},    {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, ""},
+      {{1, 0, 0}, {0, 1, 0}, {0, 0, 0}, ""},       {{0, 1, 0}, {1, 0, 0}, {0, 0, 0}, ""},
+      {{0, 0, 1}, {0, 1, 0}, {0, 0, 0}, ""},       {{0, 1, 0}, {0, 0, 1}, {0, 0, 0}, ""},
+      {{1, 0, 0}, {0, 0, 1}, {0, 0, 0}, ""},       {{0, 0, 1}, {1, 0, 0}, {0, 0, 0}, ""},
+      {{1, 1, 0}, {0, 1, 1}, {0, 0.5f, 0.5f}, ""}, {{0, 1, 1}, {1, 1, 0}, {0.5f, 0.5f, 0}, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a.Project(test.b);
-    EXPECT_NEAR(test.expected.x, actual.x,
-                Utils::relative_epsilon(test.expected.x, actual.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y,
-                Utils::relative_epsilon(test.expected.y, actual.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z,
-                Utils::relative_epsilon(test.expected.y, actual.y))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x, Utils::relative_epsilon(test.expected.x, actual.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
   }
 
   auto a = Vector3{1, 1, 1};
   auto b = Vector3{0, 0, 0};
   auto expected = a.Project(b);
-  EXPECT_TRUE(std::isnan(expected.x) && std::isnan(expected.y) &&
-              std::isnan(expected.z));
+  EXPECT_TRUE(std::isnan(expected.x) && std::isnan(expected.y) && std::isnan(expected.z));
 }
 
 struct RejectTest {
@@ -450,30 +432,19 @@ TEST(Vector3, it_handles_rejection) {
   std::vector<RejectTest> tests = {
       {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, ""},
 
-      {{1, 1, 1}, {1, 1, 1}, {0, 0, 0}, ""},
-      {{-1, -1, -1}, {1, 1, 1}, {0, 0, 0}, ""},
+      {{1, 1, 1}, {1, 1, 1}, {0, 0, 0}, ""},        {{-1, -1, -1}, {1, 1, 1}, {0, 0, 0}, ""},
       {{1, 1, 1}, {-1, -1, -1}, {0, 0, 0}, ""},
 
-      {{1, 0, 0}, {0, 1, 0}, {1, 0, 0}, ""},
-      {{0, 1, 0}, {1, 0, 0}, {0, 1, 0}, ""},
-      {{0, 0, 1}, {0, 1, 0}, {0, 0, 1}, ""},
-      {{0, 1, 0}, {0, 0, 1}, {0, 1, 0}, ""},
-      {{1, 0, 0}, {0, 0, 1}, {1, 0, 0}, ""},
-      {{0, 0, 1}, {1, 0, 0}, {0, 0, 1}, ""},
+      {{1, 0, 0}, {0, 1, 0}, {1, 0, 0}, ""},        {{0, 1, 0}, {1, 0, 0}, {0, 1, 0}, ""},
+      {{0, 0, 1}, {0, 1, 0}, {0, 0, 1}, ""},        {{0, 1, 0}, {0, 0, 1}, {0, 1, 0}, ""},
+      {{1, 0, 0}, {0, 0, 1}, {1, 0, 0}, ""},        {{0, 0, 1}, {1, 0, 0}, {0, 0, 1}, ""},
 
-      {{1, 1, 0}, {0, 1, 1}, {1, 0.5f, -0.5f}, ""},
-      {{0, 1, 1}, {1, 1, 0}, {-0.5f, 0.5f, 1}, ""},
+      {{1, 1, 0}, {0, 1, 1}, {1, 0.5f, -0.5f}, ""}, {{0, 1, 1}, {1, 1, 0}, {-0.5f, 0.5f, 1}, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.a.Reject(test.b);
-    EXPECT_NEAR(test.expected.x, actual.x,
-                Utils::relative_epsilon(test.expected.x, actual.x))
-        << test.message;
-    EXPECT_NEAR(test.expected.y, actual.y,
-                Utils::relative_epsilon(test.expected.y, actual.y))
-        << test.message;
-    EXPECT_NEAR(test.expected.z, actual.z,
-                Utils::relative_epsilon(test.expected.y, actual.y))
-        << test.message;
+    EXPECT_NEAR(test.expected.x, actual.x, Utils::relative_epsilon(test.expected.x, actual.x)) << test.message;
+    EXPECT_NEAR(test.expected.y, actual.y, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
+    EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
   }
 }
