@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658947710685,
+  "lastUpdate": 1658947742085,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -4364,6 +4364,56 @@ window.BENCHMARK_DATA = {
             "value": 3444821726.000015,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3101804999.9999995 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "id": "0560f113684c79473091b1adfd4e54bd28449920",
+          "message": "Adds cross product properties as unit tests",
+          "timestamp": "2022-06-22T18:26:59Z",
+          "url": "https://github.com/williamhammond/engine/pull/24/commits/0560f113684c79473091b1adfd4e54bd28449920"
+        },
+        "date": 1658947740796,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 2.1366362329264343,
+            "unit": "ns/iter",
+            "extra": "iterations: 355319127\ncpu: 1.9865916196512552 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 31.108047378312833,
+            "unit": "ns/iter",
+            "extra": "iterations: 23533130\ncpu: 29.897043019776806 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 563.5100593126677,
+            "unit": "ns/iter",
+            "extra": "iterations: 1643999\ncpu: 424.6955138050572 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 7.854301811566048,
+            "unit": "ns/iter",
+            "extra": "iterations: 93041802\ncpu: 7.573509807989317 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3156635403.999985,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3015822000 ns\nthreads: 1"
           }
         ]
       }
