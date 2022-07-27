@@ -1,6 +1,8 @@
 #ifndef ENGINE_VECTOR3_H
 #define ENGINE_VECTOR3_H
 
+#include <sstream>
+
 #include "utils.h"
 
 class Vector3 {
@@ -54,7 +56,7 @@ class Vector3 {
     return Utils::sqrt(Utils::square(x) + Utils::square(y) + Utils::square(z));
   }
 
-  inline Vector3 Normalize() {
+  [[nodiscard]] inline Vector3 Normalize() const {
     if (Magnitude() == 0) {
       return (*this);
     }
@@ -63,12 +65,22 @@ class Vector3 {
 
   [[nodiscard]] inline float Dot(Vector3 b) const { return x * b.x + y * b.y + z * b.z; }
 
-  inline Vector3 Cross(Vector3 b) const { return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x}; }
+  [[nodiscard]] inline Vector3 Cross(Vector3 b) const {
+    return {y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x};
+  }
 
   // TODO: figure out 0 projection
-  inline Vector3 Project(Vector3 b) const { return b * (this->Dot(b) / b.Dot(b)); }
+  [[nodiscard]] inline Vector3 Project(Vector3 b) const { return b * (this->Dot(b) / b.Dot(b)); }
 
-  inline Vector3 Reject(const Vector3& b) const { return *this - Project(b); }
+  [[nodiscard]] inline Vector3 Reject(const Vector3& b) const { return *this - Project(b); }
+
+  [[nodiscard]] inline bool IsOrthogonal(const Vector3& b) const { return Utils::Equals((*this).Dot(b), 0, 1e-9f); }
+
+  [[nodiscard]] std::string ToString() const {
+    std::stringstream stream;
+    stream << "<x: " << x << ", y: " << y << ", z: " << z << ">";
+    return stream.str();
+  }
 };
 
 #endif  // ENGINE_VECTOR3_H
