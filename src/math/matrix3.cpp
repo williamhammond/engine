@@ -1,6 +1,7 @@
 #include "matrix3.h"
 
 #include <cmath>
+#include <stdexcept>
 
 Matrix3 Matrix3::Identity() {
   // clang-format off
@@ -79,9 +80,9 @@ Matrix3 Matrix3::Reflection(const Vector3 &a) {
   auto ayaz = y * a.z;
 
   // clang-format off
-  return {  x * a.x + 1.0f, axay,                 axaz,
-            axay                , y * a.y + 1.0f, ayaz,
-            axaz                , ayaz          , z * a.z + 1.0f
+  return {  x * a.x + 1.0f, axay          , axaz,
+            axay          , y * a.y + 1.0f, ayaz,
+            axaz          , ayaz          , z * a.z + 1.0f
   };
   // clang-format on
 }
@@ -112,7 +113,7 @@ Matrix3 Matrix3::Scale(float x_scalar, float y_scalar, float z_scalar) {
   // clang-format on
 }
 
-Matrix3 Scale(float s, const Vector3 &a) {
+Matrix3 Matrix3::Scale(float s, const Vector3 &a) {
   s -= 1.0f;
 
   auto x = a.x * s;
@@ -132,17 +133,23 @@ Matrix3 Scale(float s, const Vector3 &a) {
   // clang-format on
 }
 
-Matrix3 Skew(float t, const Vector3 &a, const Vector3 b) {
-  t = std::tan(t);
+Matrix3 Matrix3::Skew(float theta, const Vector3 &a, const Vector3 &b) {
+  if (!a.IsOrthogonal(b)) {
+    throw std::invalid_argument(a.ToString() + "needs to be orthogonal to " + b.ToString());
+  }
 
-  auto x = a.x * t;
-  auto y = a.y * t;
-  auto z = a.z * t;
+  auto a_norm = a.Normalize();
+  auto b_norm = b.Normalize();
+  theta = std::tan(Utils::Degree2Radian(theta));
+
+  auto x = a_norm.x * theta;
+  auto y = a_norm.y * theta;
+  auto z = a_norm.z * theta;
 
   // clang-format off
-  return { x * b.x + 1.0f, x * b.y       , x * b.z,
-           y * b.x       , y * b.y + 1.0f, y * b.z,
-           z * b.x       , z * b.y       , z * b.z + 1.0f,
+  return { x * b_norm.x + 1.0f, x * b_norm.y       , x * b_norm.z,
+           y * b_norm.x       , y * b_norm.y + 1.0f, y * b_norm.z,
+           z * b_norm.x       , z * b_norm.y       , z * b_norm.z + 1.0f,
   };
   // clang-format on
 }

@@ -86,3 +86,7 @@ float Utils::relative_epsilon(float x, float y, float rel_diff) { return max(abs
 float Utils::Degree2Radian(float degree) { return ((float)std::numbers::pi / 180) * degree; }
 
 float Utils::Radian2Degree(float rad) { return rad / (float)(std::numbers::pi / 180); }
+
+bool Utils::Equals(float a, float b, float epsilon) {
+  return abs(a - b) <= ((abs(a) < abs(b) ? abs(b) : abs(a)) * epsilon);
+}

@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+#include <stdexcept>
 #include <vector>
 
 TEST(Matrix3, it_indexes) {
@@ -248,42 +249,74 @@ TEST(Matrix3, it_rotates_z) {
                                                             << actual;
   }
 }
-//
-// TEST(Matrix3, it_scales) {
-//  std::vector<MultiplicationTest> tests = {{{}, {}, {}, 1e-9f}};
-//
-//  for (const auto& test : tests) {
-//    auto actual = test.A * test.B;
-//    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-//                                                            << test.B << "\n!=\n"
-//                                                            << test.expected << "\n\n"
-//                                                            << actual;
-//  }
-//}
-//
-// TEST(Matrix3, it_skews) {
-//  std::vector<MultiplicationTest> tests = {{{}, {}, {}, 1e-9f}};
-//
-//  for (const auto& test : tests) {
-//    auto actual = test.A * test.B;
-//    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-//                                                            << test.B << "\n!=\n"
-//                                                            << test.expected << "\n\n"
-//                                                            << actual;
-//  }
-//}
-//
-// TEST(Matrix3, it_reflects) {
-//  std::vector<MultiplicationTest> tests = {{{}, {}, {}, 1e-9f}};
-//
-//  for (const auto& test : tests) {
-//    auto actual = test.A * test.B;
-//    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-//                                                            << test.B << "\n!=\n"
-//                                                            << test.expected << "\n\n"
-//                                                            << actual;
-//  }
-//}
+
+TEST(Matrix3, it_scales) {
+  std::vector<MultiplicationTest> tests = {
+      {Matrix3::Identity(), Matrix3::Scale(0, 0, 0), {0, 0, 0, 0, 0, 0, 0, 0, 0}, 1e-9f},
+      {Matrix3::Identity(), Matrix3::Scale(-1, -1, -1), {-1, 0, 0, 0, -1, 0, 0, 0, -1}, 1e-9f},
+      {Matrix3::Identity(), Matrix3::Scale(10, 10, 10), {10, 0, 0, 0, 10, 0, 0, 0, 10}, 1e-9f},
+      {Matrix3::Identity(), Matrix3::Scale(0.5, 0.5, 0.5), {0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5}, 1e-9f},
+  };
+  // clang-format on
+
+  for (const auto& test : tests) {
+    auto actual = test.A * test.B;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
+                                                            << test.B << "\n!=\n"
+                                                            << test.expected << "\n\n"
+                                                            << actual;
+  }
+}
+
+TEST(Matrix3, it_skews) {
+  // clang-format off
+  std::vector<MultiplicationTest> tests = {
+      { Matrix3::Identity(),
+        Matrix3::Skew(0, {1, 0, 0}, {0, 1, 0}),
+        { 1, 0, 0,
+          0, 1, 0,
+          0, 0, 1 },
+        1e-9f},
+      { Matrix3::Identity(),
+        Matrix3::Skew(Utils::Radian2Degree((float)std::numbers::pi), {1, 0, 0}, {0, 1, 0}),
+        { 1, 0, 0,
+          0, 1, 0,
+          0, 0, 1 },
+        1e-7f},
+  };
+  // clang-format on
+
+  EXPECT_THROW(Matrix3::Skew(0, {1, 1, 1}, {1, 1, 1}), std::invalid_argument);
+
+  for (const auto& test : tests) {
+    auto actual = test.A * test.B;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
+                                                            << test.B << "\n!=\n"
+                                                            << test.expected << "\n\n"
+                                                            << actual;
+  }
+}
+
+TEST(Matrix3, it_reflects) {
+  // clang-format off
+  std::vector<MultiplicationTest> tests = {
+      { Matrix3::Identity(),
+        Matrix3::Reflection({1, 0, 0}),
+        { -1, 0, 0,
+           0, 1, 0,
+           0, 0, 1 },
+        1e-9f},
+  };
+  // clang-format on
+
+  for (const auto& test : tests) {
+    auto actual = test.A * test.B;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
+                                                            << test.B << "\n!=\n"
+                                                            << test.expected << "\n\n"
+                                                            << actual;
+  }
+}
 
 struct DeterminantTest {
   Matrix3 A;

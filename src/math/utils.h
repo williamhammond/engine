@@ -13,6 +13,7 @@ class Utils {
   static float relative_epsilon(float x, float y, float rel_diff = 1e-9f);
   static float Degree2Radian(float degree);
   static float Radian2Degree(float rad);
+  static bool Equals(float a, float b, float epsilon);
 };
 
 #endif  // ENGINE_UTILS_H
