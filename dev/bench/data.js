@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658947742085,
+  "lastUpdate": 1658947981787,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -2900,6 +2900,60 @@ window.BENCHMARK_DATA = {
             "value": 2874404671.0000362,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2874218100 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "84be361b8cb755626e3e70448b897c524f93a817",
+          "message": "Merge pull request #24 from williamhammond/improve-vector-tests\n\nAdds cross product properties as unit tests",
+          "timestamp": "2022-07-27T14:51:22-04:00",
+          "tree_id": "cb71ca02470c31f1c9334ec2242b5f0eeb67432e",
+          "url": "https://github.com/williamhammond/engine/commit/84be361b8cb755626e3e70448b897c524f93a817"
+        },
+        "date": 1658947980909,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.238115636597041,
+            "unit": "ns/iter",
+            "extra": "iterations: 541209216\ncpu: 1.238020122702419 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 19.987448587369116,
+            "unit": "ns/iter",
+            "extra": "iterations: 31942540\ncpu: 19.98529234055902 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 390.25056088734453,
+            "unit": "ns/iter",
+            "extra": "iterations: 1741437\ncpu: 390.2282999614687 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.383689989999994,
+            "unit": "ns/iter",
+            "extra": "iterations: 100000000\ncpu: 5.383290999999999 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 2231786832.0000114,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 2231521800 ns\nthreads: 1"
           }
         ]
       }
