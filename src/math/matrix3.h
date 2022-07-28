@@ -105,24 +105,23 @@ class Matrix3 {
             r1.z * invDet, r2.x * invDet, r2.y * invDet, r2.z * invDet};
   }
 
-  // TODO make this not fking stupid
-  friend inline std::ostream& operator<<(std::ostream& os, const Matrix3& A);
-};
-
-std::ostream& operator<<(std::ostream& strm, const Matrix3& A) {
-  for (int i = 0; i < 3; i++) {
-    strm << "| ";
-    for (int j = 0; j < 3; j++) {
-      strm << A(i, j);
-      if (j != 2) {
-        strm << ", ";
+  [[nodiscard]] std::string ToString() const {
+    std::string result = "";
+    for (int i = 0; i < 3; i++) {
+      result += "| ";
+      for (int j = 0; j < 3; j++) {
+        result += std::to_string((*this)(i, j));
+        if (j != 2) {
+          result += ", ";
+        }
+      }
+      result += " |";
+      if (i != 2) {
+        result += "\n";
       }
     }
-    strm << " |";
-    if (i != 2) {
-      strm << "\n";
-    }
+
+    return result;
   }
-  return strm;
-}
+};
 #endif  // ENGINE_MATRIX3_H

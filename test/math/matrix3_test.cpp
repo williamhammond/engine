@@ -2,9 +2,9 @@
 
 #include <gtest/gtest.h>
 
+#include <numbers>
 #include <stdexcept>
 #include <vector>
-#include <numbers>
 
 TEST(Matrix3, it_indexes) {
   Matrix3 matrix3{1, 0, 0, 0, 1, 0, 0, 0, 1};
@@ -96,10 +96,7 @@ TEST(Matrix3, it_multiplies) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
@@ -146,10 +143,7 @@ TEST(Matrix3, it_rotates_x) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
@@ -195,10 +189,7 @@ TEST(Matrix3, it_rotates_y) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
@@ -244,10 +235,7 @@ TEST(Matrix3, it_rotates_z) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
@@ -262,10 +250,7 @@ TEST(Matrix3, it_scales) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
@@ -291,10 +276,7 @@ TEST(Matrix3, it_skews) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
@@ -312,10 +294,7 @@ TEST(Matrix3, it_reflects) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 

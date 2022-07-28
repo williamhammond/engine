@@ -47,6 +47,7 @@ Matrix3 Matrix3::RotationZ(float theta) {
   // clang-format on
 }
 
+// https://gamemath.com/book/matrixtransforms.html#rotation_3d_arbitrary_axis
 Matrix3 Matrix3::Rotation(float theta, Vector3 axis) {
   auto a = axis.Normalize();
 

@@ -86,6 +86,7 @@ struct MultiplicationTest {
   float scalar;
   std::string message;
 };
+
 TEST(Vector3, it_calculates_multiplication) {
   std::vector<MultiplicationTest> tests = {
       MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
@@ -100,6 +101,7 @@ TEST(Vector3, it_calculates_multiplication) {
     EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.z, actual.z, 1e-4f)) << test.message;
   }
 }
+
 TEST(Vector3, it_calculates_multiplication_with_assignment) {
   std::vector<MultiplicationTest> tests = {
       MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
