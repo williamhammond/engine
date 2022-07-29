@@ -15,7 +15,9 @@ FetchContent_MakeAvailable(googletest)
 set(MATH_DIR ./math)
 file(GLOB_RECURSE MATH_TEST_FILES ${MATH_DIR}/*.cpp)
 add_executable(math_tests ${MATH_TEST_FILES})
+
 target_link_libraries(math_tests PUBLIC Math gtest_main fmt)
+
 if (MSVC)
     target_compile_options(math_tests PRIVATE /W4 /WX)
 else ()

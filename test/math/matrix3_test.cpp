@@ -2,9 +2,9 @@
 
 #include <gtest/gtest.h>
 
+#include <numbers>
 #include <stdexcept>
 #include <vector>
-#include <numbers>
 
 TEST(Matrix3, it_indexes) {
   Matrix3 matrix3{1, 0, 0, 0, 1, 0, 0, 0, 1};
@@ -80,14 +80,14 @@ TEST(Matrix3, it_computes_inequality) {
   }
 }
 
-struct MultiplicationTest {
+struct MatrixMultiplicationTest {
   Matrix3 A;
   Matrix3 B;
   Matrix3 expected;
   float epsilon = 1e-9f;
 };
 TEST(Matrix3, it_multiplies) {
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, 1e-9f},
       {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, 1e-9f},
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}, {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}, 1e-9f},
@@ -96,17 +96,14 @@ TEST(Matrix3, it_multiplies) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
 // TODO: Add non-identity rotation tests
 TEST(Matrix3, it_rotates_x) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
     {
       Matrix3::Identity(),
       Matrix3::RotationX(90),
@@ -146,16 +143,13 @@ TEST(Matrix3, it_rotates_x) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
 TEST(Matrix3, it_rotates_y) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {
           Matrix3::Identity(),
           Matrix3::RotationY(90),
@@ -195,16 +189,13 @@ TEST(Matrix3, it_rotates_y) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
 TEST(Matrix3, it_rotates_z) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {
           Matrix3::Identity(),
           Matrix3::RotationZ(90),
@@ -244,15 +235,12 @@ TEST(Matrix3, it_rotates_z) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
 TEST(Matrix3, it_scales) {
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {Matrix3::Identity(), Matrix3::Scale(0, 0, 0), {0, 0, 0, 0, 0, 0, 0, 0, 0}, 1e-9f},
       {Matrix3::Identity(), Matrix3::Scale(-1, -1, -1), {-1, 0, 0, 0, -1, 0, 0, 0, -1}, 1e-9f},
       {Matrix3::Identity(), Matrix3::Scale(10, 10, 10), {10, 0, 0, 0, 10, 0, 0, 0, 10}, 1e-9f},
@@ -262,16 +250,13 @@ TEST(Matrix3, it_scales) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
 TEST(Matrix3, it_skews) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       { Matrix3::Identity(),
         Matrix3::Skew(0, {1, 0, 0}, {0, 1, 0}),
         { 1, 0, 0,
@@ -291,16 +276,13 @@ TEST(Matrix3, it_skews) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 
 TEST(Matrix3, it_reflects) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       { Matrix3::Identity(),
         Matrix3::Reflection({1, 0, 0}),
         { -1, 0, 0,
@@ -312,10 +294,7 @@ TEST(Matrix3, it_reflects) {
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
-    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon)) << test.A << "\n*\n"
-                                                            << test.B << "\n!=\n"
-                                                            << test.expected << "\n\n"
-                                                            << actual;
+    EXPECT_TRUE(actual.Equals(test.expected, test.epsilon));
   }
 }
 

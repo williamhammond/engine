@@ -114,5 +114,8 @@ _deps
 *.out
 *.app
 
+# Visual Studio
+.vs/
+
 
 build/**
