@@ -80,7 +80,7 @@ TEST(Vector3, it_calculates_subtraction_with_assignment) {
   }
 }
 
-struct MultiplicationTest {
+struct VectorMultiplicationTest {
   Vector3 input{};
   Vector3 expected{};
   float scalar;
@@ -88,11 +88,11 @@ struct MultiplicationTest {
 };
 
 TEST(Vector3, it_calculates_multiplication) {
-  std::vector<MultiplicationTest> tests = {
-      MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
+  std::vector<VectorMultiplicationTest> tests = {
+      VectorMultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
+      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.input * test.scalar;
@@ -103,11 +103,11 @@ TEST(Vector3, it_calculates_multiplication) {
 }
 
 TEST(Vector3, it_calculates_multiplication_with_assignment) {
-  std::vector<MultiplicationTest> tests = {
-      MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
+  std::vector<VectorMultiplicationTest> tests = {
+      VectorMultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
+      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (auto test : tests) {
     test.input *= test.scalar;

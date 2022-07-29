@@ -80,14 +80,14 @@ TEST(Matrix3, it_computes_inequality) {
   }
 }
 
-struct MultiplicationTest {
+struct MatrixMultiplicationTest {
   Matrix3 A;
   Matrix3 B;
   Matrix3 expected;
   float epsilon = 1e-9f;
 };
 TEST(Matrix3, it_multiplies) {
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, 1e-9f},
       {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, 1e-9f},
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}, {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}, 1e-9f},
@@ -103,7 +103,7 @@ TEST(Matrix3, it_multiplies) {
 // TODO: Add non-identity rotation tests
 TEST(Matrix3, it_rotates_x) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
     {
       Matrix3::Identity(),
       Matrix3::RotationX(90),
@@ -149,7 +149,7 @@ TEST(Matrix3, it_rotates_x) {
 
 TEST(Matrix3, it_rotates_y) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {
           Matrix3::Identity(),
           Matrix3::RotationY(90),
@@ -195,7 +195,7 @@ TEST(Matrix3, it_rotates_y) {
 
 TEST(Matrix3, it_rotates_z) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {
           Matrix3::Identity(),
           Matrix3::RotationZ(90),
@@ -240,7 +240,7 @@ TEST(Matrix3, it_rotates_z) {
 }
 
 TEST(Matrix3, it_scales) {
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       {Matrix3::Identity(), Matrix3::Scale(0, 0, 0), {0, 0, 0, 0, 0, 0, 0, 0, 0}, 1e-9f},
       {Matrix3::Identity(), Matrix3::Scale(-1, -1, -1), {-1, 0, 0, 0, -1, 0, 0, 0, -1}, 1e-9f},
       {Matrix3::Identity(), Matrix3::Scale(10, 10, 10), {10, 0, 0, 0, 10, 0, 0, 0, 10}, 1e-9f},
@@ -256,7 +256,7 @@ TEST(Matrix3, it_scales) {
 
 TEST(Matrix3, it_skews) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       { Matrix3::Identity(),
         Matrix3::Skew(0, {1, 0, 0}, {0, 1, 0}),
         { 1, 0, 0,
@@ -282,7 +282,7 @@ TEST(Matrix3, it_skews) {
 
 TEST(Matrix3, it_reflects) {
   // clang-format off
-  std::vector<MultiplicationTest> tests = {
+  std::vector<MatrixMultiplicationTest> tests = {
       { Matrix3::Identity(),
         Matrix3::Reflection({1, 0, 0}),
         { -1, 0, 0,

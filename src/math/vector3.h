@@ -76,11 +76,7 @@ class Vector3 {
 
   [[nodiscard]] inline bool IsOrthogonal(const Vector3& b) const { return Utils::Equals((*this).Dot(b), 0, 1e-9f); }
 
-  [[nodiscard]] std::string ToString() const {
-    std::stringstream stream;
-    stream << "<x: " << x << ", y: " << y << ", z: " << z << ">";
-    return stream.str();
-  }
+  [[nodiscard]] std::string ToString() const;
 };
 
 #endif  // ENGINE_VECTOR3_H
