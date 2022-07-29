@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1658947991875,
+  "lastUpdate": 1659053452250,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -2954,6 +2954,56 @@ window.BENCHMARK_DATA = {
             "value": 2231786832.0000114,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2231521800 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "id": "fd77d046834bffee782287f2b0689da5f1c5f190",
+          "message": "Fixes gtest issue due to Matrix3 custom << operator",
+          "timestamp": "2022-06-22T18:26:59Z",
+          "url": "https://github.com/williamhammond/engine/pull/25/commits/fd77d046834bffee782287f2b0689da5f1c5f190"
+        },
+        "date": 1659053451818,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.3434766634283197,
+            "unit": "ns/iter",
+            "extra": "iterations: 522297242\ncpu: 1.3401853268832695 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 23.542899488457685,
+            "unit": "ns/iter",
+            "extra": "iterations: 29761905\ncpu: 23.52245261182038 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 410.4014287531847,
+            "unit": "ns/iter",
+            "extra": "iterations: 1705543\ncpu: 410.3743499870716 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.357076636275542,
+            "unit": "ns/iter",
+            "extra": "iterations: 130747521\ncpu: 5.356840379405741 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 2875953333.9999733,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 2875720900 ns\nthreads: 1"
           }
         ]
       }
