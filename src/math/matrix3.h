@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "utils.h"
 #include "vector3.h"
 
 class Matrix3 {
