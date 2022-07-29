@@ -175,14 +175,14 @@ TEST(Vector3, it_handles_negation) {
   }
 }
 
-struct EqualityTest {
+struct Vector3EqualityTest {
   Vector3 a;
   Vector3 b;
   Vector3 c;
   float epsilon;
 };
 TEST(Vector3, it_computes_equality) {
-  std::vector<EqualityTest> tests = {
+  std::vector<Vector3EqualityTest> tests = {
       {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, 1e-9f},
       {{0, 0, 0}, {-0, -0, -0}, {0, 0, 0}, 1e-9f},
 
@@ -205,13 +205,13 @@ TEST(Vector3, it_computes_equality) {
   }
 }
 
-struct InequalityTest {
+struct Vector3InequalityTest {
   Vector3 a;
   Vector3 b;
   float epsilon;
 };
 TEST(Vector3, it_computes_inequality) {
-  std::vector<InequalityTest> tests = {
+  std::vector<Vector3InequalityTest> tests = {
       {{1, 1, 1}, {2, 2, 2}, 1e-9f},
       {{1, 1, 1}, {1.1f, 1.1f, 1.1f}, 1e-9f},
       {{0.00001f, 0.00001f, 0.00001f}, {0, 0, 0}, 1e-9f},
