@@ -32,14 +32,14 @@ TEST(Matrix3, it_indexes) {
   EXPECT_EQ(0, matrix3[1][2]);
 }
 
-struct EqualityTest {
+struct Matrix3EqualityTest {
   Matrix3 A;
   Matrix3 B;
   Matrix3 C;
   float epsilon;
 };
 TEST(Matrix3, it_computes_equality) {
-  std::vector<EqualityTest> tests = {
+  std::vector<Matrix3EqualityTest> tests = {
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, 1e-9f},
       {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, 1e-9f},
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}},
@@ -63,13 +63,13 @@ TEST(Matrix3, it_computes_equality) {
   }
 }
 
-struct InequalityTest {
+struct Matrix3InequalityTest {
   Matrix3 A;
   Matrix3 B;
   float epsilon;
 };
 TEST(Matrix3, it_computes_inequality) {
-  std::vector<InequalityTest> tests = {
+  std::vector<Matrix3InequalityTest> tests = {
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{0, 0, 0}, {0, 1, 0}, {0, 0, 1}}, 1e-9f},
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1.01f, 0, 0}, {0, 1.01f, 0}, {0, 0, 1.01f}}, 1e-9f},
   };
