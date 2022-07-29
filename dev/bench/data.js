@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1659113760821,
+  "lastUpdate": 1659113978389,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -5084,6 +5084,56 @@ window.BENCHMARK_DATA = {
             "value": 3043495159.999992,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3010492999.999999 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "name": "williamhammond",
+            "username": "williamhammond"
+          },
+          "id": "05f9bc3d81e5396a763b1ff62ac5b227339430de",
+          "message": "Renames InequalityTest and EqualityTest structs",
+          "timestamp": "2022-06-22T18:26:59Z",
+          "url": "https://github.com/williamhammond/engine/pull/26/commits/05f9bc3d81e5396a763b1ff62ac5b227339430de"
+        },
+        "date": 1659113977439,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.9925324579930286,
+            "unit": "ns/iter",
+            "extra": "iterations: 340389113\ncpu: 1.9897551776281397 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 30.90690860563773,
+            "unit": "ns/iter",
+            "extra": "iterations: 23234124\ncpu: 30.42494737481818 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 430.89061096541417,
+            "unit": "ns/iter",
+            "extra": "iterations: 1619879\ncpu: 428.75918509962787 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 8.122972837861848,
+            "unit": "ns/iter",
+            "extra": "iterations: 90556274\ncpu: 7.95319825106762 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3036664824.0000134,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3031663000.0000005 ns\nthreads: 1"
           }
         ]
       }
