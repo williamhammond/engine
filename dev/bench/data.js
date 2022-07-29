@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1659105699774,
+  "lastUpdate": 1659106219700,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -1586,6 +1586,60 @@ window.BENCHMARK_DATA = {
             "value": 2894457099.999954,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2890625000 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5b0edc4bc24c30e61b2551627c042de53a93fd02",
+          "message": "Merge pull request #25 from williamhammond/fix-msvc\n\nFixes gtest memory issue when using MSVC",
+          "timestamp": "2022-07-29T10:39:53-04:00",
+          "tree_id": "83a3fc63e1baff49b99a7955a6c1d478519cd01c",
+          "url": "https://github.com/williamhammond/engine/commit/5b0edc4bc24c30e61b2551627c042de53a93fd02"
+        },
+        "date": 1659106210881,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.4951027002255066,
+            "unit": "ns/iter",
+            "extra": "iterations: 497777778\ncpu: 1.5066964278987962 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 23.826689466223254,
+            "unit": "ns/iter",
+            "extra": "iterations: 29866667\ncpu: 24.065289909985605 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 461.05048237734354,
+            "unit": "ns/iter",
+            "extra": "iterations: 1493333\ncpu: 460.3795670490105 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.983328571428866,
+            "unit": "ns/iter",
+            "extra": "iterations: 112000000\ncpu: 5.998883928571429 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 2513165899.99999,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 2515625000 ns\nthreads: 1"
           }
         ]
       }
