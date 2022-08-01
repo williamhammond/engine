@@ -1,9 +1,6 @@
-name: CMake Build Matrix
+name: CMake Build and Test
 
 on:
-  push:
-    branches:
-      - "main"
   pull_request:
 
 permissions:
@@ -111,48 +108,3 @@ jobs:
           fail-on-alert: true
           alert-comment-cc-users: '@WilliamHammond'
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push benchmark results
-        uses: benchmark-action/github-action-benchmark@v1
-        with:
-          tool: 'googlecpp'
-          name: ${{matrix.config.name}}-${{ matrix.config.build_type }}
-          output-file-path: ./build/benchmark/benchmark_result.json
-          alert-comment-cc-users: '@WilliamHammond'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          auto-push: true
-
-      - name: Cache benchmark
-        id: cache-benchmark
-        uses: actions/cache@v3
-        with:
-          path: ./build/benchmark/benchmark_result.json
-          key: ${{matrix.config.name}}-benchmark
-
-      - name: Install
-        shell: bash
-        run: cmake --install build --strip --config ${{ matrix.config.build_type }}
-
-      - name: Pack
-        shell: bash
-        working-directory: build/install
-        run: |
-          ls -laR
-          ${{ matrix.config.archiver }} ../${{ matrix.config.artifact }} .
-
-      - name: Upload
-        uses: actions/upload-artifact@v1
-        with:
-          path: ./build/${{ matrix.config.artifact }}
-          name: ${{ matrix.config.artifact }}
-
-      - name: Upload release asset
-        if: github.event_name == 'release' && (github.event.action == 'published' || github.event.action == 'created')
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./${{ matrix.config.artifact }}
-          asset_name: ${{ matrix.config.artifact }}.zip
-          asset_content_type: application/zip
