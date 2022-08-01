@@ -1,0 +1,157 @@
+name: CMake Build Matrix
+
+on:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  deployments: write
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {
+            name: "Windows Latest MSVC",
+            os: windows-latest,
+            artifact: "windows_msvc.7z",
+            build_type: "Release",
+            cc: "cl",
+            cxx: "cl",
+            environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            archiver: "7z a",
+            generators: "Visual Studio 17 2022",
+            install_script: "install-windows-deps.ps1"
+          }
+          - {
+            name: "Ubuntu_Latest_GCC",
+            os: ubuntu-latest,
+            artifact: "ubuntu_gcc.7z",
+            build_type: "Release",
+            cc: "gcc",
+            cxx: "g++",
+            archiver: "7z a",
+            generators: "Ninja",
+            install_script: "install-ubuntu-latest-gcc-deps.sh"
+          }
+          - {
+            name: "macOS Latest Clang",
+            os: macos-latest,
+            artifact: "macos_clang.7z",
+            build_type: "Release",
+            cc: "clang",
+            cxx: "clang++",
+            archiver: "7za a",
+            generators: "Ninja",
+            install_script: "install-macos-deps.sh"
+          }
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Print env
+        run: |
+          echo github.event.action: ${{ github.event.action }}
+          echo github.event_name: ${{ github.event_name }}
+
+      # Need this to avoid git diff breaking upload to benchmark page
+      - name: Git config
+        run: git config core.filemode false
+
+      - name: Install dependencies
+        run: |
+          chmod +x scripts/${{ matrix.config.install_script }}
+          ./scripts/${{ matrix.config.install_script }}
+
+      - name: Configure
+        shell: bash
+        run: |
+          mkdir build
+          cmake \
+            -S . \
+            -B build \
+            -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
+            -G "${{ matrix.config.generators }}"
+
+      - name: Build
+        shell: bash
+        run: |
+          cmake --build build --config ${{ matrix.config.build_type }}
+
+      - name: Unit tests
+        working-directory: build
+        run: |
+          ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose -L unit
+
+      - name: Benchmarks
+        working-directory: build
+        run: |
+          ctest -C ${{ matrix.config.build_type }} --output-on-failure --verbose -L benchmark
+
+      - name: Download previous benchmark data
+        uses: actions/cache@v1
+        with:
+          path: ./cache
+          key: ${{ matrix.config.name }}-benchmark
+
+      - name: Check for benchmark regression
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'googlecpp'
+          name: ${{matrix.config.name}}-${{ matrix.config.build_type }}
+          output-file-path: ./build/benchmark/benchmark_result.json
+          external-data-json-path: ./cache/benchmark-data.json
+          fail-on-alert: true
+          alert-comment-cc-users: '@WilliamHammond'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push benchmark results
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'googlecpp'
+          name: ${{matrix.config.name}}-${{ matrix.config.build_type }}
+          output-file-path: ./build/benchmark/benchmark_result.json
+          alert-comment-cc-users: '@WilliamHammond'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+
+      - name: Cache benchmark
+        id: cache-benchmark
+        uses: actions/cache@v3
+        with:
+          path: ./build/benchmark/benchmark_result.json
+          key: ${{matrix.config.name}}-benchmark
+
+      - name: Install
+        shell: bash
+        run: cmake --install build --strip --config ${{ matrix.config.build_type }}
+
+      - name: Pack
+        shell: bash
+        working-directory: build/install
+        run: |
+          ls -laR
+          ${{ matrix.config.archiver }} ../${{ matrix.config.artifact }} .
+
+      - name: Upload
+        uses: actions/upload-artifact@v1
+        with:
+          path: ./build/${{ matrix.config.artifact }}
+          name: ${{ matrix.config.artifact }}
+
+      - name: Upload release asset
+        if: github.event_name == 'release' && (github.event.action == 'published' || github.event.action == 'created')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./${{ matrix.config.artifact }}
+          asset_name: ${{ matrix.config.artifact }}.zip
+          asset_content_type: application/zip
