@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+namespace vector3_test {
+
 TEST(Vector3, it_indexes) {
   Vector3 vector{0, 1, 2};
 
@@ -80,7 +82,7 @@ TEST(Vector3, it_calculates_subtraction_with_assignment) {
   }
 }
 
-struct VectorMultiplicationTest {
+struct MultiplicationTest {
   Vector3 input{};
   Vector3 expected{};
   float scalar;
@@ -88,11 +90,11 @@ struct VectorMultiplicationTest {
 };
 
 TEST(Vector3, it_calculates_multiplication) {
-  std::vector<VectorMultiplicationTest> tests = {
-      VectorMultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
-      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
-      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
+  std::vector<MultiplicationTest> tests = {
+      MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (const auto& test : tests) {
     auto actual = test.input * test.scalar;
@@ -103,11 +105,11 @@ TEST(Vector3, it_calculates_multiplication) {
 }
 
 TEST(Vector3, it_calculates_multiplication_with_assignment) {
-  std::vector<VectorMultiplicationTest> tests = {
-      VectorMultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
-      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
-      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
-      VectorMultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
+  std::vector<MultiplicationTest> tests = {
+      MultiplicationTest{Vector3{0, 0, 0}, Vector3{0, 0, 0}, 1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{2, 2, 2}, 2, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1, ""},
+      MultiplicationTest{Vector3{1, 1, 1}, Vector3{-1, -1, -1}, -1.00001f, ""},
   };
   for (auto test : tests) {
     test.input *= test.scalar;
@@ -175,14 +177,14 @@ TEST(Vector3, it_handles_negation) {
   }
 }
 
-struct Vector3EqualityTest {
+struct EqualityTest {
   Vector3 a;
   Vector3 b;
   Vector3 c;
   float epsilon;
 };
 TEST(Vector3, it_computes_equality) {
-  std::vector<Vector3EqualityTest> tests = {
+  std::vector<EqualityTest> tests = {
       {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, 1e-9f},
       {{0, 0, 0}, {-0, -0, -0}, {0, 0, 0}, 1e-9f},
 
@@ -205,13 +207,13 @@ TEST(Vector3, it_computes_equality) {
   }
 }
 
-struct Vector3InequalityTest {
+struct InequalityTest {
   Vector3 a;
   Vector3 b;
   float epsilon;
 };
 TEST(Vector3, it_computes_inequality) {
-  std::vector<Vector3InequalityTest> tests = {
+  std::vector<InequalityTest> tests = {
       {{1, 1, 1}, {2, 2, 2}, 1e-9f},
       {{1, 1, 1}, {1.1f, 1.1f, 1.1f}, 1e-9f},
       {{0.00001f, 0.00001f, 0.00001f}, {0, 0, 0}, 1e-9f},
@@ -450,3 +452,4 @@ TEST(Vector3, it_handles_rejection) {
     EXPECT_NEAR(test.expected.z, actual.z, Utils::relative_epsilon(test.expected.y, actual.y)) << test.message;
   }
 }
+}  // namespace vector3_test

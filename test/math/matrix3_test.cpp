@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
+namespace matrix3_tests {
 TEST(Matrix3, it_indexes) {
   Matrix3 matrix3{1, 0, 0, 0, 1, 0, 0, 0, 1};
 
@@ -32,14 +33,14 @@ TEST(Matrix3, it_indexes) {
   EXPECT_EQ(0, matrix3[1][2]);
 }
 
-struct Matrix3EqualityTest {
+struct EqualityTest {
   Matrix3 A;
   Matrix3 B;
   Matrix3 C;
   float epsilon;
 };
 TEST(Matrix3, it_computes_equality) {
-  std::vector<Matrix3EqualityTest> tests = {
+  std::vector<EqualityTest> tests = {
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, 1e-9f},
       {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, 1e-9f},
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}},
@@ -63,13 +64,13 @@ TEST(Matrix3, it_computes_equality) {
   }
 }
 
-struct Matrix3InequalityTest {
+struct InequalityTest {
   Matrix3 A;
   Matrix3 B;
   float epsilon;
 };
 TEST(Matrix3, it_computes_inequality) {
-  std::vector<Matrix3InequalityTest> tests = {
+  std::vector<InequalityTest> tests = {
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{0, 0, 0}, {0, 1, 0}, {0, 0, 1}}, 1e-9f},
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1.01f, 0, 0}, {0, 1.01f, 0}, {0, 0, 1.01f}}, 1e-9f},
   };
@@ -80,14 +81,14 @@ TEST(Matrix3, it_computes_inequality) {
   }
 }
 
-struct MatrixMultiplicationTest {
+struct MultiplicationTest {
   Matrix3 A;
   Matrix3 B;
   Matrix3 expected;
   float epsilon = 1e-9f;
 };
 TEST(Matrix3, it_multiplies) {
-  std::vector<MatrixMultiplicationTest> tests = {
+  std::vector<MultiplicationTest> tests = {
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, 1e-9f},
       {{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}, 1e-9f},
       {{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}, {{1, 2, 3}, {1, 2, 3}, {1, 2, 3}}, 1e-9f},
@@ -103,41 +104,41 @@ TEST(Matrix3, it_multiplies) {
 // TODO: Add non-identity rotation tests
 TEST(Matrix3, it_rotates_x) {
   // clang-format off
-  std::vector<MatrixMultiplicationTest> tests = {
-    {
-      Matrix3::Identity(),
-      Matrix3::RotationX(90),
-        { 1, 0,  0,
-          0, 0, -1,
-          0, 1, 0 }, 1e-7f
-    },
-    {
-        Matrix3::Identity(),
-        Matrix3::RotationX(-90),
-        { 1, 0,  0,
-          0, 0, 1,
-          0, -1, 0 }, 1e-7f
-    },
-    {
-        Matrix3::Identity(),
-        Matrix3::RotationX(45),
-        { 1, 0,  0,
-          0, 0.707106f, -0.707106f,
-          0, 0.707106f, 0.707106f }, 1e-5f
-    },
-    {
-        Matrix3::Identity(),
-        Matrix3::RotationX(-45),
-        { 1,   0,            0    ,
-          0,  0.707106f, 0.707106f,
-          0, -0.707106f, 0.707106f }, 1e-5f
-    },
-    {
-        Matrix3::Identity(),
-        Matrix3::RotationX(0),
-        Matrix3::Identity(),
-        1e-9f
-    },
+  std::vector<MultiplicationTest> tests = {
+      {
+          Matrix3::Identity(),
+          Matrix3::RotationX(90),
+          { 1, 0,  0,
+              0, 0, -1,
+              0, 1, 0 }, 1e-7f
+      },
+      {
+          Matrix3::Identity(),
+          Matrix3::RotationX(-90),
+          { 1, 0,  0,
+              0, 0, 1,
+              0, -1, 0 }, 1e-7f
+      },
+      {
+          Matrix3::Identity(),
+          Matrix3::RotationX(45),
+          { 1, 0,  0,
+              0, 0.707106f, -0.707106f,
+              0, 0.707106f, 0.707106f }, 1e-5f
+      },
+      {
+          Matrix3::Identity(),
+          Matrix3::RotationX(-45),
+          { 1,   0,            0    ,
+              0,  0.707106f, 0.707106f,
+              0, -0.707106f, 0.707106f }, 1e-5f
+      },
+      {
+          Matrix3::Identity(),
+          Matrix3::RotationX(0),
+          Matrix3::Identity(),
+          1e-9f
+      },
   };
   // clang-format on
 
@@ -149,34 +150,34 @@ TEST(Matrix3, it_rotates_x) {
 
 TEST(Matrix3, it_rotates_y) {
   // clang-format off
-  std::vector<MatrixMultiplicationTest> tests = {
+  std::vector<MultiplicationTest> tests = {
       {
           Matrix3::Identity(),
           Matrix3::RotationY(90),
           { 0, 0, 1,
-            0, 1, 0,
-           -1, 0, 0 }, 1e-7f
+              0, 1, 0,
+              -1, 0, 0 }, 1e-7f
       },
       {
           Matrix3::Identity(),
           Matrix3::RotationY(-90),
           { 0, 0, -1,
-            0, 1,  0,
-            1, 0,  0 }, 1e-7f
+              0, 1,  0,
+              1, 0,  0 }, 1e-7f
       },
       {
           Matrix3::Identity(),
           Matrix3::RotationY(45),
           { 0.707106f, 0, 0.707106f,
-            0,         1, 0,
-           -0.707106f, 0, 0.707106f }, 1e-5f
+              0,         1, 0,
+              -0.707106f, 0, 0.707106f }, 1e-5f
       },
       {
           Matrix3::Identity(),
           Matrix3::RotationY(-45),
           { 0.707106f, 0, -0.707106f,
               0,       1, 0,
-            0.707106f, 0, 0.707106f }, 1e-5f
+              0.707106f, 0, 0.707106f }, 1e-5f
       },
       {
           Matrix3::Identity(),
@@ -195,33 +196,33 @@ TEST(Matrix3, it_rotates_y) {
 
 TEST(Matrix3, it_rotates_z) {
   // clang-format off
-  std::vector<MatrixMultiplicationTest> tests = {
+  std::vector<MultiplicationTest> tests = {
       {
           Matrix3::Identity(),
           Matrix3::RotationZ(90),
           { 0, -1, 0,
-            1,  0, 0,
-            0,  0, 1 }, 1e-7f
+              1,  0, 0,
+              0,  0, 1 }, 1e-7f
       },
       {
           Matrix3::Identity(),
           Matrix3::RotationZ(-90),
           { 0, 1, 0,
-           -1, 0, 0,
-            0, 0, 1 }, 1e-7f
+              -1, 0, 0,
+              0, 0, 1 }, 1e-7f
       },
       {
           Matrix3::Identity(),
           Matrix3::RotationZ(45),
           { 0.707106f, -0.707106f, 0,
-            0.707106f,  0.707106f, 0,
-               0,          0,      1 }, 1e-5f
+              0.707106f,  0.707106f, 0,
+              0,          0,      1 }, 1e-5f
       },
       {
           Matrix3::Identity(),
           Matrix3::RotationZ(-45),
           { 0.707106f, 0.707106f, 0,
-           -0.707106f, 0.707106f, 0,
+              -0.707106f, 0.707106f, 0,
               0,          0,      1 }, 1e-5f
       },
       {
@@ -240,7 +241,7 @@ TEST(Matrix3, it_rotates_z) {
 }
 
 TEST(Matrix3, it_scales) {
-  std::vector<MatrixMultiplicationTest> tests = {
+  std::vector<MultiplicationTest> tests = {
       {Matrix3::Identity(), Matrix3::Scale(0, 0, 0), {0, 0, 0, 0, 0, 0, 0, 0, 0}, 1e-9f},
       {Matrix3::Identity(), Matrix3::Scale(-1, -1, -1), {-1, 0, 0, 0, -1, 0, 0, 0, -1}, 1e-9f},
       {Matrix3::Identity(), Matrix3::Scale(10, 10, 10), {10, 0, 0, 0, 10, 0, 0, 0, 10}, 1e-9f},
@@ -256,19 +257,19 @@ TEST(Matrix3, it_scales) {
 
 TEST(Matrix3, it_skews) {
   // clang-format off
-  std::vector<MatrixMultiplicationTest> tests = {
+  std::vector<MultiplicationTest> tests = {
       { Matrix3::Identity(),
-        Matrix3::Skew(0, {1, 0, 0}, {0, 1, 0}),
-        { 1, 0, 0,
-          0, 1, 0,
-          0, 0, 1 },
-        1e-9f},
+          Matrix3::Skew(0, {1, 0, 0}, {0, 1, 0}),
+          { 1, 0, 0,
+              0, 1, 0,
+              0, 0, 1 },
+          1e-9f},
       { Matrix3::Identity(),
-        Matrix3::Skew(Utils::Radian2Degree((float)std::numbers::pi), {1, 0, 0}, {0, 1, 0}),
-        { 1, 0, 0,
-          0, 1, 0,
-          0, 0, 1 },
-        1e-7f},
+          Matrix3::Skew(Utils::Radian2Degree((float)std::numbers::pi), {1, 0, 0}, {0, 1, 0}),
+          { 1, 0, 0,
+              0, 1, 0,
+              0, 0, 1 },
+          1e-7f},
   };
   // clang-format on
 
@@ -282,12 +283,12 @@ TEST(Matrix3, it_skews) {
 
 TEST(Matrix3, it_reflects) {
   // clang-format off
-  std::vector<MatrixMultiplicationTest> tests = {
+  std::vector<MultiplicationTest> tests = {
       { Matrix3::Identity(),
         Matrix3::Reflection({1, 0, 0}),
         { -1, 0, 0,
-           0, 1, 0,
-           0, 0, 1 },
+          0, 1, 0,
+          0, 0, 1 },
         1e-9f},
   };
   // clang-format on
@@ -333,3 +334,4 @@ TEST(Matrix3, it_computes_inverse) {
     EXPECT_TRUE(actual.Equals(identity, test.epsilon));
   }
 }
+}  // namespace matrix3_tests
