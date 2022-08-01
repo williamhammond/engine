@@ -6,7 +6,7 @@
 class Point3 : Vector3 {
  public:
   Point3() = default;
-  Point3(float x, float y, float z) : Vector3(x, y, z) {}
+  Point3(float a, float b, float c) : Vector3(a, b, c) {}
 
   inline Point3 operator+(const Vector3& b) { return {x + b.x, y + b.y, z + b.z}; }
 
