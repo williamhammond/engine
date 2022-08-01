@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+namespace matrix4_test {
 TEST(Matrix4, it_indexes) {
   // clang-format off
   Matrix4 matrix4{1, 0, 0, 0,
@@ -30,3 +31,5 @@ TEST(Matrix4, it_indexes) {
   EXPECT_EQ(0, matrix4(3, 1));
   EXPECT_EQ(0, matrix4(3, 2));
 }
+
+}  // namespace matrix4_test

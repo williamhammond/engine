@@ -4,6 +4,8 @@
 
 #include <vector>
 
+namespace utils_test {
+
 struct AbsTest {
   float expected;
   float x;
@@ -108,3 +110,4 @@ TEST(Utils, it_calculates_degree_2_rad) {
     EXPECT_NEAR(test.rads, actual, test.epsilon);
   }
 }
+}  // namespace utils_test
