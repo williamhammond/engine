@@ -6,7 +6,7 @@
 #include "vector4.h"
 
 class Matrix4 {
- private:
+ protected:
   float n[4][4];
 
  public:

@@ -5,6 +5,10 @@
 
 class Point3 : Vector3 {
  public:
+  using Vector3::x;
+  using Vector3::y;
+  using Vector3::z;
+
   Point3() = default;
   Point3(float a, float b, float c) : Vector3(a, b, c) {}
 
