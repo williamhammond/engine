@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1659461273110,
+  "lastUpdate": 1659461305827,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -6972,6 +6972,60 @@ window.BENCHMARK_DATA = {
             "value": 3019588131.000006,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3010412000 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1dbcb802ae0d0bd6a4b828c1cc239f2510710b14",
+          "message": "Merge pull request #34 from williamhammond/add-quaternion\n\nAdds basic quaternion class",
+          "timestamp": "2022-08-02T13:26:29-04:00",
+          "tree_id": "ee74a73410b7abeed95c03ce48bafd4f1c2d75eb",
+          "url": "https://github.com/williamhammond/engine/commit/1dbcb802ae0d0bd6a4b828c1cc239f2510710b14"
+        },
+        "date": 1659461304942,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.967639525344156,
+            "unit": "ns/iter",
+            "extra": "iterations: 356402776\ncpu: 1.961266990804808 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 31.331242499405647,
+            "unit": "ns/iter",
+            "extra": "iterations: 23251488\ncpu: 30.61219135738753 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 423.02822222637593,
+            "unit": "ns/iter",
+            "extra": "iterations: 1659047\ncpu: 422.14174764186896 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 7.745230554347659,
+            "unit": "ns/iter",
+            "extra": "iterations: 92375096\ncpu: 7.6252370011068775 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3401785311.999987,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3008804999.9999995 ns\nthreads: 1"
           }
         ]
       }
