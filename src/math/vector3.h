@@ -3,7 +3,7 @@
 
 #include <sstream>
 
-#include "utils.h"
+#include "fmath.h"
 
 namespace engine {
 class Vector3 {
@@ -49,11 +49,11 @@ class Vector3 {
   inline Vector3 operator-() const { return {-x, -y, -z}; }
 
   [[nodiscard]] inline bool Equals(const Vector3& b, float epsilon = 0.0f) const {
-    return Utils::abs(b.x - x) <= epsilon && Utils::abs(b.y - y) <= epsilon && Utils::abs(b.z - z) <= epsilon;
+    return FMath::abs(b.x - x) <= epsilon && FMath::abs(b.y - y) <= epsilon && FMath::abs(b.z - z) <= epsilon;
   }
 
   [[nodiscard]] inline float Magnitude() const {
-    return Utils::sqrt(Utils::square(x) + Utils::square(y) + Utils::square(z));
+    return FMath::sqrt(FMath::square(x) + FMath::square(y) + FMath::square(z));
   }
 
   [[nodiscard]] inline Vector3 Normalize() const {
@@ -74,7 +74,7 @@ class Vector3 {
 
   [[nodiscard]] inline Vector3 Reject(const Vector3& b) const { return *this - Project(b); }
 
-  [[nodiscard]] inline bool IsOrthogonal(const Vector3& b) const { return Utils::Equals((*this).Dot(b), 0, 1e-9f); }
+  [[nodiscard]] inline bool IsOrthogonal(const Vector3& b) const { return FMath::Equals((*this).Dot(b), 0, 1e-9f); }
 
   [[nodiscard]] std::string ToString() const;
 };

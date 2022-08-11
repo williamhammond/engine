@@ -3,7 +3,7 @@
 
 #include <sstream>
 
-#include "utils.h"
+#include "fmath.h"
 namespace engine {
 class Vector4 {
  private:
@@ -54,12 +54,12 @@ class Vector4 {
   inline Vector4 operator-() const { return {-x, -y, -z, -w}; }
 
   [[nodiscard]] inline bool Equals(const Vector4& b, float epsilon = 0.0f) const {
-    return Utils::abs(b.x - x) <= epsilon && Utils::abs(b.y - y) <= epsilon && Utils::abs(b.z - z) <= epsilon &&
-           Utils::abs(b.w - w) <= epsilon;
+    return FMath::abs(b.x - x) <= epsilon && FMath::abs(b.y - y) <= epsilon && FMath::abs(b.z - z) <= epsilon &&
+           FMath::abs(b.w - w) <= epsilon;
   }
 
   [[nodiscard]] inline float Magnitude() const {
-    return Utils::sqrt(Utils::square(x) + Utils::square(y) + Utils::square(z) + Utils::square(w));
+    return FMath::sqrt(FMath::square(x) + FMath::square(y) + FMath::square(z) + FMath::square(w));
   }
 
   [[nodiscard]] inline Vector4 Normalize() const {
@@ -76,7 +76,7 @@ class Vector4 {
 
   [[nodiscard]] inline Vector4 Reject(const Vector4& b) const { return *this - Project(b); }
 
-  [[nodiscard]] inline bool IsOrthogonal(const Vector4& b) const { return Utils::Equals((*this).Dot(b), 0, 1e-9f); }
+  [[nodiscard]] inline bool IsOrthogonal(const Vector4& b) const { return FMath::Equals((*this).Dot(b), 0, 1e-9f); }
 
   [[nodiscard]] std::string ToString() const;
 };

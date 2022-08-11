@@ -266,7 +266,7 @@ TEST(Matrix3, it_skews) {
               0, 0, 1 },
           1e-9f},
       { engine::Matrix3::Identity(),
-          engine::Matrix3::Skew(engine::Utils::Radian2Degree((float)std::numbers::pi), {1, 0, 0}, {0, 1, 0}),
+          engine::Matrix3::Skew(engine::FMath::Radian2Degree((float)std::numbers::pi), {1, 0, 0}, {0, 1, 0}),
           { 1, 0, 0,
               0, 1, 0,
               0, 0, 1 },

@@ -3,7 +3,7 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "utils.h"
+#include "fmath.h"
 #include "vector3.h"
 
 engine::Matrix3 engine::Matrix3::Identity() {
@@ -16,8 +16,8 @@ engine::Matrix3 engine::Matrix3::Identity() {
 }
 
 engine::Matrix3 engine::Matrix3::RotationX(float theta) {
-  auto c = std::cos(Utils::Degree2Radian(theta));
-  auto s = std::sin(Utils::Degree2Radian(theta));
+  auto c = std::cos(FMath::Degree2Radian(theta));
+  auto s = std::sin(FMath::Degree2Radian(theta));
 
   // clang-format off
   return { 1.0f, 0.0f, 0.0f,
@@ -28,8 +28,8 @@ engine::Matrix3 engine::Matrix3::RotationX(float theta) {
 }
 
 engine::Matrix3 engine::Matrix3::RotationY(float theta) {
-  auto c = std::cos(Utils::Degree2Radian(theta));
-  auto s = std::sin(Utils::Degree2Radian(theta));
+  auto c = std::cos(FMath::Degree2Radian(theta));
+  auto s = std::sin(FMath::Degree2Radian(theta));
 
   // clang-format off
   return {  c,   0.0f,  s  ,
@@ -40,8 +40,8 @@ engine::Matrix3 engine::Matrix3::RotationY(float theta) {
 }
 
 engine::Matrix3 engine::Matrix3::RotationZ(float theta) {
-  auto c = std::cos(Utils::Degree2Radian(theta));
-  auto s = std::sin(Utils::Degree2Radian(theta));
+  auto c = std::cos(FMath::Degree2Radian(theta));
+  auto s = std::sin(FMath::Degree2Radian(theta));
 
   // clang-format off
   return {  c,   -s,   0.0f ,
@@ -54,8 +54,8 @@ engine::Matrix3 engine::Matrix3::RotationZ(float theta) {
 engine::Matrix3 engine::Matrix3::Rotation(float theta, Vector3 axis) {
   auto a = axis.Normalize();
 
-  auto c = std::cos(Utils::Degree2Radian(theta));
-  auto s = std::sin(Utils::Degree2Radian(theta));
+  auto c = std::cos(FMath::Degree2Radian(theta));
+  auto s = std::sin(FMath::Degree2Radian(theta));
   auto d = 1.0f - c;
 
   float x = a.x * d;
@@ -144,7 +144,7 @@ engine::Matrix3 engine::Matrix3::Skew(float theta, const Vector3 &a, const Vecto
 
   auto a_norm = a.Normalize();
   auto b_norm = b.Normalize();
-  theta = std::tan(Utils::Degree2Radian(theta));
+  theta = std::tan(FMath::Degree2Radian(theta));
 
   auto x = a_norm.x * theta;
   auto y = a_norm.y * theta;

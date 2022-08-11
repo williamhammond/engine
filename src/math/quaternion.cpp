@@ -1,7 +1,7 @@
 #include "quaternion.h"
 
+#include "fmath.h"
 #include "matrix3.h"
-#include "utils.h"
 
 engine::Matrix3 Quaternion::GetRotation() {
   float x_squared = x * x;
@@ -30,27 +30,27 @@ void Quaternion::SetRotation(const engine::Matrix3& m) {
 
   // TODO proper epsilon check
   if (sum > 0.0f) {
-    w = engine::Utils::sqrt(sum + 1.0f) * 0.5f;
+    w = engine::FMath::sqrt(sum + 1.0f) * 0.5f;
     float f = 0.25f / w;
     x = (m(2, 1) - m(1, 2)) * f;
     y = (m(0, 2) - m(2, 0)) * f;
     z = (m(1, 0) - m(0, 1)) * f;
   } else if (m(0, 0) > m(1, 1) && m(0, 0) > m(2, 2)) {
-    x = engine::Utils::sqrt(m(0, 0) - m(1, 1) - m(2, 2) + 1.0f) * 0.5f;
+    x = engine::FMath::sqrt(m(0, 0) - m(1, 1) - m(2, 2) + 1.0f) * 0.5f;
     float f = 0.25f / x;
 
     y = (m(1, 0) + m(0, 1)) * f;
     z = (m(0, 2) + m(2, 0)) * f;
     w = (m(2, 1) - m(1, 2)) * f;
   } else if (m(1, 1) > m(2, 2)) {
-    y = engine::Utils::sqrt(m(1, 1) - m(0, 0) - m(2, 2) + 1.0f) * 0.5f;
+    y = engine::FMath::sqrt(m(1, 1) - m(0, 0) - m(2, 2) + 1.0f) * 0.5f;
     float f = 0.25f / y;
 
     x = (m(1, 0) + m(0, 1)) * f;
     z = (m(2, 1) + m(1, 2)) * f;
     w = (m(0, 2) - m(2, 0)) * f;
   } else {
-    z = engine::Utils::sqrt(m(2, 2) - m(0, 0) - m(1, 1) + 1.0f) * 0.5f;
+    z = engine::FMath::sqrt(m(2, 2) - m(0, 0) - m(1, 1) + 1.0f) * 0.5f;
     float f = 0.25f / z;
 
     x = (m(0, 2) + m(2, 0)) * f;
