@@ -2,7 +2,7 @@
 
 #include <numbers>
 #include <stdexcept>
-
+namespace engine {
 /**
  * Implemented using Newton's Method
  * https://en.wikipedia.org/wiki/Newton's_method
@@ -90,3 +90,4 @@ float Utils::Radian2Degree(float rad) { return rad / (float)(std::numbers::pi / 
 bool Utils::Equals(float a, float b, float epsilon) {
   return abs(a - b) <= ((abs(a) < abs(b) ? abs(b) : abs(a)) * epsilon);
 }
+}  // namespace engine

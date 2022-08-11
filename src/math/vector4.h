@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "utils.h"
+namespace engine {
 class Vector4 {
  private:
  public:
@@ -79,5 +80,6 @@ class Vector4 {
 
   [[nodiscard]] std::string ToString() const;
 };
+}  // namespace engine
 
 #endif  // ENGINE_VECTOR4_H

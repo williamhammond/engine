@@ -5,7 +5,7 @@
 namespace matrix4_test {
 TEST(Matrix4, it_indexes) {
   // clang-format off
-  Matrix4 matrix4{1, 0, 0, 0,
+  engine::Matrix4 matrix4{1, 0, 0, 0,
                   0, 1, 0, 0,
                   0, 0, 1, 0,
                   0, 0, 0, 1 };

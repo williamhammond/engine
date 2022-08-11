@@ -5,6 +5,7 @@
 #include "vector3.h"
 #include "vector4.h"
 
+namespace engine {
 class Matrix4 {
  protected:
   float n[4][4];
@@ -175,5 +176,6 @@ class Matrix4 {
   }
   const float& operator()(int i, int j) const { return (n[j][i]); }
 };
+}  // namespace engine
 
 #endif  // ENGINE_MATRIX4_H

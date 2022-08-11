@@ -5,10 +5,10 @@
 #include "point3.h"
 #include "vector3.h"
 
-class Transform4 : Matrix4 {
+class Transform4 : engine::Matrix4 {
  public:
   Transform4() = default;
-  using Matrix4::operator();
+  using engine::Matrix4::operator();
 
   Transform4(float n00, float n01, float n02, float n03, float n10, float n11, float n12, float n13, float n20,
              float n21, float n22, float n23) {
@@ -33,7 +33,7 @@ class Transform4 : Matrix4 {
     n[3][3] = 1.0f;
   }
 
-  Transform4(const Vector3& a, const Vector3& b, const Vector3& c, const Point3& p) {
+  Transform4(const engine::Vector3& a, const engine::Vector3& b, const engine::Vector3& c, const Point3& p) {
     n[0][0] = a.x;
     n[0][1] = a.y;
     n[0][2] = a.z;
@@ -55,9 +55,9 @@ class Transform4 : Matrix4 {
     n[3][3] = 1.0f;
   }
 
-  Vector3& operator[](int j) { return (*reinterpret_cast<Vector3*>(n[j])); }
+  engine::Vector3& operator[](int j) { return (*reinterpret_cast<engine::Vector3*>(n[j])); }
 
-  const Vector3& operator[](int j) const { return (*reinterpret_cast<const Vector3*>(n[j])); }
+  const engine::Vector3& operator[](int j) const { return (*reinterpret_cast<const engine::Vector3*>(n[j])); }
 
   [[nodiscard]] const Point3& GetTranslation() const { return (*reinterpret_cast<const Point3*>(n[3])); }
 
@@ -68,21 +68,21 @@ class Transform4 : Matrix4 {
   }
 
   Transform4 Inverse(const Transform4& H) {
-    const Vector3& a = H[0];
-    const Vector3& b = H[1];
-    const Vector3& c = H[2];
-    const Vector3& d = H[3];
+    const engine::Vector3& a = H[0];
+    const engine::Vector3& b = H[1];
+    const engine::Vector3& c = H[2];
+    const engine::Vector3& d = H[3];
 
-    Vector3 s = a.Cross(b);
-    Vector3 t = c.Cross(d);
+    engine::Vector3 s = a.Cross(b);
+    engine::Vector3 t = c.Cross(d);
 
     float invDet = 1.0f / s.Dot(c);
     s *= invDet;
     t *= invDet;
-    Vector3 v = c * invDet;
+    engine::Vector3 v = c * invDet;
 
-    Vector3 r0 = b.Cross(v);
-    Vector3 r1 = v.Cross(a);
+    engine::Vector3 r0 = b.Cross(v);
+    engine::Vector3 r1 = v.Cross(a);
 
     // clang-format off
     return {
@@ -111,13 +111,13 @@ class Transform4 : Matrix4 {
     };
   }
 
-  Vector3 operator*(const Point3& p) {
+  engine::Vector3 operator*(const Point3& p) {
     return {(*this)(0, 0) * p.x + (*this)(0, 1) * p.y + (*this)(0, 2) * p.z,
             (*this)(1, 0) * p.x + (*this)(1, 1) * p.y + (*this)(1, 2) * p.z,
             (*this)(2, 0) * p.x + (*this)(2, 1) * p.y + (*this)(2, 2) * p.z};
   }
 
-  Vector3 operator*(const Vector3& v) {
+  engine::Vector3 operator*(const engine::Vector3& v) {
     return {(*this)(0, 0) * v.x + (*this)(0, 1) * v.y + (*this)(0, 2) * v.z,
             (*this)(1, 0) * v.x + (*this)(1, 1) * v.y + (*this)(1, 2) * v.z,
             (*this)(2, 0) * v.x + (*this)(2, 1) * v.y + (*this)(2, 2) * v.z};

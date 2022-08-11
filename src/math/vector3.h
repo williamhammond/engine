@@ -5,6 +5,7 @@
 
 #include "utils.h"
 
+namespace engine {
 class Vector3 {
  public:
   float x, y, z;
@@ -77,5 +78,6 @@ class Vector3 {
 
   [[nodiscard]] std::string ToString() const;
 };
+}  // namespace engine
 
 #endif  // ENGINE_VECTOR3_H

@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "vector3.h"
 
+namespace engine {
 class Matrix3 {
  private:
   float n[3][3];
@@ -125,4 +126,5 @@ class Matrix3 {
     return result;
   }
 };
+}  // namespace engine
 #endif  // ENGINE_MATRIX3_H

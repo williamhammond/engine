@@ -16,7 +16,7 @@ class Quaternion {
     w = w_in;
   }
 
-  Quaternion(const Vector3& v, float w_in) {
+  Quaternion(const engine::Vector3& v, float w_in) {
     x = v.x;
     y = v.y;
     z = v.z;
@@ -24,10 +24,10 @@ class Quaternion {
     w = w_in;
   }
 
-  const Vector3& GetVector() { return (reinterpret_cast<const Vector3&>(x)); }
+  const engine::Vector3& GetVector() { return (reinterpret_cast<const engine::Vector3&>(x)); }
 
-  Matrix3 GetRotation();
-  void SetRotation(const Matrix3& m);
+  engine::Matrix3 GetRotation();
+  void SetRotation(const engine::Matrix3& m);
 
   Quaternion operator*(const Quaternion& Q) {
     // clang-format off

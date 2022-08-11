@@ -8,7 +8,7 @@
 
 namespace matrix3_tests {
 TEST(Matrix3, it_indexes) {
-  Matrix3 matrix3{1, 0, 0, 0, 1, 0, 0, 0, 1};
+  engine::Matrix3 matrix3{1, 0, 0, 0, 1, 0, 0, 0, 1};
 
   EXPECT_EQ(1, matrix3(0, 0));
   EXPECT_EQ(1, matrix3(1, 1));
@@ -34,9 +34,9 @@ TEST(Matrix3, it_indexes) {
 }
 
 struct EqualityTest {
-  Matrix3 A;
-  Matrix3 B;
-  Matrix3 C;
+  engine::Matrix3 A;
+  engine::Matrix3 B;
+  engine::Matrix3 C;
   float epsilon;
 };
 TEST(Matrix3, it_computes_equality) {
@@ -65,8 +65,8 @@ TEST(Matrix3, it_computes_equality) {
 }
 
 struct InequalityTest {
-  Matrix3 A;
-  Matrix3 B;
+  engine::Matrix3 A;
+  engine::Matrix3 B;
   float epsilon;
 };
 TEST(Matrix3, it_computes_inequality) {
@@ -82,9 +82,9 @@ TEST(Matrix3, it_computes_inequality) {
 }
 
 struct MultiplicationTest {
-  Matrix3 A;
-  Matrix3 B;
-  Matrix3 expected;
+  engine::Matrix3 A;
+  engine::Matrix3 B;
+  engine::Matrix3 expected;
   float epsilon = 1e-9f;
 };
 TEST(Matrix3, it_multiplies) {
@@ -106,37 +106,37 @@ TEST(Matrix3, it_rotates_x) {
   // clang-format off
   std::vector<MultiplicationTest> tests = {
       {
-          Matrix3::Identity(),
-          Matrix3::RotationX(90),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationX(90),
           { 1, 0,  0,
               0, 0, -1,
               0, 1, 0 }, 1e-7f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationX(-90),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationX(-90),
           { 1, 0,  0,
               0, 0, 1,
               0, -1, 0 }, 1e-7f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationX(45),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationX(45),
           { 1, 0,  0,
               0, 0.707106f, -0.707106f,
               0, 0.707106f, 0.707106f }, 1e-5f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationX(-45),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationX(-45),
           { 1,   0,            0    ,
               0,  0.707106f, 0.707106f,
               0, -0.707106f, 0.707106f }, 1e-5f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationX(0),
-          Matrix3::Identity(),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationX(0),
+          engine::Matrix3::Identity(),
           1e-9f
       },
   };
@@ -152,37 +152,37 @@ TEST(Matrix3, it_rotates_y) {
   // clang-format off
   std::vector<MultiplicationTest> tests = {
       {
-          Matrix3::Identity(),
-          Matrix3::RotationY(90),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationY(90),
           { 0, 0, 1,
-              0, 1, 0,
-              -1, 0, 0 }, 1e-7f
+            0, 1, 0,
+           -1, 0, 0 }, 1e-7f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationY(-90),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationY(-90),
           { 0, 0, -1,
-              0, 1,  0,
-              1, 0,  0 }, 1e-7f
+            0, 1,  0,
+            1, 0,  0 }, 1e-7f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationY(45),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationY(45),
           { 0.707106f, 0, 0.707106f,
               0,         1, 0,
               -0.707106f, 0, 0.707106f }, 1e-5f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationY(-45),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationY(-45),
           { 0.707106f, 0, -0.707106f,
               0,       1, 0,
               0.707106f, 0, 0.707106f }, 1e-5f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationY(0),
-          Matrix3::Identity(),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationY(0),
+          engine::Matrix3::Identity(),
           1e-9f
       },
   };
@@ -198,37 +198,37 @@ TEST(Matrix3, it_rotates_z) {
   // clang-format off
   std::vector<MultiplicationTest> tests = {
       {
-          Matrix3::Identity(),
-          Matrix3::RotationZ(90),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationZ(90),
           { 0, -1, 0,
               1,  0, 0,
               0,  0, 1 }, 1e-7f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationZ(-90),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationZ(-90),
           { 0, 1, 0,
               -1, 0, 0,
               0, 0, 1 }, 1e-7f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationZ(45),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationZ(45),
           { 0.707106f, -0.707106f, 0,
               0.707106f,  0.707106f, 0,
               0,          0,      1 }, 1e-5f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationZ(-45),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationZ(-45),
           { 0.707106f, 0.707106f, 0,
               -0.707106f, 0.707106f, 0,
               0,          0,      1 }, 1e-5f
       },
       {
-          Matrix3::Identity(),
-          Matrix3::RotationZ(0),
-          Matrix3::Identity(),
+          engine::Matrix3::Identity(),
+          engine::Matrix3::RotationZ(0),
+          engine::Matrix3::Identity(),
           1e-9f
       },
   };
@@ -241,11 +241,12 @@ TEST(Matrix3, it_rotates_z) {
 }
 
 TEST(Matrix3, it_scales) {
+  // clang-format off
   std::vector<MultiplicationTest> tests = {
-      {Matrix3::Identity(), Matrix3::Scale(0, 0, 0), {0, 0, 0, 0, 0, 0, 0, 0, 0}, 1e-9f},
-      {Matrix3::Identity(), Matrix3::Scale(-1, -1, -1), {-1, 0, 0, 0, -1, 0, 0, 0, -1}, 1e-9f},
-      {Matrix3::Identity(), Matrix3::Scale(10, 10, 10), {10, 0, 0, 0, 10, 0, 0, 0, 10}, 1e-9f},
-      {Matrix3::Identity(), Matrix3::Scale(0.5, 0.5, 0.5), {0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5}, 1e-9f},
+      {engine::Matrix3::Identity(), engine::Matrix3::Scale(0, 0, 0), {0, 0, 0, 0, 0, 0, 0, 0, 0}, 1e-9f},
+      {engine::Matrix3::Identity(), engine::Matrix3::Scale(-1, -1, -1), {-1, 0, 0, 0, -1, 0, 0, 0, -1}, 1e-9f},
+      {engine::Matrix3::Identity(), engine::Matrix3::Scale(10, 10, 10), {10, 0, 0, 0, 10, 0, 0, 0, 10}, 1e-9f},
+      {engine::Matrix3::Identity(), engine::Matrix3::Scale(0.5, 0.5, 0.5), {0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5}, 1e-9f},
   };
   // clang-format on
 
@@ -258,14 +259,14 @@ TEST(Matrix3, it_scales) {
 TEST(Matrix3, it_skews) {
   // clang-format off
   std::vector<MultiplicationTest> tests = {
-      { Matrix3::Identity(),
-          Matrix3::Skew(0, {1, 0, 0}, {0, 1, 0}),
+      { engine::Matrix3::Identity(),
+          engine::Matrix3::Skew(0, {1, 0, 0}, {0, 1, 0}),
           { 1, 0, 0,
               0, 1, 0,
               0, 0, 1 },
           1e-9f},
-      { Matrix3::Identity(),
-          Matrix3::Skew(Utils::Radian2Degree((float)std::numbers::pi), {1, 0, 0}, {0, 1, 0}),
+      { engine::Matrix3::Identity(),
+          engine::Matrix3::Skew(engine::Utils::Radian2Degree((float)std::numbers::pi), {1, 0, 0}, {0, 1, 0}),
           { 1, 0, 0,
               0, 1, 0,
               0, 0, 1 },
@@ -273,7 +274,7 @@ TEST(Matrix3, it_skews) {
   };
   // clang-format on
 
-  EXPECT_THROW(Matrix3::Skew(0, {1, 1, 1}, {1, 1, 1}), std::invalid_argument);
+  EXPECT_THROW(engine::Matrix3::Skew(0, {1, 1, 1}, {1, 1, 1}), std::invalid_argument);
 
   for (const auto& test : tests) {
     auto actual = test.A * test.B;
@@ -284,8 +285,8 @@ TEST(Matrix3, it_skews) {
 TEST(Matrix3, it_reflects) {
   // clang-format off
   std::vector<MultiplicationTest> tests = {
-      { Matrix3::Identity(),
-        Matrix3::Reflection({1, 0, 0}),
+      { engine::Matrix3::Identity(),
+        engine::Matrix3::Reflection({1, 0, 0}),
         { -1, 0, 0,
           0, 1, 0,
           0, 0, 1 },
@@ -300,7 +301,7 @@ TEST(Matrix3, it_reflects) {
 }
 
 struct DeterminantTest {
-  Matrix3 A;
+  engine::Matrix3 A;
   float expected;
   float epsilon;
 };
@@ -319,7 +320,7 @@ TEST(Matrix3, it_computes_determinant) {
 }
 
 struct InverseTest {
-  Matrix3 A;
+  engine::Matrix3 A;
   float epsilon;
 };
 TEST(Matrix3, it_computes_inverse) {
@@ -328,7 +329,7 @@ TEST(Matrix3, it_computes_inverse) {
       {{{2, 0, 0}, {0, 2, 0}, {0, 0, 3}}, 1e-9f},
   };
 
-  Matrix3 identity = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
+  engine::Matrix3 identity = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
   for (const auto& test : tests) {
     auto actual = test.A * test.A.Inverse();
     EXPECT_TRUE(actual.Equals(identity, test.epsilon));

@@ -26,7 +26,7 @@ TEST(Utils, it_calculates_abs) {
   };
 
   for (auto test : tests) {
-    EXPECT_EQ(test.expected, Utils::abs(test.x));
+    EXPECT_EQ(test.expected, engine::Utils::abs(test.x));
   }
 }
 
@@ -41,8 +41,8 @@ TEST(Utils, it_calculates_square) {
   };
 
   for (auto test : tests) {
-    auto actual = Utils::square(test.x);
-    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual));
+    auto actual = engine::Utils::square(test.x);
+    EXPECT_NEAR(test.expected, actual, engine::Utils::relative_epsilon(test.expected, actual));
   }
 }
 
@@ -57,8 +57,8 @@ TEST(Utils, it_calculates_sqrt) {
   };
 
   for (auto test : tests) {
-    auto actual = Utils::sqrt(test.x);
-    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual));
+    auto actual = engine::Utils::sqrt(test.x);
+    EXPECT_NEAR(test.expected, actual, engine::Utils::relative_epsilon(test.expected, actual));
   }
 }
 struct PowerTest {
@@ -88,8 +88,8 @@ TEST(Utils, it_calculates_power) {
   };
 
   for (auto test : tests) {
-    auto actual = Utils::pow(test.x, test.e);
-    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual, 1e-4f));
+    auto actual = engine::Utils::pow(test.x, test.e);
+    EXPECT_NEAR(test.expected, actual, engine::Utils::relative_epsilon(test.expected, actual, 1e-4f));
   }
 }
 
@@ -106,7 +106,7 @@ TEST(Utils, it_calculates_degree_2_rad) {
   };
 
   for (auto test : tests) {
-    auto actual = Utils::Degree2Radian(test.degrees);
+    auto actual = engine::Utils::Degree2Radian(test.degrees);
     EXPECT_NEAR(test.rads, actual, test.epsilon);
   }
 }

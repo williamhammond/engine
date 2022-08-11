@@ -1,6 +1,7 @@
 #ifndef ENGINE_UTILS_H
 #define ENGINE_UTILS_H
 
+namespace engine {
 class Utils {
  public:
   static float sqrt(float x);
@@ -15,5 +16,6 @@ class Utils {
   static float Radian2Degree(float rad);
   static bool Equals(float a, float b, float epsilon);
 };
+}  // namespace engine
 
 #endif  // ENGINE_UTILS_H

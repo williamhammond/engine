@@ -3,11 +3,11 @@
 
 #include "vector3.h"
 
-class Point3 : Vector3 {
+class Point3 : engine::Vector3 {
  public:
-  using Vector3::x;
-  using Vector3::y;
-  using Vector3::z;
+  using engine::Vector3::x;
+  using engine::Vector3::y;
+  using engine::Vector3::z;
 
   Point3() = default;
   Point3(float a, float b, float c) : Vector3(a, b, c) {}
