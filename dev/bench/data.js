@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1659548842136,
+  "lastUpdate": 1660242898799,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -4734,6 +4734,60 @@ window.BENCHMARK_DATA = {
             "value": 3449338249.9999824,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3449225300 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "90e9575aa7fd8a585414c01599f2544d487bbce0",
+          "message": "Merge pull request #36 from williamhammond/vector-transform\n\nAdds vector*transform4 method",
+          "timestamp": "2022-08-11T14:33:21-04:00",
+          "tree_id": "83189026f6376f66b90b1aae114a6aad200fffb7",
+          "url": "https://github.com/williamhammond/engine/commit/90e9575aa7fd8a585414c01599f2544d487bbce0"
+        },
+        "date": 1660242898238,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.5838764292542054,
+            "unit": "ns/iter",
+            "extra": "iterations: 440342410\ncpu: 1.5834938542485608 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 27.91946076038801,
+            "unit": "ns/iter",
+            "extra": "iterations: 25148375\ncpu: 27.90891260369706 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 489.6898337133892,
+            "unit": "ns/iter",
+            "extra": "iterations: 1422063\ncpu: 489.6395588662387 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 6.3518389690006645,
+            "unit": "ns/iter",
+            "extra": "iterations: 109677814\ncpu: 6.350845030518206 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3415411449.0000324,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3414879500.0000005 ns\nthreads: 1"
           }
         ]
       }
