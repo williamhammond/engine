@@ -1,8 +1,8 @@
-#include "math/utils.h"
-
 #include <gtest/gtest.h>
 
 #include <vector>
+
+#include "math/fmath.h"
 
 namespace utils_test {
 
@@ -10,7 +10,7 @@ struct AbsTest {
   float expected;
   float x;
 };
-TEST(Utils, it_calculates_abs) {
+TEST(FMath, it_calculates_abs) {
   std::vector<AbsTest> tests = {
       AbsTest{0, 0},
       AbsTest{1, 1},
@@ -26,7 +26,7 @@ TEST(Utils, it_calculates_abs) {
   };
 
   for (auto test : tests) {
-    EXPECT_EQ(test.expected, Utils::abs(test.x));
+    EXPECT_EQ(test.expected, engine::FMath::abs(test.x));
   }
 }
 
@@ -34,15 +34,15 @@ struct SquareTest {
   float expected;
   float x;
 };
-TEST(Utils, it_calculates_square) {
+TEST(FMath, it_calculates_square) {
   std::vector<SquareTest> tests = {
       SquareTest{9, -3}, SquareTest{4, -2}, SquareTest{1, -1}, SquareTest{0, 0},
       SquareTest{1, 1},  SquareTest{4, 2},  SquareTest{9, 3},
   };
 
   for (auto test : tests) {
-    auto actual = Utils::square(test.x);
-    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual));
+    auto actual = engine::FMath::square(test.x);
+    EXPECT_NEAR(test.expected, actual, engine::FMath::relative_epsilon(test.expected, actual));
   }
 }
 
@@ -50,15 +50,15 @@ struct SqrtTest {
   float expected;
   float x;
 };
-TEST(Utils, it_calculates_sqrt) {
+TEST(FMath, it_calculates_sqrt) {
   std::vector<SqrtTest> tests = {
       SqrtTest{0, 0},
       SqrtTest{1, 1},
   };
 
   for (auto test : tests) {
-    auto actual = Utils::sqrt(test.x);
-    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual));
+    auto actual = engine::FMath::sqrt(test.x);
+    EXPECT_NEAR(test.expected, actual, engine::FMath::relative_epsilon(test.expected, actual));
   }
 }
 struct PowerTest {
@@ -66,7 +66,7 @@ struct PowerTest {
   float x;
   int e;
 };
-TEST(Utils, it_calculates_power) {
+TEST(FMath, it_calculates_power) {
   std::vector<PowerTest> tests = {
       PowerTest{-1, -1, 1},
       PowerTest{1, -1, 2},
@@ -88,8 +88,8 @@ TEST(Utils, it_calculates_power) {
   };
 
   for (auto test : tests) {
-    auto actual = Utils::pow(test.x, test.e);
-    EXPECT_NEAR(test.expected, actual, Utils::relative_epsilon(test.expected, actual, 1e-4f));
+    auto actual = engine::FMath::pow(test.x, test.e);
+    EXPECT_NEAR(test.expected, actual, engine::FMath::relative_epsilon(test.expected, actual, 1e-4f));
   }
 }
 
@@ -99,14 +99,14 @@ struct Degree2RadTest {
   float epsilon;
 };
 
-TEST(Utils, it_calculates_degree_2_rad) {
+TEST(FMath, it_calculates_degree_2_rad) {
   std::vector<Degree2RadTest> tests = {
       {57.2958f, 1, 1e-3f},     {90, 1.570796f, 1e-3f},   {180, 3.14169f, 1e-3f},   {360, 6.28319f, 1e-3f},
       {-90, -1.570796f, 1e-3f}, {-180, -3.14169f, 1e-3f}, {-360, -6.28319f, 1e-3f},
   };
 
   for (auto test : tests) {
-    auto actual = Utils::Degree2Radian(test.degrees);
+    auto actual = engine::FMath::Degree2Radian(test.degrees);
     EXPECT_NEAR(test.rads, actual, test.epsilon);
   }
 }

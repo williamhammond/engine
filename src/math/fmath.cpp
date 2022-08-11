@@ -1,13 +1,13 @@
-#include "utils.h"
+#include "fmath.h"
 
 #include <numbers>
 #include <stdexcept>
-
+namespace engine {
 /**
  * Implemented using Newton's Method
  * https://en.wikipedia.org/wiki/Newton's_method
  */
-float Utils::sqrt(float x) {
+float FMath::sqrt(float x) {
   if (x == 0) {
     return 0;
   }
@@ -31,23 +31,23 @@ float Utils::sqrt(float x) {
   return root;
 }
 
-float Utils::square(float x) { return x * x; }
+float FMath::square(float x) { return x * x; }
 
-float Utils::abs(float x) {
+float FMath::abs(float x) {
   if (x >= 0) {
     return x;
   }
   return -x;
 }
 
-int Utils::abs(int x) {
+int FMath::abs(int x) {
   if (x >= 0) {
     return x;
   }
   return -x;
 }
 
-float Utils::pow(float x, int exponent) {
+float FMath::pow(float x, int exponent) {
   bool is_negative = exponent < 0;
   exponent = abs(exponent);
   float answer = 1;
@@ -60,14 +60,14 @@ float Utils::pow(float x, int exponent) {
   }
   return answer;
 }
-float Utils::min(float x, float y) {
+float FMath::min(float x, float y) {
   if (x > y) {
     return y;
   }
   return x;
 }
 
-float Utils::max(float x, float y) {
+float FMath::max(float x, float y) {
   if (x > y) {
     return x;
   }
@@ -80,13 +80,14 @@ float Utils::max(float x, float y) {
  *  https://randomascii.wordpress.com/2012/01/11/tricks-with-the-floating-point-format/
  *  https://github.com/google/googletest/blob/main/googletest/include/gtest/internal/gtest-internal.h#L339
  */
-float Utils::relative_epsilon(float x, float y, float rel_diff) { return max(abs(x), abs(y)) * rel_diff; }
+float FMath::relative_epsilon(float x, float y, float rel_diff) { return max(abs(x), abs(y)) * rel_diff; }
 
 // TODO: look into if this type of cast is correct
-float Utils::Degree2Radian(float degree) { return ((float)std::numbers::pi / 180) * degree; }
+float FMath::Degree2Radian(float degree) { return ((float)std::numbers::pi / 180) * degree; }
 
-float Utils::Radian2Degree(float rad) { return rad / (float)(std::numbers::pi / 180); }
+float FMath::Radian2Degree(float rad) { return rad / (float)(std::numbers::pi / 180); }
 
-bool Utils::Equals(float a, float b, float epsilon) {
+bool FMath::Equals(float a, float b, float epsilon) {
   return abs(a - b) <= ((abs(a) < abs(b) ? abs(b) : abs(a)) * epsilon);
 }
+}  // namespace engine

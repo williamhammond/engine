@@ -1,7 +1,8 @@
-#ifndef ENGINE_UTILS_H
-#define ENGINE_UTILS_H
+#ifndef ENGINE_FMATH_H
+#define ENGINE_FMATH_H
 
-class Utils {
+namespace engine {
+class FMath {
  public:
   static float sqrt(float x);
   static float square(float x);
@@ -15,5 +16,6 @@ class Utils {
   static float Radian2Degree(float rad);
   static bool Equals(float a, float b, float epsilon);
 };
+}  // namespace engine
 
-#endif  // ENGINE_UTILS_H
+#endif  // ENGINE_FMATH_H

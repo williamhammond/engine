@@ -3,9 +3,10 @@
 
 #include <iostream>
 
-#include "utils.h"
+#include "fmath.h"
 #include "vector3.h"
 
+namespace engine {
 class Matrix3 {
  private:
   float n[3][3];
@@ -78,11 +79,11 @@ class Matrix3 {
   }
 
   [[nodiscard]] inline bool Equals(const Matrix3& N, float epsilon = 0.0f) const {
-    return Utils::abs((*this)(0, 0) - N(0, 0)) < epsilon && Utils::abs((*this)(0, 1) - N(0, 1)) < epsilon &&
-           Utils::abs((*this)(0, 2) - N(0, 2)) < epsilon && Utils::abs((*this)(1, 0) - N(1, 0)) < epsilon &&
-           Utils::abs((*this)(1, 1) - N(1, 1)) < epsilon && Utils::abs((*this)(1, 2) - N(1, 2)) < epsilon &&
-           Utils::abs((*this)(2, 0) - N(2, 0)) < epsilon && Utils::abs((*this)(2, 1) - N(2, 1)) < epsilon &&
-           Utils::abs((*this)(2, 2) - N(2, 2)) < epsilon;
+    return FMath::abs((*this)(0, 0) - N(0, 0)) < epsilon && FMath::abs((*this)(0, 1) - N(0, 1)) < epsilon &&
+           FMath::abs((*this)(0, 2) - N(0, 2)) < epsilon && FMath::abs((*this)(1, 0) - N(1, 0)) < epsilon &&
+           FMath::abs((*this)(1, 1) - N(1, 1)) < epsilon && FMath::abs((*this)(1, 2) - N(1, 2)) < epsilon &&
+           FMath::abs((*this)(2, 0) - N(2, 0)) < epsilon && FMath::abs((*this)(2, 1) - N(2, 1)) < epsilon &&
+           FMath::abs((*this)(2, 2) - N(2, 2)) < epsilon;
   }
 
   [[nodiscard]] inline float Determinant() const {
@@ -125,4 +126,5 @@ class Matrix3 {
     return result;
   }
 };
+}  // namespace engine
 #endif  // ENGINE_MATRIX3_H
