@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1660243079940,
+  "lastUpdate": 1660252334414,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -4842,6 +4842,60 @@ window.BENCHMARK_DATA = {
             "value": 3415411449.0000324,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3414879500.0000005 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "48750eccc0dc039c3bab2464b112b48ce71bfcf2",
+          "message": "Merge pull request #37 from williamhammond/refactor-math-library\n\nAdds top-level namespace",
+          "timestamp": "2022-08-11T17:10:43-04:00",
+          "tree_id": "2b6b8382b9bd14f2116086b7e1150d4e52b365ff",
+          "url": "https://github.com/williamhammond/engine/commit/48750eccc0dc039c3bab2464b112b48ce71bfcf2"
+        },
+        "date": 1660252333255,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.2060400537688023,
+            "unit": "ns/iter",
+            "extra": "iterations: 580187749\ncpu: 1.2059530750277871 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 23.364380805729823,
+            "unit": "ns/iter",
+            "extra": "iterations: 29958982\ncpu: 23.362319186947 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 487.7338985755388,
+            "unit": "ns/iter",
+            "extra": "iterations: 1435137\ncpu: 487.7131590921286 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 6.036940960585857,
+            "unit": "ns/iter",
+            "extra": "iterations: 115860279\ncpu: 6.036643498847435 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3451316423.9999695,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3450697100 ns\nthreads: 1"
           }
         ]
       }
