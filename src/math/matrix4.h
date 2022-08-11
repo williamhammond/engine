@@ -68,7 +68,6 @@ class Matrix4 {
   }
 
   float& operator()(int i, int j) { return (n[j][i]); }
-  const float& operator()(int i, int j) const { return (n[j][i]); }
 
   Vector4& operator[](int j) { return (*reinterpret_cast<Vector4*>(n[j])); }
 
@@ -174,6 +173,7 @@ class Matrix4 {
 
     return result;
   }
+  const float& operator()(int i, int j) const { return (n[j][i]); }
 };
 
 #endif  // ENGINE_MATRIX4_H

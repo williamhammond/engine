@@ -3,9 +3,12 @@
 
 #include "matrix4.h"
 #include "point3.h"
+#include "vector3.h"
 
 class Transform4 : Matrix4 {
+ public:
   Transform4() = default;
+  using Matrix4::operator();
 
   Transform4(float n00, float n01, float n02, float n03, float n10, float n11, float n12, float n13, float n20,
              float n21, float n22, float n23) {
