@@ -5,13 +5,15 @@
 #include "point3.h"
 #include "vector3.h"
 
+namespace engine {
 class Transform4 : engine::Matrix4 {
  public:
   Transform4() = default;
   using engine::Matrix4::operator();
 
   Transform4(float n00, float n01, float n02, float n03, float n10, float n11, float n12, float n13, float n20,
-             float n21, float n22, float n23) {
+             float n21, float n22, float n23)
+      : Matrix4() {
     n[0][0] = n00;
     n[1][0] = n01;
     n[2][0] = n02;
@@ -67,31 +69,8 @@ class Transform4 : engine::Matrix4 {
     n[3][2] = p.z;
   }
 
-  Transform4 Inverse(const Transform4& H) {
-    const engine::Vector3& a = H[0];
-    const engine::Vector3& b = H[1];
-    const engine::Vector3& c = H[2];
-    const engine::Vector3& d = H[3];
+  Transform4 Inverse(const Transform4& H);
 
-    engine::Vector3 s = a.Cross(b);
-    engine::Vector3 t = c.Cross(d);
-
-    float invDet = 1.0f / s.Dot(c);
-    s *= invDet;
-    t *= invDet;
-    engine::Vector3 v = c * invDet;
-
-    engine::Vector3 r0 = b.Cross(v);
-    engine::Vector3 r1 = v.Cross(a);
-
-    // clang-format off
-    return {
-        r0.x, r0.y, r0.z, -b.Dot(t),
-        r1.x, r1.y, r1.z,  a.Dot(t),
-         s.x,  s.y,  s.z, -d.Dot(s),
-    };
-    // clang-format on
-  }
   Transform4 operator*(const Transform4 B) const {
     return {
         (*this)(0, 0) * B(0, 0) + (*this)(0, 1) * B(1, 0) + (*this)(0, 2) * B(2, 0),
@@ -123,5 +102,6 @@ class Transform4 : engine::Matrix4 {
             (*this)(2, 0) * v.x + (*this)(2, 1) * v.y + (*this)(2, 2) * v.z};
   }
 };
+}  // namespace engine
 
 #endif  // ENGINE_TRANSFORM4_H

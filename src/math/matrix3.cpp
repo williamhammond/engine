@@ -157,3 +157,22 @@ engine::Matrix3 engine::Matrix3::Skew(float theta, const Vector3 &a, const Vecto
   };
   // clang-format on
 }
+
+std::string engine::Matrix3::ToString() const {
+  std::string result = "";
+  for (int i = 0; i < 3; i++) {
+    result += "| ";
+    for (int j = 0; j < 3; j++) {
+      result += std::to_string((*this)(i, j));
+      if (j != 2) {
+        result += ", ";
+      }
+    }
+    result += " |";
+    if (i != 2) {
+      result += "\n";
+    }
+  }
+
+  return result;
+}

@@ -9,7 +9,7 @@
 namespace engine {
 class Matrix3 {
  private:
-  float n[3][3];
+  float n[3][3]{};
 
  public:
   Matrix3() = default;
@@ -23,6 +23,7 @@ class Matrix3 {
   static Matrix3 Scale(float x_scalar, float y_scalar, float z_scalar);
   static Matrix3 Scale(float s, const Vector3& a);
   static Matrix3 Skew(float theta, const Vector3& a_norm, const Vector3& b_norm);
+  [[nodiscard]] std::string ToString() const;
 
   Matrix3(float n00, float n01, float n02, float n10, float n11, float n12, float n20, float n21, float n22) {
     n[0][0] = n00;
@@ -105,25 +106,6 @@ class Matrix3 {
 
     return {r0.x * invDet, r0.y * invDet, r0.z * invDet, r1.x * invDet, r1.y * invDet,
             r1.z * invDet, r2.x * invDet, r2.y * invDet, r2.z * invDet};
-  }
-
-  [[nodiscard]] std::string ToString() const {
-    std::string result = "";
-    for (int i = 0; i < 3; i++) {
-      result += "| ";
-      for (int j = 0; j < 3; j++) {
-        result += std::to_string((*this)(i, j));
-        if (j != 2) {
-          result += ", ";
-        }
-      }
-      result += " |";
-      if (i != 2) {
-        result += "\n";
-      }
-    }
-
-    return result;
   }
 };
 }  // namespace engine

@@ -17,7 +17,7 @@ const float& engine::Vector3::operator[](int i) const { return ((&x)[i]); }
   return result;
 }
 
-engine::Vector3 operator*(const engine::Vector3& n, const Transform4& H) {
+engine::Vector3 operator*(const engine::Vector3& n, const engine::Transform4& H) {
   // clang-format off
     return {
       n.x * H(0, 0) + n.y * H(1, 0) + n.z * H(2,1),
