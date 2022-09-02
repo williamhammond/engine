@@ -27,4 +27,17 @@ Transform4 Transform4::Inverse(const Transform4& H) {
   };
   // clang-format on
 }
+Transform4 Transform4::MakeReflection(const Plane& f) {
+  float x = f.x * -2.0f;
+  float y = f.y * -2.0f;
+  float z = f.z * -2.0f;
+
+  // clang-format off
+  return {
+    x * f.x + 1.0f, x * f.y       , x * f.z       , x * f.w,
+    x * f.y       , y * f.y + 1.0f, y * f.z       , y * f.w,
+    x * f.z       , z * f.z + 1.0f, z * f.z + 1.0f, z * f.w,
+  };
+  // clang-format on
+}
 }  // namespace engine
