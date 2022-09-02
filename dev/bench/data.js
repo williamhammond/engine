@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662141385281,
+  "lastUpdate": 1662141482018,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -2646,6 +2646,60 @@ window.BENCHMARK_DATA = {
             "value": 4238444699.9999456,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 4234375000 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "8e6009eee4084d4a7e13c6f7e172cf656b9d8253",
+          "message": "Merge pull request #41 from williamhammond/line-distance\n\nAdds PointToLine and PointToPoint distance measures",
+          "timestamp": "2022-09-02T13:50:36-04:00",
+          "tree_id": "337e59ba7edca051e9219810e693fb1b9eab1b9a",
+          "url": "https://github.com/williamhammond/engine/commit/8e6009eee4084d4a7e13c6f7e172cf656b9d8253"
+        },
+        "date": 1662141473371,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.6155631696427468,
+            "unit": "ns/iter",
+            "extra": "iterations: 448000000\ncpu: 1.6392299107142858 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 28.861597639010533,
+            "unit": "ns/iter",
+            "extra": "iterations: 24888889\ncpu: 28.878348085364518 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 500.16390000007505,
+            "unit": "ns/iter",
+            "extra": "iterations: 1000000\ncpu: 500 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 6.077283928571019,
+            "unit": "ns/iter",
+            "extra": "iterations: 112000000\ncpu: 6.138392857142857 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3484069400.0000668,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3468750000 ns\nthreads: 1"
           }
         ]
       }
