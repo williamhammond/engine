@@ -2,22 +2,22 @@
 
 namespace engine {
 
-engine::Transform4 engine::Transform4::Inverse(const engine::Transform4& H) {
-  const engine::Vector3& a = H[0];
-  const engine::Vector3& b = H[1];
-  const engine::Vector3& c = H[2];
-  const engine::Vector3& d = H[3];
+Transform4 Transform4::Inverse(const Transform4& H) {
+  const Vector3& a = H[0];
+  const Vector3& b = H[1];
+  const Vector3& c = H[2];
+  const Vector3& d = H[3];
 
-  engine::Vector3 s = a.Cross(b);
-  engine::Vector3 t = c.Cross(d);
+  Vector3 s = a.Cross(b);
+  Vector3 t = c.Cross(d);
 
   float invDet = 1.0f / s.Dot(c);
   s *= invDet;
   t *= invDet;
-  engine::Vector3 v = c * invDet;
+  Vector3 v = c * invDet;
 
-  engine::Vector3 r0 = b.Cross(v);
-  engine::Vector3 r1 = v.Cross(a);
+  Vector3 r0 = b.Cross(v);
+  Vector3 r1 = v.Cross(a);
 
   // clang-format off
   return {

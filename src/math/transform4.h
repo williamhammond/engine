@@ -5,10 +5,10 @@
 #include "vector3.h"
 
 namespace engine {
-class Transform4 : engine::Matrix4 {
+class Transform4 : Matrix4 {
  public:
   Transform4() = default;
-  using engine::Matrix4::operator();
+  using Matrix4::operator();
 
   Transform4(float n00, float n01, float n02, float n03, float n10, float n11, float n12, float n13, float n20,
              float n21, float n22, float n23)
@@ -34,7 +34,7 @@ class Transform4 : engine::Matrix4 {
     n[3][3] = 1.0f;
   }
 
-  Transform4(const engine::Vector3& a, const engine::Vector3& b, const engine::Vector3& c, const engine::Vector3& p) {
+  Transform4(const Vector3& a, const Vector3& b, const Vector3& c, const Vector3& p) {
     n[0][0] = a.x;
     n[0][1] = a.y;
     n[0][2] = a.z;
@@ -56,9 +56,9 @@ class Transform4 : engine::Matrix4 {
     n[3][3] = 1.0f;
   }
 
-  engine::Vector3& operator[](int j) { return (*reinterpret_cast<engine::Vector3*>(n[j])); }
+  Vector3& operator[](int j) { return (*reinterpret_cast<Vector3*>(n[j])); }
 
-  const engine::Vector3& operator[](int j) const { return (*reinterpret_cast<const engine::Vector3*>(n[j])); }
+  const Vector3& operator[](int j) const { return (*reinterpret_cast<const Vector3*>(n[j])); }
 
   [[nodiscard]] const engine::Vector3& GetTranslation() const {
     return (*reinterpret_cast<const engine::Vector3*>(n[3]));
@@ -91,7 +91,7 @@ class Transform4 : engine::Matrix4 {
     };
   }
 
-  engine::Vector3 operator*(const engine::Vector3& v) {
+  Vector3 operator*(const Vector3& v) {
     return {(*this)(0, 0) * v.x + (*this)(0, 1) * v.y + (*this)(0, 2) * v.z,
             (*this)(1, 0) * v.x + (*this)(1, 1) * v.y + (*this)(1, 2) * v.z,
             (*this)(2, 0) * v.x + (*this)(2, 1) * v.y + (*this)(2, 2) * v.z};
