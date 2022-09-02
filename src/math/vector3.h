@@ -23,7 +23,6 @@ class Vector3 {
     z += v.z;
     return (*this);
   }
-
   inline Vector3 operator-(const Vector3& v) const { return {x - v.x, y - v.y, z - v.z}; }
   inline Vector3& operator-=(const Vector3& v) {
     x -= v.x;

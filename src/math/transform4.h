@@ -2,6 +2,7 @@
 #define ENGINE_TRANSFORM4_H
 
 #include "matrix4.h"
+#include "plane.h"
 #include "vector3.h"
 
 namespace engine {
@@ -55,6 +56,8 @@ class Transform4 : Matrix4 {
     n[3][2] = p.z;
     n[3][3] = 1.0f;
   }
+
+  Transform4 MakeReflection(const Plane& f);
 
   Vector3& operator[](int j) { return (*reinterpret_cast<Vector3*>(n[j])); }
 
