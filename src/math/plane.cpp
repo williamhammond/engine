@@ -19,5 +19,5 @@ Plane::Plane(const Vector3& n, float d) {
 }
 const Vector3& Plane::GetNormal() const { return (reinterpret_cast<const Vector3&>(x)); }
 
-float Plane::Dot(const Plane& p, const Vector3& v) { return p.x * v.x + p.y * v.y + p.z * v.z + p.w; }
+float Plane::Dot(const Vector3& v) const { return x * v.x + y * v.y + z * v.z + w; }
 }  // namespace engine

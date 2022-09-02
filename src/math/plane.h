@@ -16,7 +16,7 @@ class Plane {
 
   [[nodiscard]] const Vector3& GetNormal() const;
 
-  float Dot(const Plane& p, const Vector3& v);
+  float Dot(const Vector3& v) const;
 };
 
 }  // namespace engine
