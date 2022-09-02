@@ -2,7 +2,6 @@
 #define ENGINE_TRANSFORM4_H
 
 #include "matrix4.h"
-#include "point3.h"
 #include "vector3.h"
 
 namespace engine {
@@ -35,7 +34,7 @@ class Transform4 : engine::Matrix4 {
     n[3][3] = 1.0f;
   }
 
-  Transform4(const engine::Vector3& a, const engine::Vector3& b, const engine::Vector3& c, const Point3& p) {
+  Transform4(const engine::Vector3& a, const engine::Vector3& b, const engine::Vector3& c, const engine::Vector3& p) {
     n[0][0] = a.x;
     n[0][1] = a.y;
     n[0][2] = a.z;
@@ -61,9 +60,11 @@ class Transform4 : engine::Matrix4 {
 
   const engine::Vector3& operator[](int j) const { return (*reinterpret_cast<const engine::Vector3*>(n[j])); }
 
-  [[nodiscard]] const Point3& GetTranslation() const { return (*reinterpret_cast<const Point3*>(n[3])); }
+  [[nodiscard]] const engine::Vector3& GetTranslation() const {
+    return (*reinterpret_cast<const engine::Vector3*>(n[3]));
+  }
 
-  void SetTranslation(const Point3& p) {
+  void SetTranslation(const engine::Vector3& p) {
     n[3][0] = p.x;
     n[3][1] = p.y;
     n[3][2] = p.z;
@@ -88,12 +89,6 @@ class Transform4 : engine::Matrix4 {
         (*this)(2, 0) * B(0, 2) + (*this)(2, 1) * B(1, 2) + (*this)(2, 2) * B(2, 2),
         (*this)(2, 0) * B(0, 3) + (*this)(2, 1) * B(1, 3) + (*this)(2, 2) * B(2, 3) + (*this)(2, 3),
     };
-  }
-
-  engine::Vector3 operator*(const Point3& p) {
-    return {(*this)(0, 0) * p.x + (*this)(0, 1) * p.y + (*this)(0, 2) * p.z,
-            (*this)(1, 0) * p.x + (*this)(1, 1) * p.y + (*this)(1, 2) * p.z,
-            (*this)(2, 0) * p.x + (*this)(2, 1) * p.y + (*this)(2, 2) * p.z};
   }
 
   engine::Vector3 operator*(const engine::Vector3& v) {
