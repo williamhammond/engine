@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662127764170,
+  "lastUpdate": 1662127783500,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -5058,6 +5058,60 @@ window.BENCHMARK_DATA = {
             "value": 2875577098.000008,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2875325900 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "6998d6101842aa39cecde57bacecd15f94de419c",
+          "message": "Merge pull request #39 from williamhammond/adds-plane\n\nAdds plane and removes point in favor of vector",
+          "timestamp": "2022-09-02T10:07:46-04:00",
+          "tree_id": "2d9a41e81369af24ed61b8895d1347c86ccb9b07",
+          "url": "https://github.com/williamhammond/engine/commit/6998d6101842aa39cecde57bacecd15f94de419c"
+        },
+        "date": 1662127782551,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.375837915893942,
+            "unit": "ns/iter",
+            "extra": "iterations: 510523345\ncpu: 1.3755468910045632 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 23.36958348794149,
+            "unit": "ns/iter",
+            "extra": "iterations: 29097669\ncpu: 23.361630789050487 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 427.96822954093597,
+            "unit": "ns/iter",
+            "extra": "iterations: 1612819\ncpu: 427.8909164636578 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.772534561204182,
+            "unit": "ns/iter",
+            "extra": "iterations: 123635811\ncpu: 5.771536533213669 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 2289772945.00001,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 2289583800 ns\nthreads: 1"
           }
         ]
       }
