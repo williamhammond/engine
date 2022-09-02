@@ -10,6 +10,8 @@ class Geometry3 {
   static float PointToPoint(const Vector3& p1, const Vector3& v1, const Vector3& p2, const Vector3& v2);
   // TODO possibly break this into multiple methods to avoid the side-effect
   static bool LineIntersectsPlane(const Vector3& p, const Vector3& v, const Plane& f, Vector3& intersection);
+  static bool TwoPlanesIntersect(const Plane& f1, const Plane& f2, Vector3& intersection, Vector3& normal);
+  static bool ThreePlanesIntersect(const Plane& f1, const Plane& f2, const Plane& f3, Vector3& intersection);
 };
 }  // namespace engine
 
