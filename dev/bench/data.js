@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662147157118,
+  "lastUpdate": 1662147178559,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -5382,6 +5382,60 @@ window.BENCHMARK_DATA = {
             "value": 3434253027.000011,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3434014200.0000005 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "distinct": true,
+          "id": "640740840d6697abca8ecf076d7aa0e572549923",
+          "message": "Adds Plane::Dot to plane.h and add Plane to engine namespace",
+          "timestamp": "2022-09-02T15:30:54-04:00",
+          "tree_id": "617f4c586ca0284f0e3d88eb617961a3d41f8c59",
+          "url": "https://github.com/williamhammond/engine/commit/640740840d6697abca8ecf076d7aa0e572549923"
+        },
+        "date": 1662147176555,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.6080627481279033,
+            "unit": "ns/iter",
+            "extra": "iterations: 435146943\ncpu: 1.6076801440381485 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 28.23240463011489,
+            "unit": "ns/iter",
+            "extra": "iterations: 24797660\ncpu: 28.229328896355554 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 492.7602173392397,
+            "unit": "ns/iter",
+            "extra": "iterations: 1420820\ncpu: 492.71174392252385 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 6.430076762884398,
+            "unit": "ns/iter",
+            "extra": "iterations: 108870453\ncpu: 6.429471731875681 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3457512499.0000176,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3451805500 ns\nthreads: 1"
           }
         ]
       }
