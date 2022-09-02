@@ -6,7 +6,8 @@
 #include "fmath.h"
 #include "vector3.h"
 
-engine::Matrix3 engine::Matrix3::Identity() {
+namespace engine {
+Matrix3 Matrix3::Identity() {
   // clang-format off
   return { 1.0f, 0.0f, 0.0f,
            0.0f, 1.0f, 0.0f,
@@ -15,7 +16,7 @@ engine::Matrix3 engine::Matrix3::Identity() {
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::RotationX(float theta) {
+Matrix3 Matrix3::RotationX(float theta) {
   auto c = std::cos(FMath::Degree2Radian(theta));
   auto s = std::sin(FMath::Degree2Radian(theta));
 
@@ -27,31 +28,31 @@ engine::Matrix3 engine::Matrix3::RotationX(float theta) {
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::RotationY(float theta) {
+Matrix3 Matrix3::RotationY(float theta) {
   auto c = std::cos(FMath::Degree2Radian(theta));
   auto s = std::sin(FMath::Degree2Radian(theta));
 
   // clang-format off
   return {  c,   0.0f,  s  ,
-           0.0f, 1.0f, 0.0f,
-           -s,   0.0f,  c
+            0.0f, 1.0f, 0.0f,
+            -s,   0.0f,  c
   };
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::RotationZ(float theta) {
+Matrix3 Matrix3::RotationZ(float theta) {
   auto c = std::cos(FMath::Degree2Radian(theta));
   auto s = std::sin(FMath::Degree2Radian(theta));
 
   // clang-format off
   return {  c,   -s,   0.0f ,
             s,    c,   0.0f ,
-           0.0f, 0.0f, 1.0f };
+            0.0f, 0.0f, 1.0f };
   // clang-format on
 }
 
 // https://gamemath.com/book/matrixtransforms.html#rotation_3d_arbitrary_axis
-engine::Matrix3 engine::Matrix3::Rotation(float theta, Vector3 axis) {
+Matrix3 Matrix3::Rotation(float theta, Vector3 axis) {
   auto a = axis.Normalize();
 
   auto c = std::cos(FMath::Degree2Radian(theta));
@@ -74,7 +75,7 @@ engine::Matrix3 engine::Matrix3::Rotation(float theta, Vector3 axis) {
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::Reflection(const Vector3 &a) {
+Matrix3 Matrix3::Reflection(const Vector3 &a) {
   auto x = a.x * -2.0f;
   auto y = a.y * -2.0f;
   auto z = a.z * -2.0f;
@@ -91,7 +92,7 @@ engine::Matrix3 engine::Matrix3::Reflection(const Vector3 &a) {
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::Involution(const Vector3 &a) {
+Matrix3 Matrix3::Involution(const Vector3 &a) {
   auto x = a.x * 2.0f;
   auto y = a.y * 2.0f;
   auto z = a.z * 2.0f;
@@ -108,7 +109,7 @@ engine::Matrix3 engine::Matrix3::Involution(const Vector3 &a) {
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::Scale(float x_scalar, float y_scalar, float z_scalar) {
+Matrix3 Matrix3::Scale(float x_scalar, float y_scalar, float z_scalar) {
   // clang-format off
   return { x_scalar, 0       , 0,
            0       , y_scalar, 0,
@@ -117,7 +118,7 @@ engine::Matrix3 engine::Matrix3::Scale(float x_scalar, float y_scalar, float z_s
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::Scale(float s, const Vector3 &a) {
+Matrix3 Matrix3::Scale(float s, const Vector3 &a) {
   s -= 1.0f;
 
   auto x = a.x * s;
@@ -137,7 +138,7 @@ engine::Matrix3 engine::Matrix3::Scale(float s, const Vector3 &a) {
   // clang-format on
 }
 
-engine::Matrix3 engine::Matrix3::Skew(float theta, const Vector3 &a, const Vector3 &b) {
+Matrix3 Matrix3::Skew(float theta, const Vector3 &a, const Vector3 &b) {
   if (!a.IsOrthogonal(b)) {
     throw std::invalid_argument(a.ToString() + "needs to be orthogonal to " + b.ToString());
   }
@@ -158,7 +159,7 @@ engine::Matrix3 engine::Matrix3::Skew(float theta, const Vector3 &a, const Vecto
   // clang-format on
 }
 
-std::string engine::Matrix3::ToString() const {
+std::string Matrix3::ToString() const {
   std::string result = "";
   for (int i = 0; i < 3; i++) {
     result += "| ";
@@ -176,3 +177,4 @@ std::string engine::Matrix3::ToString() const {
 
   return result;
 }
+}  // namespace engine

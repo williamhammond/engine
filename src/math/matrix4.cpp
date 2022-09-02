@@ -1,6 +1,8 @@
 #include "matrix4.h"
 
-engine::Matrix4 engine::Matrix4::Identity() {
+namespace engine {
+
+Matrix4 Matrix4::Identity() {
   // clang-format off
   return { 1.0f, 0.0f, 0.0f, 0.0f,
            0.0f, 1.0f, 0.0f, 0.0f,
@@ -10,7 +12,7 @@ engine::Matrix4 engine::Matrix4::Identity() {
   // clang-format on
 }
 
-engine::Matrix4 engine::Matrix4::Inverse() const {
+Matrix4 Matrix4::Inverse() const {
   const auto& a = reinterpret_cast<const Vector3&>((*this)[0]);
   const auto& b = reinterpret_cast<const Vector3&>((*this)[1]);
   const auto& c = reinterpret_cast<const Vector3&>((*this)[2]);
@@ -48,7 +50,7 @@ engine::Matrix4 engine::Matrix4::Inverse() const {
   // clang-format on
 }
 
-std::string engine::Matrix4::ToString() const {
+std::string Matrix4::ToString() const {
   std::string result{};
   for (int i = 0; i < 4; i++) {
     result += "| ";
@@ -66,3 +68,4 @@ std::string engine::Matrix4::ToString() const {
 
   return result;
 }
+}  // namespace engine

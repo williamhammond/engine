@@ -4,6 +4,8 @@
 #include "matrix3.h"
 #include "vector3.h"
 
+namespace engine {
+
 class Quaternion {
   float x, y, z, w;
 
@@ -16,7 +18,7 @@ class Quaternion {
     w = w_in;
   }
 
-  Quaternion(const engine::Vector3& v, float w_in) {
+  Quaternion(const Vector3& v, float w_in) {
     x = v.x;
     y = v.y;
     z = v.z;
@@ -24,10 +26,10 @@ class Quaternion {
     w = w_in;
   }
 
-  const engine::Vector3& GetVector() { return (reinterpret_cast<const engine::Vector3&>(x)); }
+  const Vector3& GetVector() { return (reinterpret_cast<const Vector3&>(x)); }
 
-  engine::Matrix3 GetRotation();
-  void SetRotation(const engine::Matrix3& m);
+  Matrix3 GetRotation();
+  void SetRotation(const Matrix3& m);
 
   Quaternion operator*(const Quaternion& Q) {
     // clang-format off
@@ -40,5 +42,6 @@ class Quaternion {
     // clang-format on
   }
 };
+}  // namespace engine
 
 #endif  // ENGINE_QUATERNION_H
