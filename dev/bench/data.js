@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662147477588,
+  "lastUpdate": 1662152937926,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -5490,6 +5490,60 @@ window.BENCHMARK_DATA = {
             "value": 3457512499.0000176,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3451805500 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "0f83e0f0b1ceed354214f08b2a0dfb8694acd0d8",
+          "message": "Merge pull request #42 from williamhammond/extend-plane\n\nAdds methods to detect intersections with a Plane",
+          "timestamp": "2022-09-02T17:07:25-04:00",
+          "tree_id": "1b0fd08a605e917deb1f13e74c886252ee48fc4c",
+          "url": "https://github.com/williamhammond/engine/commit/0f83e0f0b1ceed354214f08b2a0dfb8694acd0d8"
+        },
+        "date": 1662152937440,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.339188004207447,
+            "unit": "ns/iter",
+            "extra": "iterations: 517222015\ncpu: 1.3389128457728157 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 23.517101100643814,
+            "unit": "ns/iter",
+            "extra": "iterations: 29790948\ncpu: 23.514340664822075 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 410.8683222376234,
+            "unit": "ns/iter",
+            "extra": "iterations: 1702011\ncpu: 410.8263107582735 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.3549060743046395,
+            "unit": "ns/iter",
+            "extra": "iterations: 130735311\ncpu: 5.3542275200615075 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 2875186263.9999785,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 2874783099.9999995 ns\nthreads: 1"
           }
         ]
       }
