@@ -60,7 +60,9 @@ class Transform4 : engine::Matrix4 {
 
   const engine::Vector3& operator[](int j) const { return (*reinterpret_cast<const engine::Vector3*>(n[j])); }
 
-  [[nodiscard]] const engine::Vector3& GetTranslation() const { return (*reinterpret_cast<const engine::Vector3*>(n[3])); }
+  [[nodiscard]] const engine::Vector3& GetTranslation() const {
+    return (*reinterpret_cast<const engine::Vector3*>(n[3]));
+  }
 
   void SetTranslation(const engine::Vector3& p) {
     n[3][0] = p.x;
