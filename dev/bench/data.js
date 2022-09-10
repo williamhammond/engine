@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662818627043,
+  "lastUpdate": 1662818909871,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -2808,6 +2808,60 @@ window.BENCHMARK_DATA = {
             "value": 2521275299.9999566,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 2500000000 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "bfd6d8a82a73fb79e1d1d52e8d9f8d865234728b",
+          "message": "Merge pull request #43 from williamhammond/plane-multiplication\n\nAdds Plane * operator and moves MakeReflection to Plane",
+          "timestamp": "2022-09-10T10:01:54-04:00",
+          "tree_id": "9dc253a79bee5a6da70cf5cd9c29dca35d3d3d14",
+          "url": "https://github.com/williamhammond/engine/commit/bfd6d8a82a73fb79e1d1d52e8d9f8d865234728b"
+        },
+        "date": 1662818902516,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 1.4512142404235047,
+            "unit": "ns/iter",
+            "extra": "iterations: 497777778\ncpu: 1.4439174100696797 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 25.95149437021258,
+            "unit": "ns/iter",
+            "extra": "iterations: 26352941\ncpu: 26.088169817554707 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 458.64599523347283,
+            "unit": "ns/iter",
+            "extra": "iterations: 1493333\ncpu: 460.3795670490105 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 5.521520000000919,
+            "unit": "ns/iter",
+            "extra": "iterations: 100000000\ncpu: 5.46875 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3155087299.999991,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3171875000 ns\nthreads: 1"
           }
         ]
       }
