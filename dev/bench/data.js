@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1663180820517,
+  "lastUpdate": 1663180821798,
   "repoUrl": "https://github.com/williamhammond/engine",
   "entries": {
     "Windows Latest MSVC-Release": [
@@ -8700,6 +8700,60 @@ window.BENCHMARK_DATA = {
             "value": 3053778496.999996,
             "unit": "ns/iter",
             "extra": "iterations: 1\ncpu: 3001428000 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "william.t.hammond@gmail.com",
+            "name": "William Hammond",
+            "username": "williamhammond"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9b521dfc6cebbfd9c714d29761baabd513469211",
+          "message": "Merge pull request #44 from williamhammond/add-color-rgba\n\nAdds graphics module and basic ColorRGBA class",
+          "timestamp": "2022-09-14T14:38:32-04:00",
+          "tree_id": "301540c78610a593a008f58007d0cbc6832add8c",
+          "url": "https://github.com/williamhammond/engine/commit/9b521dfc6cebbfd9c714d29761baabd513469211"
+        },
+        "date": 1663180820916,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_square",
+            "value": 2.0065440964103156,
+            "unit": "ns/iter",
+            "extra": "iterations: 342698802\ncpu: 2.0019883232623616 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_100",
+            "value": 31.593728052025554,
+            "unit": "ns/iter",
+            "extra": "iterations: 23265244\ncpu: 30.890928975427887 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_sqrt_max",
+            "value": 458.17658390824494,
+            "unit": "ns/iter",
+            "extra": "iterations: 1651232\ncpu: 444.6431512955177 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow",
+            "value": 8.207193776317855,
+            "unit": "ns/iter",
+            "extra": "iterations: 86987859\ncpu: 8.133801752725052 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_pow_max",
+            "value": 3112233553.00001,
+            "unit": "ns/iter",
+            "extra": "iterations: 1\ncpu: 3089599999.9999995 ns\nthreads: 1"
           }
         ]
       }
