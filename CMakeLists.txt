@@ -23,6 +23,7 @@ set(SOURCE_FILES src/main.cpp)
 add_executable(Engine ${SOURCE_FILES})
 
 target_link_libraries(Engine PUBLIC Math)
+target_link_libraries(Engine PUBLIC Graphics)
 
 enable_testing()
 add_subdirectory(test)
@@ -42,7 +43,7 @@ else ()
         message(FATAL_ERROR "System not UNIX nor WIN32 - not implemented yet")
     endif ()
 endif ()
-install(TARGETS Engine Math
+install(TARGETS Engine Math Graphics
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
