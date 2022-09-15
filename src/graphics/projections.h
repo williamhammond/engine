@@ -5,7 +5,9 @@
 
 namespace engine {
 Matrix4 FrustumProjection(float fovy, float s, float n, float f);
+Matrix4 ReverseFrustumProjection(float fovy, float s, float n, float f);
 Matrix4 InfiniteProjection(float fovy, float s, float n, float e);
+Matrix4 ReverseInfiniteProjection(float fovy, float s, float n, float e);
 
 }  // namespace engine
 
