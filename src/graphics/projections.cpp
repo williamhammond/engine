@@ -54,5 +54,17 @@ Matrix4 ReverseInfiniteProjection(float fovy, float s, float n, float e) {
   };
   // clang-format on
 }
+Matrix4 OrthographicProjection(float l, float r, float t, float b, float n, float f) {
+  float w_inv = 1.0f / (r - 1);
+  float h_inv = 1.0f / (b - t);
+  float d_inv = 1.0f / (f - n);
+  // clang-format off
+  return {
+      2 * w_inv, 0.0f        , 0.0f , -(r + l) * w_inv,
+      0.0f     , 2.0f * h_inv, 0.0f , -(b + t) * h_inv,
+      0.0f     , 0.0f        , d_inv, -n * d_inv,
+      0.0f     , 0.0f        , 0.0f ,   1.0f,
+  };
+}
 
 }  // namespace engine
